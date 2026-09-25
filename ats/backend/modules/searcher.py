@@ -480,7 +480,7 @@ def search_and_process_jobs(max_results: int = 35) -> List[Dict[str, Any]]:
         analysis = analyze_job_keywords(raw_job["description"])
         baseline_score = max(72.0, analysis["baseline_score"])
 
-        record_skill_gaps(analysis["missing_skills"])
+        record_skill_gaps(analysis["missing_skills"], location=raw_job["location"])
 
         # Tailor Resume to reach 90%+ ATS Score
         tailoring_result = tailor_resume_for_job(raw_job["title"], raw_job["company"], raw_job["description"])

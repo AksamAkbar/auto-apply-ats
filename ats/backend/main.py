@@ -158,6 +158,15 @@ def list_skill_gaps():
     gaps = analyze_skill_gaps()
     return {"skill_gaps": gaps, "total": len(gaps)}
 
+class ToggleSkillRequest(BaseModel):
+    is_completed: bool
+
+@app.post("/api/skill-gaps/{skill_name}/toggle")
+def toggle_skill(skill_name: str, payload: ToggleSkillRequest):
+    from .database import toggle_skill_completion
+    success = toggle_skill_completion(skill_name, payload.is_completed)
+    return {"success": success, "skill_name": skill_name, "is_completed": payload.is_completed}
+
 class DigestRequest(BaseModel):
     recipient: Optional[str] = "aksamakbar@gmail.com"
 

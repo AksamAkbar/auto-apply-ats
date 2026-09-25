@@ -188,11 +188,23 @@ function createJobCardHTML(job) {
   const missing = job.missing_keywords || [];
   const isHot = job.is_hot === 1 || (job.days_ago !== undefined && job.days_ago <= 1);
 
+  const locLower = (job.location || '').toLowerCase();
   let prioTag = '';
-  if (job.location_priority === 1) prioTag = '<span class="badge-priority">📍 Priority 1: Bengaluru</span>';
-  else if (job.location_priority === 2) prioTag = '<span class="badge-priority">📍 Priority 2: Kerala</span>';
-  else if (job.location_priority === 3) prioTag = '<span class="badge-priority">📍 Priority 3: Metro Hub</span>';
-  else if (job.location_priority === 4) prioTag = '<span class="badge-priority">📍 Priority 4: GCC</span>';
+  if (locLower.includes('dubai') || locLower.includes('uae') || locLower.includes('united arab emirates')) {
+    prioTag = '<span class="badge-priority" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🌍 GCC: Dubai (UAE)</span>';
+  } else if (locLower.includes('saudi') || locLower.includes('riyadh') || locLower.includes('jeddah')) {
+    prioTag = '<span class="badge-priority" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🌍 GCC: Saudi Arabia</span>';
+  } else if (locLower.includes('qatar') || locLower.includes('doha')) {
+    prioTag = '<span class="badge-priority" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🌍 GCC: Qatar</span>';
+  } else if (locLower.includes('kuwait') || locLower.includes('bahrain') || locLower.includes('oman') || job.location_priority === 4) {
+    prioTag = `<span class="badge-priority" style="background: #fef3c7; color: #92400e; border: 1px solid #fde68a;">🌍 GCC Hub: ${escapeHTML(job.location)}</span>`;
+  } else if (job.location_priority === 1) {
+    prioTag = '<span class="badge-priority">📍 Priority 1: Bengaluru</span>';
+  } else if (job.location_priority === 2) {
+    prioTag = '<span class="badge-priority">📍 Priority 2: Kerala</span>';
+  } else if (job.location_priority === 3) {
+    prioTag = '<span class="badge-priority">📍 Priority 3: Metro Hub</span>';
+  }
 
   const hotBadge = isHot ? '<span class="badge-hot">🔥 Hot Opening (&lt;24h)</span>' : '';
 
@@ -510,6 +522,9 @@ async function updateStatus(jobId, newStatus) {
   }
 }
 
+let allSkillGaps = [];
+let currentSkillFilter = 'all';
+
 async function loadSkillGaps() {
   const container = document.getElementById('skill-gaps-grid');
   if (!container) return;
@@ -525,38 +540,198 @@ async function loadSkillGaps() {
     const data = await res.json();
     const gaps = data.skill_gaps || [];
 
-    container.innerHTML = gaps.map(gap => `
-      <div class="skill-card">
+    // Sync with localStorage for client-side persistence across refreshes
+    const localCompleted = JSON.parse(localStorage.getItem('aksam_completed_skills') || '[]');
+    
+    allSkillGaps = gaps.map(g => {
+      const isDone = g.is_completed || localCompleted.includes(g.skill_name);
+      return {
+        ...g,
+        is_completed: !!isDone
+      };
+    });
+
+    renderSkillGaps();
+  } catch (err) {
+    container.innerHTML = `<p style="padding: 20px; color: #ef4444;">Error loading skill gaps: ${escapeHTML(err.message)}</p>`;
+  }
+}
+
+function filterSkillGaps(filterName) {
+  currentSkillFilter = filterName;
+  document.querySelectorAll('.skill-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filterName);
+  });
+  renderSkillGaps();
+}
+
+async function toggleSkillCompleted(skillName, isChecked) {
+  // Update in-memory state
+  const target = allSkillGaps.find(s => s.skill_name.toLowerCase() === skillName.toLowerCase());
+  if (target) {
+    target.is_completed = isChecked;
+  }
+
+  // Update localStorage (for static hosting on GitHub Pages)
+  let localCompleted = JSON.parse(localStorage.getItem('aksam_completed_skills') || '[]');
+  if (isChecked) {
+    if (!localCompleted.includes(skillName)) localCompleted.push(skillName);
+  } else {
+    localCompleted = localCompleted.filter(n => n.toLowerCase() !== skillName.toLowerCase());
+  }
+  localStorage.setItem('aksam_completed_skills', JSON.stringify(localCompleted));
+
+  // Sync with FastAPI backend if running
+  try {
+    await fetch(`/api/skill-gaps/${encodeURIComponent(skillName)}/toggle`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ is_completed: isChecked })
+    });
+  } catch (err) {
+    console.log('Skill toggle saved locally:', err.message);
+  }
+
+  // Re-render UI with updated progress and card state
+  renderSkillGaps();
+}
+
+function renderSkillGaps() {
+  const container = document.getElementById('skill-gaps-grid');
+  if (!container) return;
+
+  const total = allSkillGaps.length;
+  const completed = allSkillGaps.filter(s => s.is_completed).length;
+  const pending = total - completed;
+  const gcc = allSkillGaps.filter(s => s.is_gcc_priority || (s.gcc_countries && s.gcc_countries.length > 0)).length;
+
+  // Update counter badges
+  const cAll = document.getElementById('count-all-skills');
+  const cPending = document.getElementById('count-pending-skills');
+  const cCompleted = document.getElementById('count-completed-skills');
+  const cGcc = document.getElementById('count-gcc-skills');
+  if (cAll) cAll.textContent = total;
+  if (cPending) cPending.textContent = pending;
+  if (cCompleted) cCompleted.textContent = completed;
+  if (cGcc) cGcc.textContent = gcc;
+
+  // Update Progress Bar
+  const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
+  const progText = document.getElementById('skill-progress-text');
+  const progFill = document.getElementById('skill-progress-fill');
+  if (progText) progText.textContent = `${completed} of ${total} Mastered (${pct}%)`;
+  if (progFill) progFill.style.width = `${pct}%`;
+
+  // Filter skills
+  let filtered = allSkillGaps;
+  if (currentSkillFilter === 'pending') {
+    filtered = allSkillGaps.filter(s => !s.is_completed);
+  } else if (currentSkillFilter === 'completed') {
+    filtered = allSkillGaps.filter(s => s.is_completed);
+  } else if (currentSkillFilter === 'gcc') {
+    filtered = allSkillGaps.filter(s => s.is_gcc_priority || (s.gcc_countries && s.gcc_countries.length > 0));
+  }
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; background: white; padding: 36px; border-radius: 12px; text-align: center; border: 1px dashed #cbd5e1;">
+        <div style="font-size: 32px; margin-bottom: 8px;">🎉</div>
+        <h4 style="font-size: 16px; font-weight: 700; color: #1e293b;">No skills in this category</h4>
+        <p style="font-size: 13px; color: #64748b; margin-top: 4px;">Switch filters or click "All Skills" to view your full learning roadmap.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map(gap => {
+    const isDone = !!gap.is_completed;
+    const gccList = gap.gcc_countries || [];
+    const hasGcc = gccList.length > 0;
+    
+    // Default fallback Gemini prompt and YouTube query
+    const geminiPrompt = gap.gemini_prompt || 
+      `Act as a senior data analytics coach. Teach me ${gap.skill_name} specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.`;
+    const geminiUrl = `https://gemini.google.com/app?prompt=${encodeURIComponent(geminiPrompt)}`;
+    
+    const ytQuery = gap.youtube_query || `${gap.skill_name} tutorial for data analyst full course`;
+    const ytUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(ytQuery)}`;
+
+    return `
+      <div class="skill-card ${isDone ? 'is-mastered' : ''}" id="skill-card-${escapeHTML(gap.skill_name)}">
+        <!-- TOP CHECKLIST BANNER -->
+        <div class="skill-check-banner">
+          <label class="skill-checkbox-label">
+            <input 
+              type="checkbox" 
+              class="skill-checkbox" 
+              ${isDone ? 'checked' : ''} 
+              onchange="toggleSkillCompleted('${escapeHTML(gap.skill_name)}', this.checked)"
+            >
+            <span>${isDone ? '✅ Mastered &amp; Ready' : '⬜ Mark as Mastered'}</span>
+          </label>
+          <span style="font-size: 11.5px; font-weight: 700; color: ${isDone ? '#166534' : '#64748b'};">
+            ${isDone ? 'Saved in Archive' : '⏱️ ' + escapeHTML(gap.estimated_hours || '10-15 Hours')}
+          </span>
+        </div>
+
+        <!-- SKILL TITLE & CATEGORY -->
         <div class="skill-card-top">
           <div class="skill-title">${escapeHTML(gap.skill_name)}</div>
-          <span class="skill-category">${escapeHTML(gap.category)}</span>
+          <span class="skill-category">${escapeHTML(gap.category || 'Analytics Tool')}</span>
         </div>
 
-        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px;">
-          <span class="skill-demand-badge">Demand: ${escapeHTML(gap.demand)}</span>
-          <span style="color: #64748b; font-weight: 600;">⏱️ Est: ${escapeHTML(gap.estimated_hours)}</span>
+        <!-- METRICS & OCCURRENCE FREQUENCY -->
+        <div class="skill-metrics-row">
+          <span class="badge-alltime-freq" title="Total times this keyword appeared across all job postings scanned from the beginning">
+            📊 In ${gap.frequency || 1} Openings
+          </span>
+          <span class="skill-demand-badge">
+            Demand: ${escapeHTML(gap.demand || 'High')}
+          </span>
         </div>
 
-        <p style="font-size: 13px; color: #334155; line-height: 1.4;">
-          ${escapeHTML(gap.why_it_matters)}
+        <!-- GCC COUNTRY DEMAND -->
+        ${hasGcc ? `
+          <div class="badge-gcc-demand" title="GCC roles specifically requesting this skill">
+            🌍 <strong>High GCC Demand:</strong> ${escapeHTML(gccList.join(', '))}
+          </div>
+        ` : ''}
+
+        <!-- WHY IT MATTERS -->
+        <p style="font-size: 13px; color: #334155; line-height: 1.45; margin: 2px 0;">
+          ${escapeHTML(gap.why_it_matters || 'Requested in target market postings to complement SQL/Excel stack.')}
         </p>
 
+        <!-- RECOMMENDED PORTFOLIO PROJECT -->
         <div class="roadmap-box">
           <div class="roadmap-title">🎯 Recommended Portfolio Project:</div>
-          <div>${escapeHTML(gap.recommended_project)}</div>
+          <div style="color: #475569;">${escapeHTML(gap.recommended_project || 'Build a showcase analytical template.')}</div>
         </div>
 
-        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid #f1f5f9;">
-          <div style="font-size: 11px; font-weight: 700; color: #64748b; margin-bottom: 4px;">LEARNING RESOURCES:</div>
-          <ul style="font-size: 12px; color: #2563eb; margin-left: 16px;">
-            ${(gap.learning_resources || []).map(r => `<li>${escapeHTML(r)}</li>`).join('')}
-          </ul>
+        <!-- DIRECT 1-CLICK GEMINI & YOUTUBE BUTTONS -->
+        <div class="skill-action-buttons">
+          <a 
+            href="${geminiUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-gemini" 
+            title="Launch Google Gemini with pre-populated coaching prompt for this skill"
+          >
+            ✨ Ask Gemini Coach
+          </a>
+          <a 
+            href="${ytUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-youtube" 
+            title="Search top-rated video tutorials and courses on YouTube"
+          >
+            ▶️ YouTube Course
+          </a>
         </div>
       </div>
-    `).join('');
-  } catch (err) {
-    container.innerHTML = `<p>Error loading skill gaps: ${err.message}</p>`;
-  }
+    `;
+  }).join('');
 }
 
 function copyCoverLetter() {

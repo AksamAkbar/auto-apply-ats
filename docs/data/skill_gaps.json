@@ -5,74 +5,159 @@
       "frequency": 3,
       "category": "Cloud Data Warehousing",
       "demand": "Very High",
+      "gcc_countries": [
+        "Dubai (UAE)",
+        "Saudi Arabia (Riyadh)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Builds directly on your SQL Server & Star Schema expertise. Top enterprise requirement for cloud analytics in Bengaluru, Mumbai, and GCC.",
       "estimated_hours": "15-20 Hours",
       "recommended_project": "Replicate your Medallion SQL Data Warehouse into a free Snowflake 30-day trial instance using SnowSQL.",
       "learning_resources": [
         "Snowflake Hands-on Essentials Badge (Free)",
         "Coursera Snowflake for Data Engineers"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Snowflake specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "Snowflake for Data Analyst full course tutorial freeCodeCamp"
     },
     {
       "skill_name": "Dbt",
       "frequency": 3,
       "category": "Data Transformation & Engineering",
       "demand": "Rapidly Growing",
+      "gcc_countries": [
+        "Dubai (UAE)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Allows analysts to write modular SQL transformations with built-in version control and testing.",
       "estimated_hours": "12 Hours",
       "recommended_project": "Build dbt models on top of PostgreSQL/SQL Server with schema tests.",
       "learning_resources": [
         "dbt Fundamentals Free Certification (getdbt.com)"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Dbt specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "dbt tutorial for beginners Data with Zach"
     },
     {
       "skill_name": "Alteryx",
       "frequency": 3,
       "category": "Automated ETL & Prep",
       "demand": "High in MNCs & GCC",
+      "gcc_countries": [
+        "Dubai (UAE)",
+        "Qatar (Doha)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Heavily utilized by Big 4 (EY, Deloitte) and GCC conglomerates for automated finance and pricing data prep without coding.",
       "estimated_hours": "15 Hours",
       "recommended_project": "Automate daily supplier pricing reconciliation and variance checking.",
       "learning_resources": [
         "Alteryx Designer Core Certification Prep"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Alteryx specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "Alteryx full course tutorial for beginner data analyst"
     },
     {
       "skill_name": "Google Analytics",
       "frequency": 3,
       "category": "Digital & Product Analytics",
       "demand": "High for E-commerce & Startups",
+      "gcc_countries": [
+        "Dubai (UAE)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Complements your Marketing Analytics NLP project by connecting front-end user engagement metrics with sales numbers.",
       "estimated_hours": "8 Hours",
       "recommended_project": "Set up GA4 event tracking and build a Power BI connector dashboard.",
       "learning_resources": [
         "Google Skillshop GA4 Certification (Free)"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Google Analytics specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "GA4 Google Analytics 4 tutorial for analysts"
     },
     {
       "skill_name": "Power Automate",
       "frequency": 3,
       "category": "Workflow Automation",
       "demand": "High in Enterprise Operations",
+      "gcc_countries": [
+        "Dubai (UAE)",
+        "Kuwait"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Pairs seamlessly with Excel and Power BI to automate scheduled refresh alerts, approval emails, and data extraction.",
       "estimated_hours": "10 Hours",
       "recommended_project": "Build an automated flow that extracts attachments from email and appends rows to an Excel/SQL table.",
       "learning_resources": [
         "Microsoft Learn Power Automate Fundamentals"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Power Automate specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "Power Automate desktop tutorial for excel automation"
     },
     {
       "skill_name": "Bigquery",
       "frequency": 3,
       "category": "Cloud Analytics",
       "demand": "High",
+      "gcc_countries": [
+        "Dubai (UAE)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
       "why_it_matters": "Google Cloud's serverless data warehouse; standard for marketing and ecommerce analytics (Swiggy, Noon, Zomato).",
       "estimated_hours": "10-15 Hours",
       "recommended_project": "Query Google Analytics 4 public e-commerce datasets using BigQuery SQL.",
       "learning_resources": [
         "Google Cloud Skills Boost BigQuery Quest"
-      ]
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Bigquery specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "Google BigQuery tutorial for business analyst Luke Barousse"
+    },
+    {
+      "skill_name": "Azure",
+      "frequency": 3,
+      "category": "Cloud Infrastructure",
+      "demand": "Very High in India & Middle East",
+      "gcc_countries": [
+        "Dubai (UAE)",
+        "Saudi Arabia (Riyadh)"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
+      "why_it_matters": "Native ecosystem for Power BI, SQL Server, and Synapse Analytics.",
+      "estimated_hours": "20 Hours",
+      "recommended_project": "Connect Power BI Desktop to Azure SQL Database with scheduled automated refresh.",
+      "learning_resources": [
+        "Microsoft Learn DP-900 (Azure Data Fundamentals)"
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Azure specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "Azure Data Fundamentals DP-900 full course"
+    },
+    {
+      "skill_name": "Aws",
+      "frequency": 3,
+      "category": "Cloud Infrastructure",
+      "demand": "High",
+      "gcc_countries": [
+        "Dubai (UAE)",
+        "Saudi Arabia"
+      ],
+      "is_gcc_priority": true,
+      "is_completed": false,
+      "why_it_matters": "Amazon S3, Athena, and QuickSight are commonly used alongside SQL for enterprise reporting.",
+      "estimated_hours": "20 Hours",
+      "recommended_project": "Store CSV retail datasets in AWS S3 and query them directly using Amazon Athena SQL.",
+      "learning_resources": [
+        "AWS Cloud Practitioner Essentials (Free)"
+      ],
+      "gemini_prompt": "Act as a senior data analytics coach. Teach me Aws specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.",
+      "youtube_query": "AWS Athena and S3 for Data Analysis tutorial"
     }
   ],
-  "total": 6
+  "total": 8
 }

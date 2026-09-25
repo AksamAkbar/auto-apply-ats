@@ -54,10 +54,19 @@ def init_db():
         skill_name TEXT PRIMARY KEY,
         frequency INTEGER DEFAULT 1,
         category TEXT,
+        gcc_countries TEXT DEFAULT '',
         learning_recommendation TEXT,
+        is_completed INTEGER DEFAULT 0,
         last_seen TEXT
     )
     ''')
+
+    cursor.execute("PRAGMA table_info(skill_gaps)")
+    sg_cols = [row[1] for row in cursor.fetchall()]
+    if "gcc_countries" not in sg_cols:
+        cursor.execute("ALTER TABLE skill_gaps ADD COLUMN gcc_countries TEXT DEFAULT ''")
+    if "is_completed" not in sg_cols:
+        cursor.execute("ALTER TABLE skill_gaps ADD COLUMN is_completed INTEGER DEFAULT 0")
 
     conn.commit()
     conn.close()
@@ -181,27 +190,76 @@ def get_daily_application_count() -> int:
     conn.close()
     return count
 
-def record_skill_gaps(skills: List[str]):
+def extract_gcc_country(location: str) -> Optional[str]:
+    loc_lower = (location or "").lower()
+    if any(k in loc_lower for k in ["dubai", "uae", "abu dhabi", "sharjah"]):
+        return "Dubai (UAE)"
+    if any(k in loc_lower for k in ["saudi", "riyadh", "jeddah"]):
+        return "Saudi Arabia"
+    if any(k in loc_lower for k in ["qatar", "doha"]):
+        return "Qatar"
+    if any(k in loc_lower for k in ["kuwait"]):
+        return "Kuwait"
+    if any(k in loc_lower for k in ["oman", "muscat"]):
+        return "Oman"
+    if any(k in loc_lower for k in ["bahrain"]):
+        return "Bahrain"
+    return None
+
+def record_skill_gaps(skills: List[str], location: str = ""):
     if not skills:
         return
     conn = get_connection()
     cursor = conn.cursor()
     now_str = datetime.now().isoformat()
+    gcc_country = extract_gcc_country(location)
+    
     for skill in skills:
-        cursor.execute('''
-        INSERT INTO skill_gaps (skill_name, frequency, category, learning_recommendation, last_seen)
-        VALUES (?, 1, 'Technical / Analytical Tool', '', ?)
-        ON CONFLICT(skill_name) DO UPDATE SET
-            frequency = frequency + 1,
-            last_seen = excluded.last_seen
-        ''', (skill, now_str))
+        # Check existing
+        cursor.execute("SELECT gcc_countries, frequency FROM skill_gaps WHERE skill_name = ?", (skill,))
+        existing = cursor.fetchone()
+        
+        if existing:
+            countries_set = set(existing[0].split(",")) if existing[0] else set()
+            if gcc_country:
+                countries_set.add(gcc_country)
+            new_countries = ",".join(filter(None, sorted(countries_set)))
+            cursor.execute('''
+            UPDATE skill_gaps 
+            SET frequency = frequency + 1,
+                gcc_countries = ?,
+                last_seen = ?
+            WHERE skill_name = ?
+            ''', (new_countries, now_str, skill))
+        else:
+            init_countries = gcc_country if gcc_country else ""
+            cursor.execute('''
+            INSERT INTO skill_gaps (skill_name, frequency, category, gcc_countries, learning_recommendation, last_seen)
+            VALUES (?, 1, 'Technical / Analytical Tool', ?, '', ?)
+            ''', (skill, init_countries, now_str))
+            
     conn.commit()
     conn.close()
 
-def get_skill_gaps(limit: int = 20) -> List[Dict[str, Any]]:
+def toggle_skill_completion(skill_name: str, is_completed: bool) -> bool:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE skill_gaps SET is_completed = ? WHERE skill_name = ?",
+                   (1 if is_completed else 0, skill_name))
+    conn.commit()
+    conn.close()
+    return True
+
+def get_skill_gaps(limit: int = 25) -> List[Dict[str, Any]]:
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM skill_gaps ORDER BY frequency DESC LIMIT ?", (limit,))
     rows = cursor.fetchall()
     conn.close()
-    return [dict(r) for r in rows]
+    
+    results = []
+    for r in rows:
+        d = dict(r)
+        d["gcc_countries_list"] = [c.strip() for c in (d.get("gcc_countries") or "").split(",") if c.strip()]
+        results.append(d)
+    return results

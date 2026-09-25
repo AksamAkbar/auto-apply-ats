@@ -57,13 +57,16 @@
     <!-- NAVIGATION TABS -->
     <nav class="tabs-header">
       <button class="tab-btn active" data-tab="review">
-        🎯 Review & Apply Hub <span class="tab-badge">Queue</span>
+        <span class="tab-label-full">🎯 Review & Apply Hub <span class="tab-badge">Queue</span></span>
+        <span class="tab-label-short">🎯 Apply Hub</span>
       </button>
       <button class="tab-btn" data-tab="tracker">
-        📋 Application Tracker & Resume Archive
+        <span class="tab-label-full">📋 Application Tracker & Resume Archive</span>
+        <span class="tab-label-short">📋 Tracker</span>
       </button>
       <button class="tab-btn" data-tab="skill-gaps">
-        💡 Skill Gaps & Future Learning Roadmap
+        <span class="tab-label-full">💡 Skill Gaps & Learning Roadmap</span>
+        <span class="tab-label-short">💡 Skill Gaps</span>
       </button>
     </nav>
 
@@ -135,14 +138,53 @@
 
     <!-- TAB 3: SKILL GAPS & FUTURE LEARNING ROADMAP -->
     <section class="tab-content" id="tab-skill-gaps" style="display: none;">
-      <div style="background: white; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; margin-bottom: 24px;">
-        <h3 style="font-size: 17px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">
-          📈 Market Skill Gap Intelligence & Learning Roadmap
-        </h3>
-        <p style="font-size: 13px; color: #475569; max-width: 900px; line-height: 1.5;">
-          Based on analyzed job requirements across India and GCC hiring markets, this module highlights the most frequently requested tools that are currently not in your master profile. Master these competencies to maximize long-term career growth.
-        </p>
+      <div class="skill-gap-header-card">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 6px;">
+              📈 Market Skill Gap Intelligence & Learning Roadmap
+            </h3>
+            <p style="font-size: 13px; color: #475569; max-width: 820px; line-height: 1.5;">
+              Continuously aggregated from all job scans across <strong>India &amp; GCC hiring markets</strong>. Skills remain tracked here across daily cycles until you check them off as completed.
+            </p>
+          </div>
+          <div class="skill-progress-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #334155;">Mastery Progress</span>
+              <span id="skill-progress-text" style="font-size: 12px; font-weight: 800; color: #2563eb;">0 of 0 Completed (0%)</span>
+            </div>
+            <div class="skill-progress-bar-bg">
+              <div id="skill-progress-fill" class="skill-progress-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="skill-filter-bar">
+          <div class="skill-filter-buttons">
+            <button class="skill-filter-btn active" data-filter="all" onclick="filterSkillGaps('all')">
+              All Skills (<span id="count-all-skills">0</span>)
+            </button>
+            <button class="skill-filter-btn" data-filter="pending" onclick="filterSkillGaps('pending')">
+              ⏳ To Learn (<span id="count-pending-skills">0</span>)
+            </button>
+            <button class="skill-filter-btn" data-filter="completed" onclick="filterSkillGaps('completed')">
+              ✅ Mastered (<span id="count-completed-skills">0</span>)
+            </button>
+            <button class="skill-filter-btn" data-filter="gcc" onclick="filterSkillGaps('gcc')">
+              🌍 GCC Priority (<span id="count-gcc-skills">0</span>)
+            </button>
+          </div>
+          <div class="skill-legend-hint">
+            <span>✨ 1-Click Gemini Prompts</span>
+            <span>•</span>
+            <span>▶️ Curated YouTube Courses</span>
+            <span>•</span>
+            <span>🌍 GCC Country Demand Tracking</span>
+          </div>
+        </div>
       </div>
+
       <div class="skill-grid" id="skill-gaps-grid">
         <!-- Rendered dynamically -->
       </div>
