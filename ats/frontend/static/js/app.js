@@ -524,7 +524,7 @@ function getTailoredProjectManagementDuties(job) {
 
 function copyTailoredResponsibilities(roleKey) {
   const elemId = roleKey === 'pricing' ? 'tailored-resp-pricing' : 'tailored-resp-pm';
-  const label = roleKey === 'pricing' ? 'Pricing & Analytics' : 'Project Management & Operations';
+  const label = roleKey === 'pricing' ? 'Junior Pricing Analyst' : 'Associate Project Manager';
   const elem = document.getElementById(elemId);
   if (!elem || !elem.value) return;
   navigator.clipboard.writeText(elem.value);
