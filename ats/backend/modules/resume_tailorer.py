@@ -43,21 +43,21 @@ def tailor_resume_for_job(job_title: str, company: str, job_description: str) ->
     elif role_type == "business_analyst":
         tailored["summary"] = (
             f"Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into "
-            f"actionable data models and automated reports. Strong technical command over {primary_skills_str} for end-to-end "
+            f"actionable data models and automated reports for {company}. Strong technical command over {primary_skills_str} for end-to-end "
             f"data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, "
             f"and delivering data-backed strategic recommendations."
         )
     elif role_type == "operations":
         tailored["summary"] = (
             f"Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, "
-            f"and business intelligence. Proficient in {primary_skills_str} to streamline reporting turnaround, "
+            f"and business intelligence to drive analytical excellence at {company}. Proficient in {primary_skills_str} to streamline reporting turnaround, "
             f"automate recurring data workflows, and execute root cause analysis on operational bottlenecks."
         )
     else:
         tailored["summary"] = (
             f"Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, "
             f"and interactive BI dashboards. Demonstrated success leveraging {primary_skills_str} across ETL data warehousing, "
-            f"KPI reporting, and variance analysis to drive measurable business decisions."
+            f"KPI reporting, and variance analysis to drive measurable business decisions for {company}."
         )
 
     # 3. Prioritize Experience Bullets based on JD relevance

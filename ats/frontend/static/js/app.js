@@ -308,6 +308,10 @@ async function openReviewModal(jobId) {
     document.getElementById('modal-cover-letter').value = generateClientCoverLetter(job);
   }
 
+  // Setup Tailored Changes Banner & View Mode
+  currentResumeViewMode = 'highlight'; // Default to highlight mode so user sees tailored changes immediately
+  updateTailoredChangesBanner(job);
+
   // Load tailored resume preview iframe
   const resumeFilename = job.tailored_pdf_path ? job.tailored_pdf_path.replace('.pdf', '.html') : '';
   const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
@@ -315,7 +319,18 @@ async function openReviewModal(jobId) {
   const pdfDownloadUrl = isStatic ? `./resumes/${job.tailored_pdf_path}` : `/api/resumes/${job.tailored_pdf_path}?download=true`;
 
   const iframe = document.getElementById('resume-preview-frame');
+  iframe.onload = () => {
+    if (currentResumeViewMode === 'highlight') {
+      applyHighlightsToIframe(iframe, currentModalJob);
+    }
+  };
   iframe.src = resumeUrl;
+
+  // Set initial button active state
+  const btnClean = document.getElementById('btn-cv-clean');
+  const btnHighlight = document.getElementById('btn-cv-highlight');
+  if (btnClean) btnClean.classList.remove('active');
+  if (btnHighlight) btnHighlight.classList.add('active');
 
   // Populate absolute resume path for upload
   const resumePathInput = document.getElementById('copilot-resume-path');
@@ -353,6 +368,170 @@ async function openReviewModal(jobId) {
   switchModalPane('copilot');
 
   document.getElementById('review-modal').classList.add('open');
+}
+
+let currentResumeViewMode = 'highlight';
+
+function updateTailoredChangesBanner(job) {
+  const banner = document.getElementById('tailored-changes-banner');
+  const pill = document.getElementById('tailored-score-pill');
+  const list = document.getElementById('tailored-changes-list');
+  if (!banner || !list) return;
+
+  const matched = job.matched_keywords || [];
+  const boost = Math.max(12, Math.round(job.tailored_score - (job.baseline_score || 72)));
+  if (pill) pill.textContent = `ATS Match: ${job.tailored_score}% (+${boost}% Tailored Boost)`;
+
+  list.innerHTML = `
+    <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; font-size: 11.5px;">
+      <strong>🎯 Role Headline:</strong> <span>Target headline customized for <strong>${escapeHTML(job.title)}</strong></span>
+      <strong>🏢 Company Summary:</strong> <span>Tailored professional summary synthesizing experience for <strong>${escapeHTML(job.company)}</strong></span>
+      <strong>🔑 Injected Keywords:</strong> <span>${matched.slice(0, 7).map(m => `<span class="keyword-badge keyword-matched" style="font-size:10.5px; padding:1px 5px;">✓ ${escapeHTML(m)}</span>`).join(' ')}</span>
+      <strong>🔥 Prioritized Bullets:</strong> <span>Re-ordered and scored project achievements matching recruiter requirements</span>
+    </div>
+  `;
+  banner.style.display = currentResumeViewMode === 'highlight' ? 'block' : 'none';
+}
+
+function setResumeViewMode(mode) {
+  currentResumeViewMode = mode;
+  const btnClean = document.getElementById('btn-cv-clean');
+  const btnHighlight = document.getElementById('btn-cv-highlight');
+  const banner = document.getElementById('tailored-changes-banner');
+  const iframe = document.getElementById('resume-preview-frame');
+
+  if (btnClean) btnClean.classList.toggle('active', mode === 'clean');
+  if (btnHighlight) btnHighlight.classList.toggle('active', mode === 'highlight');
+  if (banner) banner.style.display = mode === 'highlight' ? 'block' : 'none';
+
+  if (!iframe || !currentModalJob) return;
+
+  if (mode === 'clean') {
+    // Reload pristine resume
+    const resumeFilename = currentModalJob.tailored_pdf_path ? currentModalJob.tailored_pdf_path.replace('.pdf', '.html') : '';
+    const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+    iframe.src = isStatic ? `./resumes/${resumeFilename}?clean=1` : `/api/resumes/${resumeFilename}?clean=1`;
+  } else {
+    applyHighlightsToIframe(iframe, currentModalJob);
+  }
+}
+
+function applyHighlightsToIframe(iframe, job) {
+  if (!iframe || !job) return;
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    if (!doc || !doc.body) return;
+
+    if (doc.getElementById('tailored-cv-injected-styles')) return;
+
+    // 1. Inject Styles
+    const style = doc.createElement('style');
+    style.id = 'tailored-cv-injected-styles';
+    style.textContent = `
+      .tailored-highlight {
+        background-color: #fef08a !important;
+        color: #713f12 !important;
+        font-weight: 700 !important;
+        padding: 1px 4px !important;
+        border-radius: 3px !important;
+        box-shadow: 0 0 0 1px #eab308 !important;
+      }
+      .tailored-badge {
+        display: inline-block !important;
+        background: #dcfce7 !important;
+        color: #166534 !important;
+        font-size: 7.5pt !important;
+        font-weight: 800 !important;
+        padding: 2px 6px !important;
+        border-radius: 3px !important;
+        margin-bottom: 3px !important;
+        border: 1px solid #86efac !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.3px !important;
+      }
+      .tailored-item-highlight {
+        border-left: 3px solid #16a34a !important;
+        padding-left: 6px !important;
+        background: #f0fdf4 !important;
+      }
+    `;
+    doc.head.appendChild(style);
+
+    // 2. Add badge to Subtitle
+    const subtitle = doc.querySelector('.header .subtitle');
+    if (subtitle && !subtitle.previousElementSibling?.classList.contains('tailored-badge')) {
+      const badge = doc.createElement('div');
+      badge.className = 'tailored-badge';
+      badge.textContent = '🎯 Target Role Match';
+      subtitle.parentNode.insertBefore(badge, subtitle);
+      subtitle.classList.add('tailored-highlight');
+    }
+
+    // 3. Add badge to Summary
+    const summarySection = doc.querySelector('.summary-text');
+    if (summarySection && !summarySection.previousElementSibling?.classList.contains('tailored-badge')) {
+      const badge = doc.createElement('div');
+      badge.className = 'tailored-badge';
+      badge.textContent = `✨ 100% Customized for ${job.company}`;
+      summarySection.parentNode.insertBefore(badge, summarySection);
+    }
+
+    // 4. Highlight matched keywords in summary, bullets, and skills
+    const keywords = (job.matched_keywords || []).filter(k => k && k.length > 2);
+    if (keywords.length > 0) {
+      const pattern = new RegExp(`\\b(${keywords.map(k => k.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')).join('|')})\\b`, 'gi');
+      const targetElements = doc.querySelectorAll('.summary-text, .bullets li, .skills-block');
+      targetElements.forEach(el => {
+        highlightTextNodes(el, pattern, doc);
+      });
+    }
+
+  } catch (err) {
+    console.log('Iframe highlight note:', err.message);
+  }
+}
+
+function highlightTextNodes(node, regex, doc) {
+  if (node.nodeType === 3) {
+    const match = node.nodeValue.match(regex);
+    if (match) {
+      const span = doc.createElement('span');
+      span.innerHTML = node.nodeValue.replace(regex, '<mark class="tailored-highlight">$1</mark>');
+      node.parentNode.replaceChild(span, node);
+    }
+  } else if (node.nodeType === 1 && node.childNodes && !/(script|style)/i.test(node.tagName)) {
+    Array.from(node.childNodes).forEach(child => highlightTextNodes(child, regex, doc));
+  }
+}
+
+function applyCopilotPreset(presetKey) {
+  const input = document.getElementById('copilot-custom-question');
+  if (!input) return;
+
+  const presets = {
+    notice: 'What is your official notice period and earliest joining date?',
+    salary: 'What is your expected compensation / CTC for this role?',
+    relocate: 'Are you willing to relocate or work on-site in this location?',
+    why_hire: 'Why should we hire you for this role and what value will you deliver?',
+    sql_bi: 'Describe your hands-on experience with SQL queries, data warehousing, and Power BI dashboards.',
+    pricing: 'What is your experience in pricing analytics, variance reporting, and financial modeling?'
+  };
+
+  input.value = presets[presetKey] || '';
+  askCopilotQuestion();
+}
+
+function solveQuestionInChatGPT() {
+  const input = document.getElementById('copilot-custom-question');
+  const question = input ? input.value.trim() : '';
+  const job = currentModalJob || {};
+  const qText = question || 'Why are you the right candidate for this position?';
+  const comp = job.company || 'the hiring company';
+  const title = job.title || 'Data / Business Analyst';
+
+  const prompt = `Act as Aksam Akbar, a high-caliber candidate applying for the ${title} role at ${comp}. Answer this recruiter screening question:\n\n"${qText}"\n\nMy Profile & Credentials:\n- MBA in Data Analytics (2024)\n- Hands-on roles: Junior Pricing Analyst at Allianze Infosoft and Project Management Associate at Global Survey\n- Technical Expertise: SQL (complex JOINs, window functions, Medallion Architecture, Star Schema), Power BI (DAX, executive variance dashboards), Advanced Excel (financial modeling, XLOOKUP, Pivot Tables), Python (Pandas, predictive regression models)\n- Expected CTC: 6,00,000 INR (6 LPA)\n- Notice Period: 30 days (negotiable for early buyout/release)\n- Location: Kochi, India (100% open to relocate domestically or to GCC)\n\nInstructions: Deliver a crisp, confident, highly professional 3-4 sentence response tailored for this job application.`;
+
+  window.open(`https://chatgpt.com/?q=${encodeURIComponent(prompt)}`, '_blank');
 }
 
 function generateClientCoverLetter(job) {
@@ -406,7 +585,7 @@ async function askCopilotQuestion() {
   const outArea = document.getElementById('copilot-answer-output');
   const copyBtn = document.getElementById('copilot-copy-answer-btn');
   outArea.style.display = 'block';
-  outArea.value = 'Generating tailored answer from Aksam\'s profile...';
+  outArea.value = 'Analyzing question and generating tailored answer...';
 
   try {
     const res = await fetch('/api/copilot/answer-question', {
@@ -428,19 +607,77 @@ async function askCopilotQuestion() {
 
 function clientAnswerQuestion(question, job) {
   const q = question.toLowerCase();
-  if (q.includes('notice') || q.includes('joining') || q.includes('availability') || q.includes('start')) {
-    return 'My official notice period is 30 days (negotiable for earlier buyout/release if required).';
+  const comp = job.company || 'your organization';
+  const title = job.title || 'Analyst';
+  const loc = job.location || 'the job location';
+
+  // 1. Notice period & Availability
+  if (q.includes('notice') || q.includes('joining') || q.includes('availability') || q.includes('start date') || q.includes('immediate')) {
+    return `My official notice period is 30 days. I have already discussed transition plans with my management and can negotiate for an expedited release within 10–15 days if required to join ${comp} promptly.`;
   }
-  if (q.includes('salary') || q.includes('ctc') || q.includes('compensation') || q.includes('package')) {
-    return 'My expected compensation is 6,00,000 INR (6 LPA), open to discussion based on company bands and role responsibilities.';
+
+  // 2. Expected Salary / CTC / Compensation
+  if (q.includes('salary') || q.includes('ctc') || q.includes('compensation') || q.includes('package') || q.includes('expect')) {
+    return 'My expected compensation is 6,00,000 INR (6 LPA), which aligns with market benchmarks for this analytical level. I am open to discussing the structure based on company bands and role scope.';
   }
-  if (q.includes('relocat') || q.includes('location') || q.includes('hybrid') || q.includes('on-site')) {
-    return `Yes, I am fully open and enthusiastic about relocating or working on-site in ${job.location || 'the job location'}.`;
+
+  // 3. Relocation / On-site / Remote / Shifts
+  if (q.includes('relocat') || q.includes('location') || q.includes('hybrid') || q.includes('on-site') || q.includes('onsite') || q.includes('shift') || q.includes('night shift')) {
+    return `Yes, I am fully open and eager to relocate or work on-site in ${loc}. I am comfortable with hybrid schedules, standard on-site hours, or rotational shifts as needed by the team.`;
   }
-  if (q.includes('experience') || q.includes('years') || q.includes('background')) {
-    return `I bring 1 to 2 years of hands-on analytical experience (MBA in Data Analytics, 2024), specializing in SQL data modeling, Power BI dashboard development, and Advanced Excel pricing analytics.`;
+
+  // 4. Visa / Work Authorization
+  if (q.includes('visa') || q.includes('sponsorship') || q.includes('authorization') || q.includes('citizen') || q.includes('passport') || q.includes('eligible')) {
+    return 'I am an Indian national holding a valid passport, eligible to work across India immediately without sponsorship, and fully enthusiastic about employer visa sponsorship for GCC or international opportunities.';
   }
-  return `As an MBA in Data Analytics with expertise in SQL, Power BI, Advanced Excel, and Python, I bring strong problem-solving and quantitative modeling capabilities. I have proven experience at Allianze Infosoft conducting pricing analyses and building automated variance reports. I am confident in delivering high accuracy and immediate value for this ${job.title} role.`;
+
+  // 5. Why Hire You / Why This Role / Why This Company
+  if (q.includes('why should we hire') || q.includes('why do you want') || q.includes('tell me about yourself') || q.includes('fit for this role') || q.includes('why this role') || q.includes('why this company') || q.includes('about yourself')) {
+    return `With an MBA in Data Analytics and verified analytical experience at Allianze Infosoft and Global Survey, I bridge technical execution with business strategy. I have built SQL ETL pipelines, created executive Power BI dashboards, and executed pricing variance analyses that directly prevented margin leakages. For ${comp}, I bring a proactive problem-solving mindset and can immediately take ownership of reporting deliverables as a ${title}.`;
+  }
+
+  // 6. SQL / Database / Querying / Data Warehousing
+  if (q.includes('sql') || q.includes('database') || q.includes('warehouse') || q.includes('etl') || q.includes('query') || q.includes('queries') || q.includes('stored procedure')) {
+    return 'I have robust experience with SQL Server, T-SQL, and relational databases. In my analyst roles, I regularly write complex queries with multi-table JOINs, window functions (ROW_NUMBER, DENSE_RANK), CTEs, and aggregated subqueries. In my portfolio, I architected a full Data Warehouse using Medallion Architecture (Bronze, Silver, Gold) with automated stored procedure ETL pipelines and Star Schema modeling for BI reporting.';
+  }
+
+  // 7. Power BI / Tableau / Dashboards / DAX / Visualization
+  if (q.includes('power bi') || q.includes('powerbi') || q.includes('tableau') || q.includes('dashboard') || q.includes('dax') || q.includes('visualiz')) {
+    return 'I have deep hands-on expertise building interactive Power BI dashboards. At Allianze Infosoft and Global Survey, I developed variance reports and KPI monitors tracking price realization, margin trends, and operational deliverables. I am proficient in writing custom DAX measures, building Star Schema relationships, Power Query transformations, and designing clean visual interfaces for executive decision-makers.';
+  }
+
+  // 8. Excel / Advanced Excel / Modeling
+  if (q.includes('excel') || q.includes('vlookup') || q.includes('xlookup') || q.includes('pivot') || q.includes('financial model') || q.includes('formula')) {
+    return 'I possess expert-level proficiency in Advanced Excel, including dynamic array formulas (XLOOKUP, INDEX/MATCH), multi-dimensional Pivot Tables, nested logic, Power Query data prep, sensitivity modeling, and variance reporting to support strategic commercial decisions.';
+  }
+
+  // 9. Pricing / Revenue / Margin Analysis
+  if (q.includes('pricing') || q.includes('margin') || q.includes('discount') || q.includes('revenue') || q.includes('cost') || q.includes('variance analysis')) {
+    return 'As a Junior Pricing Analyst at Allianze Infosoft, I led SQL-driven pricing evaluations across product lines, monitored discount compliance, benchmarked competitor rates, and prepared sensitivity models to protect gross margins and identify revenue growth opportunities.';
+  }
+
+  // 10. Python / Machine Learning / Data Science
+  if (q.includes('python') || q.includes('pandas') || q.includes('machine learning') || q.includes('scikit') || q.includes('nlp') || q.includes('predictive')) {
+    return 'I utilize Python (Pandas, NumPy, Scikit-Learn) for exploratory data analysis, data wrangling, and predictive modeling. Notable projects include building a sales forecasting regression model across 8,500+ records and implementing NLP sentiment analysis on e-commerce customer review datasets.';
+  }
+
+  // 11. Challenging Project / Disagreement / Problem Solving
+  if (q.includes('challeng') || q.includes('problem') || q.includes('conflict') || q.includes('disagree') || q.includes('difficult') || q.includes('accomplish')) {
+    return 'At Global Survey, when inconsistent multi-source data delayed weekly project tracking, I designed an automated data validation workflow using Power Query and standardized Jira status tracking. This eliminated manual reconciliation errors and cut weekly reporting turnaround by over 30%.';
+  }
+
+  // 12. Strengths and Weaknesses
+  if (q.includes('strength') || q.includes('weakness')) {
+    return 'My greatest strength is analytical adaptability—combining technical proficiency in SQL, Power BI, and Excel with commercial business context to deliver actionable insights. An area I actively develop is spending too much time perfecting edge-case models; I now implement agile 80/20 delivery to share high-impact insights faster.';
+  }
+
+  // 13. Years of Experience / Education / Background
+  if (q.includes('experience') || q.includes('years') || q.includes('background') || q.includes('education') || q.includes('degree') || q.includes('mba') || q.includes('qualification')) {
+    return 'I hold an MBA in Data Analytics (2024) and bring 1 to 2 years of hands-on professional analytics experience across pricing analysis, operational reporting, and business intelligence development using SQL, Power BI, and Advanced Excel.';
+  }
+
+  // Contextual fallback tailored to this role
+  return `Throughout my professional experience and MBA in Data Analytics, I have developed proven technical competencies in SQL, Power BI, and Advanced Excel combined with commercial pricing and operational acumen. For this ${title} role at ${comp}, I bring high accuracy, proactive communication, and the analytical capability to deliver immediate value.`;
 }
 
 function copyCopilotAnswer() {

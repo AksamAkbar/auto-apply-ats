@@ -884,10 +884,84 @@ body {
   border-color: var(--primary);
 }
 
+/* CV View Switcher (Clean vs Highlight Changes) */
+.cv-view-toggle {
+  display: inline-flex;
+  background: var(--gray-100);
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-300);
+  gap: 3px;
+}
+
+.cv-mode-btn {
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--gray-700);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cv-mode-btn:hover {
+  color: var(--gray-900);
+}
+
+.cv-mode-btn.active {
+  background: white;
+  color: #166534;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border: 1px solid #86efac;
+}
+
+.tailored-changes-banner {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Question Solver Suggestion Chips */
+.copilot-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.copilot-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid #d97706;
+  color: #92400e;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.copilot-chip:hover {
+  background: #fef3c7;
+  color: #78350f;
+}
+
 /* ==============================================================================
    MOBILE RESPONSIVENESS (< 768px & phones)
    ============================================================================== */
 @media (max-width: 768px) {
+  /* Unstick top panel on mobile so it scrolls naturally with page */
+  .navbar {
+    position: static !important;
+    top: auto !important;
+    box-shadow: none !important;
+  }
+
   .nav-container {
     flex-direction: column;
     align-items: flex-start;
