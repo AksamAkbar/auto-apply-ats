@@ -103,6 +103,46 @@
       color: #1e293b;
       text-align: justify;
     }
+    /* Embedded highlighting & badges for tailored preview */
+    .tailored-highlight {
+      background-color: #fef08a;
+      color: #713f12;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px #eab308;
+    }
+    .tailored-badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 7.5pt;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      border: 1px solid #86efac;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .tailored-badge-target {
+      background: #eff6ff;
+      color: #1e40af;
+      border-color: #93c5fd;
+    }
+    body.clean-mode .tailored-highlight,
+    @media print {
+      .tailored-highlight {
+        background: transparent !important;
+        color: inherit !important;
+        font-weight: inherit !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .tailored-badge {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -110,6 +150,9 @@
   <!-- HEADER -->
   <div class="header">
     <h1>AKSAM AKBAR</h1>
+    
+    <div><span class="tailored-badge tailored-badge-target">🎯 TARGET ROLE MATCH: JUNIOR BUSINESS ANALYST - DATA (ATS 95%+)</span></div>
+    
     <div class="subtitle">BUSINESS & DATA ANALYST | PROCESS OPTIMIZATION | SQL | POWER BI</div>
     <div class="contact-info">
       Kochi, India &bull; +91 9539060872 &bull; 
@@ -121,8 +164,13 @@
 
   <!-- PROFESSIONAL SUMMARY -->
   <div class="section">
-    <div class="section-title">Professional Summary</div>
-    <p class="summary-text">Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for Cohere Health. Strong technical command over Business Analysis, Data Analysis, Excel, Power Bi, Sql for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.</p>
+    <div class="section-title">
+      Professional Summary
+      
+      <span class="tailored-badge" style="float: right; font-size: 7pt;">✨ 100% Tailored for Cohere Health</span>
+      
+    </div>
+    <p class="summary-text">Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>Cohere Health</mark>. Strong technical command over <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Data Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Sql</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.</p>
   </div>
 
   <!-- WORK EXPERIENCE -->
@@ -141,9 +189,9 @@
         
         <li>Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.</li>
         
-        <li>Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.</li>
+        <li>Develop pricing analyses using <mark class="tailored-highlight">SQL</mark> and Advanced <mark class="tailored-highlight">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.</li>
         
-        <li>Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.</li>
+        <li>Build <mark class="tailored-highlight">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.</li>
         
         <li>Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.</li>
         
@@ -166,7 +214,7 @@
         
         <li>Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.</li>
         
-        <li>Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.</li>
+        <li>Built <mark class="tailored-highlight">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.</li>
         
         <li>Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.</li>
         

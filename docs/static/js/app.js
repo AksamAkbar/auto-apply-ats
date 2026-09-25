@@ -272,12 +272,29 @@ async function openReviewModal(jobId) {
   if (!job) return;
   currentModalJob = job;
 
+  // 1. Populate Modal Header & Inside Card Details
   document.getElementById('modal-job-title').textContent = `${job.title} - ${job.company}`;
-  document.getElementById('modal-job-location').textContent = job.location;
+  const scorePill = document.getElementById('modal-ats-score-pill');
+  if (scorePill) scorePill.textContent = `🎯 ATS Match: ${job.tailored_score}%`;
+  const platformVal = document.getElementById('modal-platform-val');
+  if (platformVal) platformVal.textContent = job.source || 'Direct Portal';
+  const dateVal = document.getElementById('modal-date-val');
+  if (dateVal) dateVal.textContent = job.posted_date || (job.days_ago === 0 ? 'Today' : `${job.days_ago}d ago`);
+  const expVal = document.getElementById('modal-exp-val');
+  if (expVal) expVal.textContent = job.experience_req || '0-2 Yrs (Fresher / Junior)';
+  const locVal = document.getElementById('modal-location-val');
+  if (locVal) locVal.textContent = job.location || 'India';
+
   document.getElementById('modal-job-desc').textContent = job.description;
 
   document.getElementById('modal-baseline-score').textContent = `${job.baseline_score}%`;
   document.getElementById('modal-tailored-score').textContent = `${job.tailored_score}%`;
+
+  // 2. Populate Tailored Past Job Responsibilities for Application Forms
+  const respPricing = document.getElementById('tailored-resp-pricing');
+  if (respPricing) respPricing.value = getTailoredPricingAnalystDuties(job);
+  const respPm = document.getElementById('tailored-resp-pm');
+  if (respPm) respPm.value = getTailoredProjectManagementDuties(job);
 
   const kwContainer = document.getElementById('modal-keywords-box');
   kwContainer.innerHTML = `
@@ -312,10 +329,11 @@ async function openReviewModal(jobId) {
   currentResumeViewMode = 'highlight'; // Default to highlight mode so user sees tailored changes immediately
   updateTailoredChangesBanner(job);
 
-  // Load tailored resume preview iframe
+  // Load tailored resume preview iframe with timestamp cache buster
   const resumeFilename = job.tailored_pdf_path ? job.tailored_pdf_path.replace('.pdf', '.html') : '';
   const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
-  const resumeUrl = isStatic ? `./resumes/${resumeFilename}` : `/api/resumes/${resumeFilename}`;
+  const cacheBuster = `t=${Date.now()}`;
+  const resumeUrl = isStatic ? `./resumes/${resumeFilename}?${cacheBuster}` : `/api/resumes/${resumeFilename}?${cacheBuster}`;
   const pdfDownloadUrl = isStatic ? `./resumes/${job.tailored_pdf_path}` : `/api/resumes/${job.tailored_pdf_path}?download=true`;
 
   const iframe = document.getElementById('resume-preview-frame');
@@ -406,13 +424,20 @@ function setResumeViewMode(mode) {
 
   if (!iframe || !currentModalJob) return;
 
-  if (mode === 'clean') {
-    // Reload pristine resume
-    const resumeFilename = currentModalJob.tailored_pdf_path ? currentModalJob.tailored_pdf_path.replace('.pdf', '.html') : '';
-    const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
-    iframe.src = isStatic ? `./resumes/${resumeFilename}?clean=1` : `/api/resumes/${resumeFilename}?clean=1`;
-  } else {
-    applyHighlightsToIframe(iframe, currentModalJob);
+  try {
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    if (doc && doc.body) {
+      if (mode === 'clean') {
+        doc.body.classList.add('clean-mode');
+        doc.querySelectorAll('.tailored-badge').forEach(b => b.style.display = 'none');
+      } else {
+        doc.body.classList.remove('clean-mode');
+        doc.querySelectorAll('.tailored-badge').forEach(b => b.style.display = 'inline-block');
+        applyHighlightsToIframe(iframe, currentModalJob);
+      }
+    }
+  } catch (err) {
+    console.log('Error toggling resume view mode:', err);
   }
 }
 
@@ -422,47 +447,44 @@ function applyHighlightsToIframe(iframe, job) {
     const doc = iframe.contentDocument || iframe.contentWindow.document;
     if (!doc || !doc.body) return;
 
-    if (doc.getElementById('tailored-cv-injected-styles')) return;
+    doc.body.classList.remove('clean-mode');
 
     // 1. Inject Styles
-    const style = doc.createElement('style');
-    style.id = 'tailored-cv-injected-styles';
-    style.textContent = `
-      .tailored-highlight {
-        background-color: #fef08a !important;
-        color: #713f12 !important;
-        font-weight: 700 !important;
-        padding: 1px 4px !important;
-        border-radius: 3px !important;
-        box-shadow: 0 0 0 1px #eab308 !important;
-      }
-      .tailored-badge {
-        display: inline-block !important;
-        background: #dcfce7 !important;
-        color: #166534 !important;
-        font-size: 7.5pt !important;
-        font-weight: 800 !important;
-        padding: 2px 6px !important;
-        border-radius: 3px !important;
-        margin-bottom: 3px !important;
-        border: 1px solid #86efac !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.3px !important;
-      }
-      .tailored-item-highlight {
-        border-left: 3px solid #16a34a !important;
-        padding-left: 6px !important;
-        background: #f0fdf4 !important;
-      }
-    `;
-    doc.head.appendChild(style);
+    if (!doc.getElementById('tailored-cv-injected-styles')) {
+      const style = doc.createElement('style');
+      style.id = 'tailored-cv-injected-styles';
+      style.textContent = `
+        .tailored-highlight {
+          background-color: #fef08a !important;
+          color: #713f12 !important;
+          font-weight: 700 !important;
+          padding: 1px 4px !important;
+          border-radius: 3px !important;
+          box-shadow: 0 0 0 1px #eab308 !important;
+        }
+        .tailored-badge {
+          display: inline-block !important;
+          background: #dcfce7 !important;
+          color: #166534 !important;
+          font-size: 7.5pt !important;
+          font-weight: 800 !important;
+          padding: 2px 6px !important;
+          border-radius: 3px !important;
+          margin-bottom: 3px !important;
+          border: 1px solid #86efac !important;
+          text-transform: uppercase !important;
+          letter-spacing: 0.3px !important;
+        }
+      `;
+      doc.head.appendChild(style);
+    }
 
     // 2. Add badge to Subtitle
     const subtitle = doc.querySelector('.header .subtitle');
     if (subtitle && !subtitle.previousElementSibling?.classList.contains('tailored-badge')) {
       const badge = doc.createElement('div');
       badge.className = 'tailored-badge';
-      badge.textContent = '🎯 Target Role Match';
+      badge.textContent = `🎯 TARGET ROLE MATCH: ${(job.title || '').toUpperCase()} (ATS 95%+)`;
       subtitle.parentNode.insertBefore(badge, subtitle);
       subtitle.classList.add('tailored-highlight');
     }
@@ -504,21 +526,41 @@ function highlightTextNodes(node, regex, doc) {
   }
 }
 
-function applyCopilotPreset(presetKey) {
-  const input = document.getElementById('copilot-custom-question');
-  if (!input) return;
+function getTailoredPricingAnalystDuties(job) {
+  const company = job ? job.company : 'the hiring organization';
+  const title = job ? job.title : 'Target Role';
+  const skills = (job && job.matched_keywords && job.matched_keywords.length > 0)
+    ? job.matched_keywords.slice(0, 5).join(', ')
+    : 'SQL, Advanced Excel, Power BI, and Margin Analytics';
 
-  const presets = {
-    notice: 'What is your official notice period and earliest joining date?',
-    salary: 'What is your expected compensation / CTC for this role?',
-    relocate: 'Are you willing to relocate or work on-site in this location?',
-    why_hire: 'Why should we hire you for this role and what value will you deliver?',
-    sql_bi: 'Describe your hands-on experience with SQL queries, data warehousing, and Power BI dashboards.',
-    pricing: 'What is your experience in pricing analytics, variance reporting, and financial modeling?'
-  };
+  return `• Developed pricing analyses and elasticity models using SQL and Advanced Excel to evaluate transaction patterns, pricing realization, and margin opportunities.
+• Built and maintained executive Power BI dashboards and variance reports to monitor pricing KPIs, discount compliance, and profitability for commercial operations.
+• Conducted competitor benchmarking and cost-structure analysis to support pricing decisions, quote approvals, and contract negotiations.
+• Managed daily pricing approval workflows and custom deal requests through Jira while coordinating with cross-functional sales, finance, and operations teams.
+• Prepared revenue forecasts, scenario models, and sensitivity analyses to deliver data-backed commercial recommendations aligned with business goals.`;
+}
 
-  input.value = presets[presetKey] || '';
-  askCopilotQuestion();
+function getTailoredProjectManagementDuties(job) {
+  const company = job ? job.company : 'the hiring organization';
+  const title = job ? job.title : 'Target Role';
+  const skills = (job && job.matched_keywords && job.matched_keywords.length > 0)
+    ? job.matched_keywords.slice(0, 5).join(', ')
+    : 'Power BI, KPI Tracking, Process Optimization, and Data Cleansing';
+
+  return `• Directed end-to-end data-centric project lifecycles from initiation through delivery, coordinating project timelines, deliverables, and cross-functional stakeholders.
+• Built interactive Power BI dashboards to track operational KPIs, project milestone completion, and productivity metrics for executive reporting.
+• Performed comprehensive data validation, quality audits, and data cleansing across operational datasets to ensure 100% reporting integrity and data accuracy.
+• Identified workflow bottlenecks through root cause analysis and drove process optimization initiatives to enhance turnaround efficiency.
+• Coordinated closely between technical analysts and business teams to resolve operational blockers and ensure timely, high-quality deliverables.`;
+}
+
+function copyTailoredResponsibilities(roleKey) {
+  const elemId = roleKey === 'pricing' ? 'tailored-resp-pricing' : 'tailored-resp-pm';
+  const roleName = roleKey === 'pricing' ? 'Junior Pricing Analyst' : 'Project Management Associate';
+  const elem = document.getElementById(elemId);
+  if (!elem || !elem.value) return;
+  navigator.clipboard.writeText(elem.value);
+  showToast(`📋 Copied ${roleName} tailored responsibilities to clipboard!`);
 }
 
 function solveQuestionInChatGPT() {
@@ -546,7 +588,7 @@ With an MBA in Data Analytics and hands-on experience in pricing analytics, repo
 
 In my recent experience as a Junior Pricing Analyst at Allianze Infosoft, I led SQL-driven pricing analyses, built Power BI variance dashboards to monitor margins and KPIs, and developed sensitivity models to support strategic commercial decisions. Furthermore, as an Associate Project Manager at Global Survey, I managed end-to-end data workflows and drove cross-functional process improvements.
 
-I have tailored my resume specifically to highlight relevant achievements for the ${title} role. I would welcome the opportunity to discuss how my analytical skill set and proactive approach can add immediate value to ${comp}.
+With a strong foundation in ${skills}, combined with hands-on experience translating data into actionable business outcomes, I am confident in my ability to make an immediate impact at ${comp}. I welcome the opportunity to discuss how my analytical skill set and problem-solving approach align with your team's goals.
 
 Sincerely,
 Aksam Akbar

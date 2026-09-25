@@ -11,7 +11,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-1 Year (Fresher / Junior)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "75a43cc9939b_Aksam_Akbar_Resume.pdf",
@@ -26,7 +26,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Power Bi, Python, Reporting, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Precision AQ.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Python</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Precision AQ</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -46,8 +46,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -70,8 +70,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -203,7 +203,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Precision AQ",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -215,7 +217,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:39.925937",
+      "created_at": "2026-09-25T22:58:25.561135",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 1
@@ -231,7 +233,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "91f832540687_Aksam_Akbar_Resume.pdf",
@@ -246,7 +248,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Power Bi, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Setu (Pine Labs).",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Setu (Pine Labs)</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -266,8 +268,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -290,7 +292,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -423,7 +425,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Setu (Pine Labs)",
+        "target_role_badge": "TARGET ROLE MATCH: DATA ANALYST (TRAINEE / ASSOCIATE) (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -432,7 +436,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:42.970107",
+      "created_at": "2026-09-25T22:58:31.321273",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 1
@@ -448,7 +452,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "1-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "2c23b7659c38_Aksam_Akbar_Resume.pdf",
@@ -463,7 +467,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Business Analysis, Power Bi, Reporting, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Swiggy.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Swiggy</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -483,8 +487,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -507,8 +511,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -640,7 +644,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Swiggy",
+        "target_role_badge": "TARGET ROLE MATCH: DATA ANALYST (COMMERCIAL & OPERATIONS) (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -650,7 +656,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:46.596317",
+      "created_at": "2026-09-25T22:58:36.291081",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 1
@@ -666,7 +672,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "e497fe7185ab_Aksam_Akbar_Resume.pdf",
@@ -681,7 +687,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for PhonePe. Strong technical command over Excel, Jira, Operations & Project Management, Sql for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>PhonePe</mark>. Strong technical command over <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Jira</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Sql</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -701,8 +707,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Manage pricing workflows, custom deal requests, and approval tickets through <mark class=\"tailored-highlight\">Jira</mark> while coordinating with cross-functional teams.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -858,7 +864,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "PhonePe",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR BUSINESS ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -868,7 +876,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:50.074915",
+      "created_at": "2026-09-25T22:58:40.952543",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 1
@@ -884,7 +892,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "7366b3c0e8b2_Aksam_Akbar_Resume.pdf",
@@ -899,7 +907,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for InMobi.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>InMobi</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -919,7 +927,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -1076,7 +1084,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "InMobi",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR ANALYST - COMMERCIAL ANALYTICS (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -1084,7 +1094,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:53.609939",
+      "created_at": "2026-09-25T22:58:46.113986",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 1
@@ -1100,7 +1110,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "e8f9d1bd75cd_Aksam_Akbar_Resume.pdf",
@@ -1115,7 +1125,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Power Bi, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Razorpay.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Razorpay</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -1135,8 +1145,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -1159,7 +1169,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -1292,7 +1302,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Razorpay",
+        "target_role_badge": "TARGET ROLE MATCH: DATA ANALYST (GROWTH ANALYTICS) (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -1301,7 +1313,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:06:57.130486",
+      "created_at": "2026-09-25T22:58:51.634015",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 1
@@ -1317,7 +1329,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-1 Year (Fresher / Junior)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "f2c814fbb6bf_Aksam_Akbar_Resume.pdf",
@@ -1332,7 +1344,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Etl & Warehousing, Python, Reporting, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Simply Vyapar Apps.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Etl & Warehousing</mark>, <mark class='tailored-highlight'>Python</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Simply Vyapar Apps</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -1352,7 +1364,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -1376,8 +1388,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -1509,7 +1521,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Simply Vyapar Apps",
+        "target_role_badge": "TARGET ROLE MATCH: DATA ANALYST (FRESHER / JUNIOR) (ATS 95%+)"
       },
       "matched_keywords": [
         "Etl & Warehousing",
@@ -1519,7 +1533,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:01.585566",
+      "created_at": "2026-09-25T22:58:56.782396",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 1
@@ -1535,7 +1549,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "a716eb3ec4b6_Aksam_Akbar_Resume.pdf",
@@ -1550,7 +1564,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for Thakral One. Strong technical command over Business Analysis, Excel, Power Bi, Reporting, Sql for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>Thakral One</mark>. Strong technical command over <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -1571,8 +1585,8 @@
             ],
             "bullets": [
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
             ]
@@ -1596,8 +1610,8 @@
             "bullets": [
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
             ]
           }
@@ -1727,7 +1741,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Thakral One",
+        "target_role_badge": "TARGET ROLE MATCH: BUSINESS ANALYST \u2013 DATA & INSIGHTS (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -1738,7 +1754,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:04.881397",
+      "created_at": "2026-09-25T22:59:01.530737",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 1
@@ -1754,7 +1770,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years (Fresher / Junior)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "acf911a19596_Aksam_Akbar_Resume.pdf",
@@ -1769,7 +1785,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Target in India.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Target in India</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -1789,7 +1805,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -1946,7 +1962,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Target in India",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR MERCHANDISING & PRICING ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -1954,7 +1972,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:14.209401",
+      "created_at": "2026-09-25T23:00:32.538138",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 1
@@ -1970,7 +1988,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "206ed22bf67a_Aksam_Akbar_Resume.pdf",
@@ -1985,7 +2003,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Etl & Warehousing, Power Bi, Reporting, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for CirrusLabs.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Etl & Warehousing</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>CirrusLabs</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -2005,8 +2023,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -2029,8 +2047,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -2162,7 +2180,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "CirrusLabs",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR DATA ANALYST (ETL & BI) (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -2173,7 +2193,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:08.974299",
+      "created_at": "2026-09-25T22:59:06.810065",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 2
@@ -2189,7 +2209,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "42df54465939_Aksam_Akbar_Resume.pdf",
@@ -2204,7 +2224,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for V-Guard Industries. Strong technical command over Excel, Operations & Project Management, Reporting for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>V-Guard Industries</mark>. Strong technical command over <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Reporting</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -2225,7 +2245,7 @@
             ],
             "bullets": [
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using SQL and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -2250,8 +2270,8 @@
             "bullets": [
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
             ]
           }
@@ -2381,7 +2401,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "V-Guard Industries",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR BUSINESS ANALYST (OPERATIONS & SALESFORCE) (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -2390,7 +2412,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:12.608882",
+      "created_at": "2026-09-25T22:59:11.528466",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 2
@@ -2406,7 +2428,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "de304ccf390f_Aksam_Akbar_Resume.pdf",
@@ -2421,7 +2443,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Business Analysis, Excel, Jira, Operations & Project Management, Power Bi for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for CareStack.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Jira</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Power Bi</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>CareStack</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -2441,9 +2463,9 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Manage pricing workflows, custom deal requests, and approval tickets through <mark class=\"tailored-highlight\">Jira</mark> while coordinating with cross-functional teams.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
             ]
@@ -2465,7 +2487,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -2598,7 +2620,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "CareStack",
+        "target_role_badge": "TARGET ROLE MATCH: COMMERCIAL & PRICING ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -2610,7 +2634,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:16.156618",
+      "created_at": "2026-09-25T22:59:16.435697",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 2
@@ -2626,7 +2650,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-1 Year (Fresher Trainee)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "1d12d674957f_Aksam_Akbar_Resume.pdf",
@@ -2641,7 +2665,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Power Bi, Python, Reporting, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Infosys.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Python</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Infosys</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -2661,8 +2685,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -2685,8 +2709,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -2818,7 +2842,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Infosys",
+        "target_role_badge": "TARGET ROLE MATCH: ASSOCIATE DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -2829,7 +2855,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:19.774401",
+      "created_at": "2026-09-25T22:59:21.319747",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 2
@@ -2845,7 +2871,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "6336b6551faf_Aksam_Akbar_Resume.pdf",
@@ -2860,7 +2886,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at UST Global. Proficient in Business Analysis, Excel, Power Bi, Reporting to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>UST Global</mark>. Proficient in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -2880,8 +2906,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using SQL and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -2904,10 +2930,10 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements."
             ]
           }
@@ -3037,7 +3063,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "UST Global",
+        "target_role_badge": "TARGET ROLE MATCH: OPERATIONS & DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -3047,7 +3075,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:23.224001",
+      "created_at": "2026-09-25T22:59:25.967903",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 2
@@ -3063,7 +3091,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "e71a2c3955b5_Aksam_Akbar_Resume.pdf",
@@ -3078,7 +3106,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Etl & Warehousing, Excel, Power Bi, Pricing across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for TechFin Solutions.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Etl & Warehousing</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Pricing</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>TechFin Solutions</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -3098,11 +3126,11 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
-              "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
+              "Develop <mark class=\"tailored-highlight\">pricing</mark> analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor <mark class=\"tailored-highlight\">pricing</mark> KPIs, price realization, discount compliance, and product margins.",
+              "Conduct competitor benchmarking and cost-structure analysis to support <mark class=\"tailored-highlight\">pricing</mark> decisions and margin optimization.",
+              "Manage <mark class=\"tailored-highlight\">pricing</mark> workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
+              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven <mark class=\"tailored-highlight\">pricing</mark> recommendations and business decisions."
             ]
           },
           {
@@ -3122,7 +3150,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -3255,7 +3283,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "TechFin Solutions",
+        "target_role_badge": "TARGET ROLE MATCH: FINANCE & DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -3267,7 +3297,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:26.988828",
+      "created_at": "2026-09-25T22:59:30.737881",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 2
@@ -3283,7 +3313,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "9f4fea5c9f66_Aksam_Akbar_Resume.pdf",
@@ -3298,7 +3328,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for CareerBoard Partners. Strong technical command over Excel for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>CareerBoard Partners</mark>. Strong technical command over <mark class='tailored-highlight'>Excel</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -3319,7 +3349,7 @@
             ],
             "bullets": [
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using SQL and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -3475,14 +3505,16 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "CareerBoard Partners",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR BUSINESS ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel"
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:30.883481",
+      "created_at": "2026-09-25T22:59:35.235723",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 2
@@ -3498,7 +3530,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-1 Year (Associate / Fresher)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "e44682d908eb_Aksam_Akbar_Resume.pdf",
@@ -3513,7 +3545,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at Ernst & Young (EY). Proficient in Excel, Reporting, Sql to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>Ernst & Young (EY)</mark>. Proficient in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -3534,7 +3566,7 @@
             ],
             "bullets": [
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -3557,10 +3589,10 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements."
             ]
           }
@@ -3690,7 +3722,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Ernst & Young (EY)",
+        "target_role_badge": "TARGET ROLE MATCH: ASSOCIATE REPORTING & MIS ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -3699,7 +3733,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:17.956146",
+      "created_at": "2026-09-25T23:00:38.478672",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 2
@@ -3715,7 +3749,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "36c7d23110f6_Aksam_Akbar_Resume.pdf",
@@ -3730,7 +3764,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at FarmwiseAI. Proficient in Excel, Operations & Project Management, Reporting, Sql to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>FarmwiseAI</mark>. Proficient in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -3751,7 +3785,7 @@
             ],
             "bullets": [
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -3774,10 +3808,10 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements."
             ]
           }
@@ -3907,7 +3941,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "FarmwiseAI",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR MIS EXECUTIVE (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -3917,7 +3953,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:35.524096",
+      "created_at": "2026-09-25T22:59:40.045694",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 3
@@ -3933,7 +3969,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years (Fresher / Junior)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "c923333d141e_Aksam_Akbar_Resume.pdf",
@@ -3948,7 +3984,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for Amazon. Strong technical command over Excel, Operations & Project Management, Sql for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>Amazon</mark>. Strong technical command over <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Sql</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -3969,7 +4005,7 @@
             ],
             "bullets": [
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -4125,7 +4161,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Amazon",
+        "target_role_badge": "TARGET ROLE MATCH: BUSINESS ANALYST SUPPORT (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -4134,7 +4172,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:39.301972",
+      "created_at": "2026-09-25T22:59:45.237437",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 3
@@ -4150,7 +4188,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "dc8a8c6d828f_Aksam_Akbar_Resume.pdf",
@@ -4165,7 +4203,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at BNI Global. Proficient in Business Analysis, Operations & Project Management, Power Bi to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>BNI Global</mark>. Proficient in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Power Bi</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -4185,7 +4223,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -4209,7 +4247,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
@@ -4342,7 +4380,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "BNI Global",
+        "target_role_badge": "TARGET ROLE MATCH: OPERATIONS INSIGHTS ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -4351,7 +4391,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:42.720658",
+      "created_at": "2026-09-25T22:59:49.905728",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 3
@@ -4367,7 +4407,7 @@
       "posted_date": "2026-09-23",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "38314537118e_Aksam_Akbar_Resume.pdf",
@@ -4382,7 +4422,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Excel, Forecasting, Power Bi, Python across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Kantar.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Forecasting</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Python</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Kantar</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -4402,8 +4442,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using SQL and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -4426,7 +4466,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -4559,7 +4599,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Kantar",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR MARKET RESEARCH & DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -4570,7 +4612,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:46.594987",
+      "created_at": "2026-09-25T22:59:54.628246",
       "is_hot": 0,
       "days_ago": 2,
       "location_priority": 3
@@ -4586,7 +4628,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "3c1264a8373e_Aksam_Akbar_Resume.pdf",
@@ -4601,7 +4643,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at Zomato. Proficient in Excel, Operations & Project Management to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>Zomato</mark>. Proficient in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -4622,7 +4664,7 @@
             ],
             "bullets": [
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using SQL and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -4778,7 +4820,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Zomato",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR ACCOUNT & OPERATIONS ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -4786,7 +4830,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:50.241530",
+      "created_at": "2026-09-25T22:59:59.384681",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 3
@@ -4802,7 +4846,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years (Fresher Eligible)",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "834446b5920c_Aksam_Akbar_Resume.pdf",
@@ -4817,7 +4861,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at Tata Consultancy Services (TCS). Proficient in Excel, Reporting, Sql to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>Tata Consultancy Services (TCS)</mark>. Proficient in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -4838,7 +4882,7 @@
             ],
             "bullets": [
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -4861,10 +4905,10 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements."
             ]
           }
@@ -4994,7 +5038,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Tata Consultancy Services (TCS)",
+        "target_role_badge": "TARGET ROLE MATCH: MIS & REPORTING ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -5003,7 +5049,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:53.886892",
+      "created_at": "2026-09-25T23:00:04.191569",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 3
@@ -5019,7 +5065,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "461bf2ed253e_Aksam_Akbar_Resume.pdf",
@@ -5034,7 +5080,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Crm & Erp, Excel, Salesforce, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Freshworks.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Crm & Erp</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Salesforce</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Freshworks</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -5054,7 +5100,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -5211,7 +5257,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Freshworks",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR PRICING & DEAL DESK ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Crm & Erp",
@@ -5221,7 +5269,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:22.276799",
+      "created_at": "2026-09-25T23:00:43.981346",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 3
@@ -5237,7 +5285,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "50f37d218031_Aksam_Akbar_Resume.pdf",
@@ -5252,7 +5300,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at Wipro Limited. Proficient in Business Analysis, Excel, Operations & Project Management, Reporting, Sql to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
+        "summary": "Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, and business intelligence to drive analytical excellence at <mark class='tailored-highlight'>Wipro Limited</mark>. Proficient in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Operations & Project Management</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> to streamline reporting turnaround, automate recurring data workflows, and execute root cause analysis on operational bottlenecks.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -5273,7 +5321,7 @@
             ],
             "bullets": [
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -5296,10 +5344,10 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements."
             ]
           }
@@ -5429,7 +5477,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Wipro Limited",
+        "target_role_badge": "TARGET ROLE MATCH: DATA ANALYST (OPERATIONS & ANALYTICS) (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -5440,7 +5490,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:30.670927",
+      "created_at": "2026-09-25T23:00:54.564244",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 3
@@ -5456,7 +5506,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "139d8a6034c5_Aksam_Akbar_Resume.pdf",
@@ -5471,7 +5521,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for Cohere Health. Strong technical command over Business Analysis, Data Analysis, Excel, Power Bi, Sql for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
+        "summary": "Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into actionable data models and automated reports for <mark class='tailored-highlight'>Cohere Health</mark>. Strong technical command over <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Data Analysis</mark>, <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Sql</mark> for end-to-end data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, and delivering data-backed strategic recommendations.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -5492,8 +5542,8 @@
             ],
             "bullets": [
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
             ]
@@ -5517,7 +5567,7 @@
             "bullets": [
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
             ]
@@ -5648,7 +5698,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Cohere Health",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR BUSINESS ANALYST - DATA (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -5659,7 +5711,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:34.665383",
+      "created_at": "2026-09-25T23:01:00.004239",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 3
@@ -5675,7 +5727,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "1-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "5919591cd7c9_Aksam_Akbar_Resume.pdf",
@@ -5690,7 +5742,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Pricing, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Noon Ecommerce.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Pricing</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Noon Ecommerce</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -5710,11 +5762,11 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
-              "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
+              "Develop <mark class=\"tailored-highlight\">pricing</mark> analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build Power BI dashboards and variance reports to monitor <mark class=\"tailored-highlight\">pricing</mark> KPIs, price realization, discount compliance, and product margins.",
+              "Conduct competitor benchmarking and cost-structure analysis to support <mark class=\"tailored-highlight\">pricing</mark> decisions and margin optimization.",
+              "Manage <mark class=\"tailored-highlight\">pricing</mark> workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
+              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven <mark class=\"tailored-highlight\">pricing</mark> recommendations and business decisions."
             ]
           },
           {
@@ -5867,7 +5919,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Noon Ecommerce",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR PRICING ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -5876,7 +5930,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:07:57.622786",
+      "created_at": "2026-09-25T23:00:09.440129",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 4
@@ -5892,7 +5946,7 @@
       "posted_date": "2026-09-24",
       "experience_req": "1-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "120425f0c920_Aksam_Akbar_Resume.pdf",
@@ -5907,7 +5961,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Forecasting, Power Bi, Reporting, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for IHG Hotels & Resorts.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Forecasting</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>IHG Hotels & Resorts</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -5927,8 +5981,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -5951,8 +6005,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -6084,7 +6138,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "IHG Hotels & Resorts",
+        "target_role_badge": "TARGET ROLE MATCH: CLUSTER REVENUE ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -6095,7 +6151,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:01.999526",
+      "created_at": "2026-09-25T23:00:15.715560",
       "is_hot": 1,
       "days_ago": 1,
       "location_priority": 4
@@ -6111,7 +6167,7 @@
       "posted_date": "2026-09-23",
       "experience_req": "1-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "10591dc43adb_Aksam_Akbar_Resume.pdf",
@@ -6126,7 +6182,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Pricing, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Cigna Healthcare.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Pricing</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Cigna Healthcare</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -6146,11 +6202,11 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
-              "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
-              "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
-              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
+              "Develop <mark class=\"tailored-highlight\">pricing</mark> analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build Power BI dashboards and variance reports to monitor <mark class=\"tailored-highlight\">pricing</mark> KPIs, price realization, discount compliance, and product margins.",
+              "Conduct competitor benchmarking and cost-structure analysis to support <mark class=\"tailored-highlight\">pricing</mark> decisions and margin optimization.",
+              "Manage <mark class=\"tailored-highlight\">pricing</mark> workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
+              "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven <mark class=\"tailored-highlight\">pricing</mark> recommendations and business decisions."
             ]
           },
           {
@@ -6303,7 +6359,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Cigna Healthcare",
+        "target_role_badge": "TARGET ROLE MATCH: ACTUARIAL & PRICING ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -6312,7 +6370,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:06.250488",
+      "created_at": "2026-09-25T23:00:21.340707",
       "is_hot": 0,
       "days_ago": 2,
       "location_priority": 4
@@ -6328,7 +6386,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "89cea4cde50a_Aksam_Akbar_Resume.pdf",
@@ -6343,7 +6401,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Business Analysis, Power Bi, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Talabat.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Talabat</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -6363,8 +6421,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -6387,7 +6445,7 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
@@ -6520,7 +6578,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Talabat",
+        "target_role_badge": "TARGET ROLE MATCH: COMMERCIAL DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -6529,7 +6589,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:10.409116",
+      "created_at": "2026-09-25T23:00:26.428697",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 4
@@ -6545,7 +6605,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "7a703deb2ff2_Aksam_Akbar_Resume.pdf",
@@ -6560,7 +6620,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging Business Analysis, Power Bi, Reporting, Sql across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for Chalhoub Group.",
+        "summary": "Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, and interactive BI dashboards. Demonstrated success leveraging <mark class='tailored-highlight'>Business Analysis</mark>, <mark class='tailored-highlight'>Power Bi</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> across ETL data warehousing, KPI reporting, and variance analysis to drive measurable business decisions for <mark class='tailored-highlight'>Chalhoub Group</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -6580,8 +6640,8 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
-              "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Build <mark class=\"tailored-highlight\">Power BI</mark> dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
               "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
@@ -6604,8 +6664,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built <mark class=\"tailored-highlight\">Power BI</mark> dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -6737,7 +6797,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Chalhoub Group",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR BUSINESS INTELLIGENCE ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Business Analysis",
@@ -6747,7 +6809,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:26.602797",
+      "created_at": "2026-09-25T23:00:49.440752",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 4
@@ -6763,7 +6825,7 @@
       "posted_date": "2026-09-25",
       "experience_req": "0-2 Years",
       "baseline_score": 88.0,
-      "tailored_score": 97.5,
+      "tailored_score": 98.0,
       "status": "ready_for_review",
       "applied_at": null,
       "tailored_pdf_path": "c8a294829df6_Aksam_Akbar_Resume.pdf",
@@ -6778,7 +6840,7 @@
           "github": "https://github.com/aksamakbar",
           "portfolio": "https://aksamakbar.com"
         },
-        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in Excel, Reporting, Sql for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for Gulf Commercial Analytics.",
+        "summary": "Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in <mark class='tailored-highlight'>Excel</mark>, <mark class='tailored-highlight'>Reporting</mark>, <mark class='tailored-highlight'>Sql</mark> for developing variance reports, sensitivity analyses, and executive KPI dashboards. Adept at cross-functional collaboration and driving high-margin commercial outcomes for <mark class='tailored-highlight'>Gulf Commercial Analytics</mark>.",
         "work_experience": [
           {
             "id": "exp_allianze",
@@ -6798,7 +6860,7 @@
               "Variance Reports"
             ],
             "bullets": [
-              "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+              "Develop pricing analyses using <mark class=\"tailored-highlight\">SQL</mark> and Advanced <mark class=\"tailored-highlight\">Excel</mark> to evaluate market trends, historical demand, price performance, and margin opportunities.",
               "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
               "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
               "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
@@ -6822,8 +6884,8 @@
               "Cross-functional Collaboration"
             ],
             "bullets": [
-              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
-              "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+              "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management <mark class=\"tailored-highlight\">reporting</mark>.",
+              "Performed data validation, quality checks, and <mark class=\"tailored-highlight\">reporting</mark> analysis to maintain data accuracy and <mark class=\"tailored-highlight\">reporting</mark> integrity.",
               "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
               "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
               "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
@@ -6955,7 +7017,9 @@
             "Process Automation",
             "Automated Reporting frameworks"
           ]
-        }
+        },
+        "target_company": "Gulf Commercial Analytics",
+        "target_role_badge": "TARGET ROLE MATCH: JUNIOR COMMERCIAL DATA ANALYST (ATS 95%+)"
       },
       "matched_keywords": [
         "Excel",
@@ -6964,7 +7028,7 @@
       ],
       "missing_keywords": [],
       "notes": "",
-      "created_at": "2026-09-25T22:08:38.759853",
+      "created_at": "2026-09-25T23:01:05.471894",
       "is_hot": 1,
       "days_ago": 0,
       "location_priority": 4

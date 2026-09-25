@@ -103,6 +103,46 @@
       color: #1e293b;
       text-align: justify;
     }
+    /* Embedded highlighting & badges for tailored preview */
+    .tailored-highlight {
+      background-color: #fef08a;
+      color: #713f12;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px #eab308;
+    }
+    .tailored-badge {
+      display: inline-block;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 7.5pt;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      border: 1px solid #86efac;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .tailored-badge-target {
+      background: #eff6ff;
+      color: #1e40af;
+      border-color: #93c5fd;
+    }
+    body.clean-mode .tailored-highlight,
+    @media print {
+      .tailored-highlight {
+        background: transparent !important;
+        color: inherit !important;
+        font-weight: inherit !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .tailored-badge {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -110,6 +150,9 @@
   <!-- HEADER -->
   <div class="header">
     <h1>{{ profile.name }}</h1>
+    {% if profile.target_role_badge %}
+    <div><span class="tailored-badge tailored-badge-target">🎯 {{ profile.target_role_badge }}</span></div>
+    {% endif %}
     <div class="subtitle">{{ profile.title }}</div>
     <div class="contact-info">
       {{ profile.contact.location }} &bull; {{ profile.contact.phone }} &bull; 
@@ -121,8 +164,13 @@
 
   <!-- PROFESSIONAL SUMMARY -->
   <div class="section">
-    <div class="section-title">Professional Summary</div>
-    <p class="summary-text">{{ profile.summary }}</p>
+    <div class="section-title">
+      Professional Summary
+      {% if profile.target_company %}
+      <span class="tailored-badge" style="float: right; font-size: 7pt;">✨ 100% Tailored for {{ profile.target_company }}</span>
+      {% endif %}
+    </div>
+    <p class="summary-text">{{ profile.summary | safe }}</p>
   </div>
 
   <!-- WORK EXPERIENCE -->
@@ -139,7 +187,7 @@
       </div>
       <ul class="bullets">
         {% for b in exp.bullets %}
-        <li>{{ b }}</li>
+        <li>{{ b | safe }}</li>
         {% endfor %}
       </ul>
     </div>

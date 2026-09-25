@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>AutoApply ATS | Automated Job Search & 90%+ Resume Tailoring</title>
-  <link rel="stylesheet" href="static/css/style.css?v=2.3">
+  <link rel="stylesheet" href="static/css/style.css?v=2.4">
 </head>
 <body>
 
@@ -199,9 +199,20 @@
   <div class="modal-overlay" id="review-modal">
     <div class="modal-container">
       <div class="modal-header">
-        <div>
-          <h2 id="modal-job-title" style="font-size: 17px; font-weight: 700; color: #0f172a;">Job Details</h2>
-          <div id="modal-job-location" style="font-size: 12px; color: #64748b;"></div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px;">
+            <h2 id="modal-job-title" style="font-size: 16px; font-weight: 800; color: #0f172a; margin: 0;">Job Details</h2>
+            <span id="modal-ats-score-pill" class="modal-meta-pill" style="background: #dcfce7; color: #166534; font-weight: 800; padding: 2px 8px; border-radius: 4px; font-size: 12px; border: 1px solid #86efac;">
+              🎯 ATS Match: 95%
+            </span>
+          </div>
+          <!-- MODAL METADATA ROW: Platform, Post Date, Experience, Location -->
+          <div class="modal-meta-row" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11.5px; color: #475569; margin-top: 4px;">
+            <span class="meta-item">🌐 <strong>Platform:</strong> <span id="modal-platform-val">LinkedIn</span></span>
+            <span class="meta-item">📅 <strong>Posted:</strong> <span id="modal-date-val">Today</span></span>
+            <span class="meta-item">💼 <strong>Exp:</strong> <span id="modal-exp-val">0-2 Yrs</span></span>
+            <span class="meta-item">📍 <strong>Location:</strong> <span id="modal-location-val">Bengaluru</span></span>
+          </div>
         </div>
         <button class="modal-close-btn" onclick="closeReviewModal()">&times;</button>
       </div>
@@ -260,34 +271,58 @@
                 <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('https://github.com/aksamakbar', 'GitHub')">
                   <span>GitHub</span> <strong>GitHub URL 📋</strong>
                 </button>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('Kochi, India (Open to Relocation)', 'Location')">
-                  <span>Location</span> <strong>Kochi, IN 📋</strong>
-                </button>
               </div>
             </div>
 
             <!-- STANDARD SCREENING QUESTIONS -->
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
               <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px;">
-                💬 Standard Application Questions
+                💬 Standard Screening Questions
               </div>
               <div style="display: flex; flex-direction: column; gap: 6px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
-                  <span><strong>Notice Period:</strong> 30 Days</span>
-                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('30 Days', 'Notice Period')">Copy</button>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
-                  <span><strong>Willing to Relocate:</strong> Yes, open to relocate immediately</span>
-                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('Yes, open to relocate immediately.', 'Relocation')">Copy</button>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
-                  <span><strong>Work Authorization:</strong> Indian Citizen / Open to GCC Visa</span>
-                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('Indian Citizen. Open to GCC employment visa sponsorship or immediate domestic joining.', 'Work Authorization')">Copy</button>
+                  <span><strong>Notice Period:</strong> 30 Days (Negotiable for early release)</span>
+                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('30 Days (negotiable for earlier release/buyout)', 'Notice Period')">Copy</button>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
                   <span><strong>Expected CTC:</strong> 6,00,000 INR (6 LPA)</span>
                   <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('6,00,000 INR (6 LPA)', 'Expected CTC')">Copy</button>
                 </div>
+              </div>
+            </div>
+
+            <!-- TAILORED JOB RESPONSIBILITIES FOR APPLICATION FORMS -->
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <div style="font-size: 11px; font-weight: 700; color: #166534; text-transform: uppercase;">
+                  💼 Tailored Past Job Responsibilities (For Application Forms)
+                </div>
+                <span style="font-size: 10px; color: #15803d; font-weight: 700; background: #dcfce7; padding: 1px 6px; border-radius: 3px;">JD-Aligned</span>
+              </div>
+              <p style="font-size: 11px; color: #166534; margin-bottom: 8px;">
+                When the application portal asks <em>"Describe your duties and responsibilities in your previous / current position"</em>, copy these tailored responsibilities aligned to this opening:
+              </p>
+
+              <!-- RESPONSIBILITY 1: JUNIOR PRICING ANALYST -->
+              <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="font-size: 11.5px; color: #0f172a;">📌 Junior Pricing Analyst Role (Allianze Infosoft)</strong>
+                  <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pricing')">
+                    📋 Copy Duties
+                  </button>
+                </div>
+                <textarea id="tailored-resp-pricing" readonly style="width: 100%; height: 95px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
+              </div>
+
+              <!-- RESPONSIBILITY 2: PROJECT MANAGEMENT ASSOCIATE -->
+              <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                  <strong style="font-size: 11.5px; color: #0f172a;">📌 Project Management Associate Role (Global Survey)</strong>
+                  <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pm')">
+                    📋 Copy Duties
+                  </button>
+                </div>
+                <textarea id="tailored-resp-pm" readonly style="width: 100%; height: 95px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
               </div>
             </div>
 
@@ -302,17 +337,6 @@
               <p style="font-size: 11.5px; color: #78350f; margin-bottom: 8px;">
                 Paste any screening/interview question asked by the employer portal to generate a tailored answer:
               </p>
-
-              <!-- QUICK QUESTION CHIPS -->
-              <div class="copilot-chips-row">
-                <span style="font-size: 10.5px; color: #78350f; font-weight: 700; align-self: center;">Quick Prompts:</span>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('notice')">⏱️ Notice Period</button>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('salary')">💰 Expected CTC</button>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('relocate')">📍 Relocation</button>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('why_hire')">🏆 Why Hire Me?</button>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('sql_bi')">📊 SQL &amp; Power BI</button>
-                <button type="button" class="copilot-chip" onclick="applyCopilotPreset('pricing')">💼 Pricing Analysis</button>
-              </div>
 
               <div style="display: flex; gap: 6px; margin-bottom: 8px;">
                 <input type="text" id="copilot-custom-question" placeholder="e.g. Describe your experience with SQL and Power BI dashboards..." style="flex: 1; font-size: 12px; padding: 7px 10px; border: 1px solid #d97706; border-radius: 4px; outline: none;">
@@ -419,6 +443,6 @@
   <!-- FLOATING TOAST NOTIFICATION -->
   <div id="app-toast" class="app-toast"></div>
 
-  <script src="static/js/app.js?v=2.3"></script>
+  <script src="static/js/app.js?v=2.4"></script>
 </body>
 </html>

@@ -42,7 +42,7 @@ With an MBA in Data Analytics and hands-on experience in pricing analytics, repo
 
 In my recent experience as a Junior Pricing Analyst at Allianze Infosoft, I led SQL-driven pricing analyses, built Power BI variance dashboards to monitor margins and KPIs, and developed sensitivity models to support strategic commercial decisions. Furthermore, as an Associate Project Manager at Global Survey, I managed end-to-end data workflows and drove cross-functional process improvements.
 
-I have tailored my resume specifically to highlight relevant achievements for the {title} role. I would welcome the opportunity to discuss how my analytical skill set and proactive approach can add immediate value to {company}.
+With a strong foundation in {skills_str}, combined with hands-on experience translating data into actionable business outcomes, I am confident in my ability to make an immediate impact at {company}. I welcome the opportunity to discuss how my analytical skill set and problem-solving approach align with your team's goals.
 
 Sincerely,
 Aksam Akbar
