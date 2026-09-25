@@ -505,7 +505,7 @@ function getTailoredPricingAnalystDuties(job) {
     ? skillsToUse.slice(0, 5).join(', ')
     : 'SQL, Advanced Excel, Power BI, and margin optimization';
 
-  return `As Junior Pricing Analyst at Allianze Infosoft, I led data-driven commercial and pricing analytics, leveraging ${skillsStr} to evaluate customer transaction trends, market demand, and revenue optimization opportunities. My core responsibilities included building automated Power BI executive dashboards and variance reports to monitor pricing KPIs, discount governance, and gross margin realization. Additionally, I prepared revenue forecasts, scenario models, and sensitivity analyses to deliver data-backed strategic recommendations, while managing custom pricing approval workflows in Jira in close cross-functional collaboration with sales, finance, and operations teams to drive business profitability.`;
+  return `Led data-driven commercial and pricing analytics, leveraging ${skillsStr} to evaluate customer transaction trends, market demand, and revenue optimization opportunities. Core responsibilities included building automated Power BI executive dashboards and variance reports to monitor pricing KPIs, discount governance, and gross margin realization. Prepared revenue forecasts, scenario models, and sensitivity analyses to deliver data-backed strategic recommendations, while managing custom pricing approval workflows in Jira in close cross-functional collaboration with sales, finance, and operations teams to drive business profitability.`;
 }
 
 function getTailoredProjectManagementDuties(job) {
@@ -519,16 +519,16 @@ function getTailoredProjectManagementDuties(job) {
     ? skillsToUse.slice(0, 5).join(', ')
     : 'Power BI, KPI tracking, data validation, and process optimization';
 
-  return `In my role as Project Management Associate at Global Survey, I managed end-to-end data-centric project lifecycles from planning through delivery, coordinating project scopes, delivery schedules, and cross-functional team deliverables. Leveraging ${skillsStr}, I developed interactive Power BI operational dashboards to monitor project performance metrics, team productivity, and milestone completion for leadership reviews. My responsibilities also encompassed conducting comprehensive data validation, data cleansing, and quality checks across operational datasets to maintain complete reporting integrity, alongside executing root-cause analyses on workflow bottlenecks to streamline turnaround times and enhance overall execution efficiency.`;
+  return `Managed end-to-end data-centric project lifecycles from planning through delivery, coordinating project scopes, delivery schedules, and cross-functional team deliverables. Leveraging ${skillsStr}, developed interactive Power BI operational dashboards to monitor project performance metrics, team productivity, and milestone completion for leadership reviews. Core responsibilities also encompassed conducting comprehensive data validation, data cleansing, and quality checks across operational datasets to maintain complete reporting integrity, alongside executing root-cause analyses on workflow bottlenecks to streamline turnaround times and enhance overall execution efficiency.`;
 }
 
 function copyTailoredResponsibilities(roleKey) {
   const elemId = roleKey === 'pricing' ? 'tailored-resp-pricing' : 'tailored-resp-pm';
-  const roleName = roleKey === 'pricing' ? 'Junior Pricing Analyst' : 'Project Management Associate';
+  const label = roleKey === 'pricing' ? 'Pricing & Analytics' : 'Project Management & Operations';
   const elem = document.getElementById(elemId);
   if (!elem || !elem.value) return;
   navigator.clipboard.writeText(elem.value);
-  showToast(`📋 Copied ${roleName} tailored responsibilities to clipboard!`);
+  showToast(`📋 Copied ${label} responsibilities summary to clipboard!`);
 }
 
 function solveQuestionInChatGPT() {
