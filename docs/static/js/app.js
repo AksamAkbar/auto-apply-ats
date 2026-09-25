@@ -647,17 +647,18 @@ function renderSkillGaps() {
     const isDone = !!gap.is_completed;
     const gccList = gap.gcc_countries || [];
     const hasGcc = gccList.length > 0;
+    const safeSkillId = gap.skill_name.replace(/[^a-zA-Z0-9]/g, '_');
     
     // Default fallback Gemini prompt and YouTube query
     const geminiPrompt = gap.gemini_prompt || 
       `Act as a senior data analytics coach. Teach me ${gap.skill_name} specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.`;
-    const geminiUrl = `https://gemini.google.com/app?prompt=${encodeURIComponent(geminiPrompt)}`;
     
     const ytQuery = gap.youtube_query || `${gap.skill_name} tutorial for data analyst full course`;
     const ytUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(ytQuery)}`;
+    const chatGptUrl = `https://chatgpt.com/?q=${encodeURIComponent(geminiPrompt)}`;
 
     return `
-      <div class="skill-card ${isDone ? 'is-mastered' : ''}" id="skill-card-${escapeHTML(gap.skill_name)}">
+      <div class="skill-card ${isDone ? 'is-mastered' : ''}" id="skill-card-${safeSkillId}">
         <!-- TOP CHECKLIST BANNER -->
         <div class="skill-check-banner">
           <label class="skill-checkbox-label">
@@ -708,17 +709,16 @@ function renderSkillGaps() {
           <div style="color: #475569;">${escapeHTML(gap.recommended_project || 'Build a showcase analytical template.')}</div>
         </div>
 
-        <!-- DIRECT 1-CLICK GEMINI & YOUTUBE BUTTONS -->
+        <!-- PRIMARY 1-CLICK ACTION BUTTONS -->
         <div class="skill-action-buttons">
-          <a 
-            href="${geminiUrl}" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <button 
+            type="button" 
+            onclick="openGeminiWithPrompt('${escapeHTML(gap.skill_name)}')" 
             class="btn-gemini" 
-            title="Launch Google Gemini with pre-populated coaching prompt for this skill"
+            title="Auto-copies tailored prompt to clipboard and opens Gemini in new tab"
           >
-            ✨ Ask Gemini Coach
-          </a>
+            ✨ Ask Gemini (Auto-Copy)
+          </button>
           <a 
             href="${ytUrl}" 
             target="_blank" 
@@ -729,9 +729,133 @@ function renderSkillGaps() {
             ▶️ YouTube Course
           </a>
         </div>
+
+        <!-- AUXILIARY ACTIONS (CHATGPT AUTO-FILL + VIEW/COPY PROMPT) -->
+        <div class="skill-aux-bar">
+          <a 
+            href="${chatGptUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-aux btn-aux-chatgpt" 
+            title="ChatGPT directly pre-populates the prompt in the text box automatically"
+          >
+            🤖 Auto-Fill in ChatGPT
+          </a>
+          <div style="display: flex; gap: 4px;">
+            <button 
+              type="button" 
+              class="btn-aux" 
+              onclick="copyPromptOnly('${escapeHTML(gap.skill_name)}')" 
+              title="Copy the tailored prompt text to clipboard"
+            >
+              📋 Copy Prompt
+            </button>
+            <button 
+              type="button" 
+              class="btn-aux" 
+              onclick="togglePromptDrawer('${safeSkillId}')" 
+              title="View or hide the prompt text"
+            >
+              👁️ View
+            </button>
+          </div>
+        </div>
+
+        <!-- EXPANDABLE PROMPT DRAWER -->
+        <div id="prompt-drawer-${safeSkillId}" class="prompt-drawer">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #0f172a; font-size: 11px;">PROMPT PREVIEW:</strong>
+            <button 
+              type="button" 
+              onclick="copyPromptOnly('${escapeHTML(gap.skill_name)}')" 
+              style="padding: 2px 6px; font-size: 10.5px; border-radius: 4px; border: 1px solid #cbd5e1; background: white; cursor: pointer;"
+            >
+              Copy
+            </button>
+          </div>
+          <code>${escapeHTML(geminiPrompt)}</code>
+        </div>
+
       </div>
     `;
   }).join('');
+}
+
+async function openGeminiWithPrompt(skillName) {
+  const gap = allSkillGaps.find(s => s.skill_name.toLowerCase() === skillName.toLowerCase());
+  const prompt = gap && gap.gemini_prompt ? gap.gemini_prompt : 
+    `Act as a senior data analytics coach. Teach me ${skillName} specifically for a Junior to Mid Business & Data Analyst. Provide: 1) Core fundamentals and how it fits with SQL/Excel/Power BI, 2) The top 5 business/pricing use cases asked in job interviews, 3) Step-by-step practical implementation code/templates, and 4) A resume-ready weekend project I can build to showcase mastery.`;
+
+  // 1. Copy to clipboard
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(prompt);
+    } else {
+      copyTextFallback(prompt);
+    }
+  } catch (e) {
+    copyTextFallback(prompt);
+  }
+
+  // 2. Alert user with floating toast
+  showToast(`📋 <strong>Prompt for ${escapeHTML(skillName)} copied to clipboard!</strong><br><span style="font-size:12px; color:#cbd5e1;">Opening Gemini in a new tab... Simply press <strong>Paste (Ctrl+V)</strong> into the chat.</span>`);
+
+  // 3. Open Gemini in new tab
+  setTimeout(() => {
+    window.open('https://gemini.google.com/app', '_blank');
+  }, 350);
+}
+
+function copyPromptOnly(skillName) {
+  const gap = allSkillGaps.find(s => s.skill_name.toLowerCase() === skillName.toLowerCase());
+  const prompt = gap && gap.gemini_prompt ? gap.gemini_prompt : `Act as a senior data analytics coach. Teach me ${skillName}...`;
+  
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(prompt);
+    } else {
+      copyTextFallback(prompt);
+    }
+  } catch (e) {
+    copyTextFallback(prompt);
+  }
+  showToast(`✅ <strong>Copied prompt for ${escapeHTML(skillName)}</strong> to clipboard!`);
+}
+
+function togglePromptDrawer(safeSkillId) {
+  const drawer = document.getElementById(`prompt-drawer-${safeSkillId}`);
+  if (drawer) {
+    const isHidden = drawer.style.display === 'none' || drawer.style.display === '';
+    drawer.style.display = isHidden ? 'block' : 'none';
+  }
+}
+
+function copyTextFallback(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+}
+
+function showToast(message) {
+  let toast = document.getElementById('app-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'app-toast';
+    toast.className = 'app-toast';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = message;
+  toast.classList.add('show');
+  
+  if (window.toastTimeout) clearTimeout(window.toastTimeout);
+  window.toastTimeout = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 4500);
 }
 
 function copyCoverLetter() {
