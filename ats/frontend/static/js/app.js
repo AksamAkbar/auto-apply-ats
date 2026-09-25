@@ -711,14 +711,16 @@ function renderSkillGaps() {
 
         <!-- PRIMARY 1-CLICK ACTION BUTTONS -->
         <div class="skill-action-buttons">
-          <button 
-            type="button" 
-            onclick="openGeminiWithPrompt('${escapeHTML(gap.skill_name)}')" 
-            class="btn-gemini" 
-            title="Auto-copies tailored prompt to clipboard and opens Gemini in new tab"
+          <a 
+            href="${chatGptUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-chatgpt" 
+            onclick="copyPromptQuietly('${escapeHTML(gap.skill_name)}')"
+            title="Open ChatGPT with prompt already pre-populated in the chat box"
           >
-            ✨ Ask Gemini (Auto-Copy)
-          </button>
+            🤖 Learn in ChatGPT (Auto-Fill)
+          </a>
           <a 
             href="${ytUrl}" 
             target="_blank" 
@@ -730,17 +732,16 @@ function renderSkillGaps() {
           </a>
         </div>
 
-        <!-- AUXILIARY ACTIONS (CHATGPT AUTO-FILL + VIEW/COPY PROMPT) -->
+        <!-- AUXILIARY ACTIONS (GEMINI + VIEW/COPY PROMPT) -->
         <div class="skill-aux-bar">
-          <a 
-            href="${chatGptUrl}" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="btn-aux btn-aux-chatgpt" 
-            title="ChatGPT directly pre-populates the prompt in the text box automatically"
+          <button 
+            type="button" 
+            class="btn-aux btn-aux-gemini" 
+            onclick="openGeminiWithPrompt('${escapeHTML(gap.skill_name)}')" 
+            title="Auto-copies prompt to clipboard and opens Google Gemini in new tab"
           >
-            🤖 Auto-Fill in ChatGPT
-          </a>
+            ✨ Open in Gemini
+          </button>
           <div style="display: flex; gap: 4px;">
             <button 
               type="button" 
@@ -820,6 +821,20 @@ function copyPromptOnly(skillName) {
     copyTextFallback(prompt);
   }
   showToast(`✅ <strong>Copied prompt for ${escapeHTML(skillName)}</strong> to clipboard!`);
+}
+
+function copyPromptQuietly(skillName) {
+  const gap = allSkillGaps.find(s => s.skill_name.toLowerCase() === skillName.toLowerCase());
+  const prompt = gap && gap.gemini_prompt ? gap.gemini_prompt : `Act as a senior data analytics coach. Teach me ${skillName}...`;
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(prompt);
+    } else {
+      copyTextFallback(prompt);
+    }
+  } catch (e) {
+    // quiet copy fallback
+  }
 }
 
 function togglePromptDrawer(safeSkillId) {
