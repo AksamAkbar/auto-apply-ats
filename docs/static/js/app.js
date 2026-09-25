@@ -13,6 +13,12 @@ async function initApp() {
 }
 
 function setupEventListeners() {
+  const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+  const previewBtn = document.getElementById('preview-digest-btn');
+  if (previewBtn) {
+    previewBtn.href = isStatic ? './daily_digest.html' : '/api/digests/preview';
+  }
+
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const tabName = btn.dataset.tab;
@@ -105,6 +111,11 @@ async function loadJobs() {
 }
 
 async function triggerJobScan() {
+  const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+  if (isStatic) {
+    alert('⚡ Live Scrape & Refresh:\n\nOn GitHub Pages, openings are pre-compiled and refreshed automatically on each cycle.\n\nTo run an immediate live scan and ATS scoring cycle on your local machine, run:\npython ats/daily_digest_job.py\nor launch your ATS dashboard with:\npython ats/run.py');
+    return;
+  }
   const btn = document.getElementById('scan-jobs-btn');
   const originalText = btn.innerHTML;
   btn.innerHTML = `<span class="spinner"></span> Scanning & Tailoring...`;
@@ -1016,6 +1027,13 @@ function escapeHTML(str) {
 }
 
 async function sendDailyDigestEmail() {
+  const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+  if (isStatic) {
+    window.open('./daily_digest.html', '_blank');
+    alert(`🎯 Daily 24 Job Digest Opened in New Tab!\n\nAll 24 curated openings matching your 0-2 YOE profile and priority hubs (Bengaluru, Kerala, Metros, GCC) are compiled.\n\nTo have this automatically emailed to aksamakbar@gmail.com every morning at 9:00 AM, you can configure your Gmail App Password in your ATS environment.`);
+    return;
+  }
+
   const btn = document.getElementById('send-digest-btn');
   const originalText = btn.innerHTML;
   btn.innerHTML = `Sending...`;
@@ -1029,7 +1047,12 @@ async function sendDailyDigestEmail() {
     });
     const data = await res.json();
     if (data.success) {
-      alert(`✅ ${data.message}\n\nJobs included: ${data.job_count}\nRecipient: ${data.recipient}\n\nYou can also click "Preview 9 AM Digest" to view the rendered email digest.`);
+      if (data.smtp_configured) {
+        alert(`✅ ${data.message}\n\nJobs included: ${data.job_count}\nRecipient: ${data.recipient}`);
+      } else {
+        window.open('/api/digests/preview', '_blank');
+        alert(`✅ Daily digest with ${data.job_count} openings successfully generated and saved!\n\n(SMTP credentials pending in .env to deliver directly to your Gmail inbox. The full digest has been opened in a new tab.)`);
+      }
     } else {
       alert(`⚠️ Notice: ${data.message}\n\nThe HTML email digest was saved locally.`);
     }

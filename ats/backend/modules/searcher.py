@@ -7,7 +7,8 @@ from typing import List, Dict, Any
 
 from ..config import (
     TARGET_ROLES, TARGET_LOCATIONS, MAX_POSTING_AGE_DAYS,
-    MAX_EXPERIENCE_YEARS, MIN_BASELINE_ATS_SCORE, TARGET_TAILORED_ATS_SCORE
+    MAX_EXPERIENCE_YEARS, MIN_BASELINE_ATS_SCORE, TARGET_TAILORED_ATS_SCORE,
+    RESUMES_DIR
 )
 from .ats_scorer import analyze_job_keywords
 from .resume_tailorer import tailor_resume_for_job
@@ -487,8 +488,12 @@ def search_and_process_jobs(max_results: int = 35) -> List[Dict[str, Any]]:
         tailored_profile = tailoring_result["tailored_profile"]
         tailored_score = max(91.5, tailoring_result["tailored_score"])
 
-        # Generate clean ATS PDF
-        pdf_info = generate_ats_pdf(job_id, tailored_profile)
+        # Generate clean ATS PDF (cached if already exists)
+        pdf_path = RESUMES_DIR / f"{job_id}_Aksam_Akbar_Resume.pdf"
+        if not pdf_path.exists():
+            pdf_info = generate_ats_pdf(job_id, tailored_profile)
+        else:
+            pdf_info = {"pdf_filename": f"{job_id}_Aksam_Akbar_Resume.pdf", "pdf_path": str(pdf_path)}
 
         job_record = {
             "id": job_id,

@@ -40,6 +40,16 @@ def generate_ats_pdf(job_id: str, profile_data: dict) -> dict:
     # Render HTML
     rendered_html = render_resume_to_html(profile_data, html_path)
     
+    # If PDF already generated and valid, return immediately
+    if pdf_path.exists() and pdf_path.stat().st_size > 1000:
+        return {
+            "html_path": str(html_path),
+            "pdf_path": str(pdf_path),
+            "html_filename": html_filename,
+            "pdf_filename": pdf_filename,
+            "pdf_success": True
+        }
+
     # Convert HTML to PDF using headless Chrome/Edge
     browser_exe = get_browser_exe()
     pdf_generated = False

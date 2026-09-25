@@ -11,6 +11,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from ats.backend.database import get_all_jobs, get_daily_application_count
 from ats.backend.modules.skill_gap_analyzer import analyze_skill_gaps
+from ats.backend.modules.email_notifier import get_top_24_daily_jobs, generate_daily_digest_html
 from ats.backend.config import DAILY_APPLICATION_CAP, RESUMES_DIR
 
 DOCS_DIR = PROJECT_ROOT / "docs"
@@ -86,6 +87,13 @@ def export_static_site():
                 copied_resumes += 1
                 
     print(f"[3/4] Exported {copied_resumes} resume artifacts to docs/resumes/.")
+
+    # 4b. Generate static daily_digest.html for GitHub Pages preview
+    top_jobs = get_top_24_daily_jobs()
+    digest_html = generate_daily_digest_html(top_jobs)
+    with open(DOCS_DIR / "daily_digest.html", "w", encoding="utf-8") as f:
+        f.write(digest_html)
+    print(f"[3.5/4] Generated docs/daily_digest.html with {len(top_jobs)} curated openings.")
 
     # 5. Add .nojekyll so GitHub Pages doesn't ignore files or folders
     with open(DOCS_DIR / ".nojekyll", "w", encoding="utf-8") as f:
