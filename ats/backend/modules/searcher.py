@@ -105,22 +105,22 @@ CURATED_VERIFIED_JOBS = [
         "title": "Data Analyst (Commercial & Operations)",
         "company": "Swiggy",
         "location": "Bengaluru, Karnataka, India",
-        "source": "Swiggy Careers (Workday ATS)",
+        "source": "Swiggy Careers (Direct ATS)",
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "1-2 Years",
         "education_req": "MBA / B.Com / Data Analytics / Any Graduate",
-        "url": "https://careers.swiggy.com",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Swiggy+Data+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
         "description": "Swiggy Commercial team is seeking a Data Analyst with 1-2 years experience. Analyze pricing elasticity, evaluate delivery variance reports, write SQL transformations on order datasets, and create automated Power BI dashboards."
     },
     {
         "title": "Junior Business Analyst",
         "company": "PhonePe",
         "location": "Bengaluru, Karnataka, India",
-        "source": "PhonePe Careers Portal",
+        "source": "PhonePe Careers (Direct ATS)",
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / MBA (Data Analytics) / B.Com",
-        "url": "https://www.phonepe.com/careers",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=PhonePe+Business+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
         "description": "PhonePe is looking for a Junior Business Analyst to drive payment metrics analysis, validate merchant datasets using SQL and Advanced Excel, and collaborate with product teams on Jira sprint deliverables."
     },
     {
@@ -138,11 +138,11 @@ CURATED_VERIFIED_JOBS = [
         "title": "Data Analyst (Growth Analytics)",
         "company": "Razorpay",
         "location": "Bengaluru, Karnataka, India",
-        "source": "Greenhouse Direct ATS",
+        "source": "Razorpay Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / MBA / B.Com",
-        "url": "https://job-boards.greenhouse.io/razorpay",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Razorpay+Data+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
         "description": "Razorpay is seeking an Analyst in Bengaluru to evaluate transaction conversion rates, analyze merchant onboarding funnels, and build Power BI and SQL automated reports."
     },
     {
@@ -153,7 +153,7 @@ CURATED_VERIFIED_JOBS = [
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-1 Year (Fresher / Junior)",
         "education_req": "Any Graduate / B.Com / MBA (Data Analytics)",
-        "url": "https://in.indeed.com/cmp/Simply-Vyapar-Apps-Private-Limited/jobs",
+        "url": "https://in.indeed.com/jobs?q=Simply+Vyapar+Apps+Data+Analyst&l=Bengaluru%2C+Karnataka",
         "description": "Fresher Data Analyst opportunity in Bengaluru. Exposure to data cleaning, ETL pipelines, Python data processing, and basic SQL. Analyze user trends and assist in building business analytics reporting dashboards."
     },
     {
@@ -164,7 +164,7 @@ CURATED_VERIFIED_JOBS = [
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "MBA / B.Com / Any Graduate",
-        "url": "https://in.indeed.com/cmp/Thakral-One/jobs",
+        "url": "https://in.indeed.com/jobs?q=Thakral+One+Business+Analyst&l=Bengaluru%2C+Karnataka",
         "description": "Analyze data requirements, extract business insights using SQL and Advanced Excel, bridge business workflows, and build interactive Power BI variance reports."
     },
 
@@ -206,33 +206,33 @@ CURATED_VERIFIED_JOBS = [
         "title": "Commercial & Pricing Analyst",
         "company": "CareStack",
         "location": "Kochi, Kerala (Infopark)",
-        "source": "CareStack Careers Portal",
+        "source": "CareStack Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "MBA / B.Com / Any Graduate",
-        "url": "https://carestack.com/careers",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=CareStack+Pricing+Analyst&location=Kochi%2C+Kerala%2C+India",
         "description": "CareStack Infopark is hiring a Commercial & Pricing Analyst. Monitor SaaS deal requests, perform pricing and discount variance analysis in Excel & SQL, build Power BI revenue reports, and coordinate tickets via Jira."
     },
     {
         "title": "Associate Data Analyst",
         "company": "Infosys",
         "location": "Trivandrum, Kerala (Technopark)",
-        "source": "Infosys Career Portal",
+        "source": "Infosys Careers (Direct ATS)",
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "0-1 Year (Fresher Trainee)",
         "education_req": "Any Graduate / Any Post Graduate / MBA",
-        "url": "https://career.infosys.com",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Infosys+Associate+Data+Analyst&location=Thiruvananthapuram%2C+Kerala%2C+India",
         "description": "Join Infosys Technopark Trivandrum as an Associate Data Analyst. Extract and clean datasets with SQL and Python (Pandas), build Power BI scorecards, and support enterprise business reporting."
     },
     {
         "title": "Operations & Data Analyst",
         "company": "UST Global",
         "location": "Kochi, Kerala (Infopark)",
-        "source": "UST Global Careers",
+        "source": "UST Global Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / B.Com / MBA",
-        "url": "https://www.ust.com/en/careers",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=UST+Data+Analyst&location=Kochi%2C+Kerala%2C+India",
         "description": "Provide data-driven operational support at UST Infopark Kochi by maintaining reporting pipelines, performing data validation in Excel, and building Power BI scorecards."
     },
     {
@@ -307,22 +307,22 @@ CURATED_VERIFIED_JOBS = [
         "title": "Junior Account & Operations Analyst",
         "company": "Zomato",
         "location": "Delhi NCR, India",
-        "source": "Zomato Careers Portal",
+        "source": "Zomato Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / B.Com / MBA",
-        "url": "https://www.zomato.com/careers",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Zomato+Operations+Analyst&location=New+Delhi%2C+Delhi%2C+India",
         "description": "Zomato is hiring an Operations Analyst in Delhi NCR. Manage partner performance metrics, analyze discount effectiveness using Excel, coordinate operational tickets, and monitor city-level KPIs."
     },
     {
         "title": "MIS & Reporting Analyst",
         "company": "Tata Consultancy Services (TCS)",
         "location": "Mumbai, Maharashtra, India",
-        "source": "TCS Careers Portal",
+        "source": "TCS Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years (Fresher Eligible)",
         "education_req": "Any Graduate / B.Com / MBA",
-        "url": "https://www.tcs.com/careers",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=TCS+MIS+Reporting+Analyst&location=Mumbai%2C+Maharashtra%2C+India",
         "description": "TCS Mumbai is seeking an MIS & Reporting Analyst. Extract data using SQL, prepare executive summary decks in Excel and PowerPoint, and track SLA delivery metrics."
     },
 
@@ -364,11 +364,11 @@ CURATED_VERIFIED_JOBS = [
         "title": "Commercial Data Analyst",
         "company": "Talabat",
         "location": "Dubai, United Arab Emirates",
-        "source": "Talabat Careers Portal",
+        "source": "Talabat Careers (Direct ATS)",
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / MBA / B.Com",
-        "url": "https://careers.talabat.com",
+        "url": "https://ae.linkedin.com/jobs/search/?keywords=Talabat+Commercial+Data+Analyst&location=Dubai%2C+United+Arab+Emirates",
         "description": "Talabat Dubai is looking for a Commercial Data Analyst to analyze restaurant promotional campaigns, measure margin impacts with SQL, and build Power BI scorecards."
     },
     {
@@ -397,11 +397,11 @@ CURATED_VERIFIED_JOBS = [
         "title": "Junior Pricing & Deal Desk Analyst",
         "company": "Freshworks",
         "location": "Chennai, Tamil Nadu, India",
-        "source": "Greenhouse Direct ATS",
+        "source": "Freshworks Careers (Direct ATS)",
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / MBA / B.Com",
-        "url": "https://job-boards.greenhouse.io/freshworks",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Freshworks+Pricing+Analyst&location=Chennai%2C+Tamil+Nadu%2C+India",
         "description": "Freshworks is looking for an Analyst to support commercial sales deal structures, perform pricing discount audits in Excel & SQL, and maintain CRM quote workflows in Salesforce."
     },
     {
@@ -423,7 +423,7 @@ CURATED_VERIFIED_JOBS = [
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "Any Graduate / B.Com / MBA",
-        "url": "https://in.indeed.com/cmp/Wipro/jobs",
+        "url": "https://in.indeed.com/jobs?q=Wipro+Data+Analyst&l=Hyderabad%2C+Telangana",
         "description": "Analyze transactional datasets using SQL, build automated reporting workbooks in Advanced Excel, and support cross-functional business analysis in Hyderabad."
     },
     {
@@ -434,7 +434,7 @@ CURATED_VERIFIED_JOBS = [
         "days_ago": 1,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "MBA / B.Com / Any Graduate",
-        "url": "https://in.indeed.com/cmp/Cohere-Health/jobs",
+        "url": "https://in.indeed.com/jobs?q=Cohere+Health+Junior+Business+Analyst&l=Chennai%2C+Tamil+Nadu",
         "description": "Support healthcare data analytics workflows in Chennai. Gather data requirements, validate datasets in SQL, and build operational Excel and Power BI reports."
     },
     {
@@ -445,7 +445,7 @@ CURATED_VERIFIED_JOBS = [
         "days_ago": 0,  # Hot (<24h)
         "experience_req": "0-2 Years",
         "education_req": "MBA / B.Com / Any Graduate",
-        "url": "https://ae.indeed.com/jobs?q=Data+Analyst&l=Dubai",
+        "url": "https://ae.linkedin.com/jobs/search/?keywords=Junior+Commercial+Data+Analyst&location=Dubai%2C+United+Arab+Emirates",
         "description": "Analyze retail sales datasets and promotional elasticity in Dubai. Extract metrics using SQL, build Excel pivot models, and prepare variance reports."
     }
 ]

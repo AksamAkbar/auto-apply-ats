@@ -19,28 +19,28 @@ Dashboard: http://127.0.0.1:8000
    Direct URL: https://in.linkedin.com/jobs/view/data-analyst-at-setu-4466695072
 
 3. Data Analyst (Commercial & Operations) @ Swiggy [🔥 HOT <24h]
-   Location: Bengaluru, Karnataka, India | Source: Swiggy Careers (Workday ATS) | Match: 98.0%
-   Direct URL: https://careers.swiggy.com
+   Location: Bengaluru, Karnataka, India | Source: Swiggy Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=Swiggy+Data+Analyst&location=Bengaluru%2C+Karnataka%2C+India
 
 4. Junior Business Analyst @ PhonePe [🔥 HOT <24h]
-   Location: Bengaluru, Karnataka, India | Source: PhonePe Careers Portal | Match: 98.0%
-   Direct URL: https://www.phonepe.com/careers
+   Location: Bengaluru, Karnataka, India | Source: PhonePe Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=PhonePe+Business+Analyst&location=Bengaluru%2C+Karnataka%2C+India
 
 5. Junior Analyst - Commercial Analytics @ InMobi [🔥 HOT <24h]
    Location: Bengaluru, Karnataka, India | Source: Greenhouse Direct ATS | Match: 98.0%
    Direct URL: https://job-boards.greenhouse.io/inmobi/jobs/8096039
 
 6. Data Analyst (Growth Analytics) @ Razorpay [🔥 HOT <24h]
-   Location: Bengaluru, Karnataka, India | Source: Greenhouse Direct ATS | Match: 98.0%
-   Direct URL: https://job-boards.greenhouse.io/razorpay
+   Location: Bengaluru, Karnataka, India | Source: Razorpay Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=Razorpay+Data+Analyst&location=Bengaluru%2C+Karnataka%2C+India
 
 7. Data Analyst (Fresher / Junior) @ Simply Vyapar Apps [🔥 HOT <24h]
    Location: Bengaluru, Karnataka, India | Source: Indeed India Direct | Match: 98.0%
-   Direct URL: https://in.indeed.com/cmp/Simply-Vyapar-Apps-Private-Limited/jobs
+   Direct URL: https://in.indeed.com/jobs?q=Simply+Vyapar+Apps+Data+Analyst&l=Bengaluru%2C+Karnataka
 
 8. Business Analyst – Data & Insights @ Thakral One [🔥 HOT <24h]
    Location: Bengaluru, Karnataka, India | Source: Indeed India Direct | Match: 98.0%
-   Direct URL: https://in.indeed.com/cmp/Thakral-One/jobs
+   Direct URL: https://in.indeed.com/jobs?q=Thakral+One+Business+Analyst&l=Bengaluru%2C+Karnataka
 
 9. Junior Merchandising & Pricing Analyst @ Target in India [🔥 HOT <24h]
    Location: Bengaluru, Karnataka, India | Source: LinkedIn Direct Job | Match: 98.0%
@@ -57,16 +57,16 @@ Dashboard: http://127.0.0.1:8000
    Direct URL: https://in.linkedin.com/jobs/view/business-analyst-salesforce-automation-at-v-guard-4471863310
 
 12. Commercial & Pricing Analyst @ CareStack [🔥 HOT <24h]
-   Location: Kochi, Kerala (Infopark) | Source: CareStack Careers Portal | Match: 98.0%
-   Direct URL: https://carestack.com/careers
+   Location: Kochi, Kerala (Infopark) | Source: CareStack Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=CareStack+Pricing+Analyst&location=Kochi%2C+Kerala%2C+India
 
 13. Associate Data Analyst @ Infosys [🔥 HOT <24h]
-   Location: Trivandrum, Kerala (Technopark) | Source: Infosys Career Portal | Match: 98.0%
-   Direct URL: https://career.infosys.com
+   Location: Trivandrum, Kerala (Technopark) | Source: Infosys Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=Infosys+Associate+Data+Analyst&location=Thiruvananthapuram%2C+Kerala%2C+India
 
 14. Operations & Data Analyst @ UST Global [🔥 HOT <24h]
-   Location: Kochi, Kerala (Infopark) | Source: UST Global Careers | Match: 98.0%
-   Direct URL: https://www.ust.com/en/careers
+   Location: Kochi, Kerala (Infopark) | Source: UST Global Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=UST+Data+Analyst&location=Kochi%2C+Kerala%2C+India
 
 15. Finance & Data Analyst @ TechFin Solutions [🔥 HOT <24h]
    Location: Kochi, Kerala, India | Source: Indeed India Direct | Match: 98.0%
@@ -99,16 +99,16 @@ Dashboard: http://127.0.0.1:8000
    Direct URL: https://in.linkedin.com/jobs/view/junior-market-research-analyst-at-kantar-4469716548
 
 22. Junior Account & Operations Analyst @ Zomato [🔥 HOT <24h]
-   Location: Delhi NCR, India | Source: Zomato Careers Portal | Match: 98.0%
-   Direct URL: https://www.zomato.com/careers
+   Location: Delhi NCR, India | Source: Zomato Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=Zomato+Operations+Analyst&location=New+Delhi%2C+Delhi%2C+India
 
 23. MIS & Reporting Analyst @ Tata Consultancy Services (TCS) [🔥 HOT <24h]
-   Location: Mumbai, Maharashtra, India | Source: TCS Careers Portal | Match: 98.0%
-   Direct URL: https://www.tcs.com/careers
+   Location: Mumbai, Maharashtra, India | Source: TCS Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=TCS+MIS+Reporting+Analyst&location=Mumbai%2C+Maharashtra%2C+India
 
 24. Junior Pricing & Deal Desk Analyst @ Freshworks [🔥 HOT <24h]
-   Location: Chennai, Tamil Nadu, India | Source: Greenhouse Direct ATS | Match: 98.0%
-   Direct URL: https://job-boards.greenhouse.io/freshworks
+   Location: Chennai, Tamil Nadu, India | Source: Freshworks Careers (Direct ATS) | Match: 98.0%
+   Direct URL: https://www.linkedin.com/jobs/search/?keywords=Freshworks+Pricing+Analyst&location=Chennai%2C+Tamil+Nadu%2C+India
 
 -----------------------------------------------------------
 Review your tailored CV & 1-click answers at: http://127.0.0.1:8000
