@@ -1,0 +1,116 @@
+{
+  "name": "AKSAM AKBAR",
+  "title": "BUSINESS & DATA ANALYST | ADVANCED EXCEL | SQL | POWER BI | PYTHON",
+  "contact": {
+    "location": "Kochi, India",
+    "phone": "+91 9539060872",
+    "email": "aksamakbar@gmail.com",
+    "linkedin": "https://linkedin.com/in/aksamakbar",
+    "github": "https://github.com/aksamakbar",
+    "portfolio": "https://aksamakbar.com"
+  },
+  "summary": "Business & Data Analyst with an MBA in Data Analytics and experience in pricing analysis, business intelligence, reporting, forecasting, and process optimization. Skilled in Advanced Excel, SQL, Power BI, Python, and Tableau for data analysis, dashboard development, KPI tracking, and business reporting. Experienced in cross-functional project coordination and translating data into actionable business insights.",
+  "work_experience": [
+    {
+      "id": "exp_allianze",
+      "title": "Junior Pricing Analyst",
+      "company": "Allianze Infosoft",
+      "location": "Kochi, India",
+      "period": "Jun. 2025 – Present",
+      "keywords": ["Pricing Strategy", "SQL", "Advanced Excel", "Power BI", "Margin Optimization", "Jira", "Revenue Forecasting", "Sensitivity Analysis", "Variance Reports"],
+      "bullets": [
+        "Develop pricing analyses using SQL and Advanced Excel to evaluate market trends, historical demand, price performance, and margin opportunities.",
+        "Build Power BI dashboards and variance reports to monitor pricing KPIs, price realization, discount compliance, and product margins.",
+        "Conduct competitor benchmarking and cost-structure analysis to support pricing decisions and margin optimization.",
+        "Manage pricing workflows, custom deal requests, and approval tickets through Jira while coordinating with cross-functional teams.",
+        "Prepare revenue forecasts, scenario models, and sensitivity analyses to support data-driven pricing recommendations and business decisions."
+      ]
+    },
+    {
+      "id": "exp_globalsurvey",
+      "title": "Project Management Associate",
+      "company": "Global Survey",
+      "location": "Mumbai, India",
+      "period": "Nov. 2024 – Jun. 2025",
+      "keywords": ["Project Management", "Operations", "Power BI", "Data Validation", "KPI Tracking", "Root Cause Analysis", "Process Optimization", "Cross-functional Collaboration"],
+      "bullets": [
+        "Managed data-centric projects from planning through delivery, coordinating timelines, stakeholders, resources, and project requirements.",
+        "Built Power BI dashboards to track project KPIs, operational metrics, and financial milestones for management reporting.",
+        "Performed data validation, quality checks, and reporting analysis to maintain data accuracy and reporting integrity.",
+        "Coordinated with cross-functional teams to resolve operational issues, monitor project progress, and support timely delivery.",
+        "Conducted root cause analysis on operational bottlenecks and supported process improvements to enhance project turnaround."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj_warehouse",
+      "title": "SQL Data Warehouse - Portfolio Project",
+      "tech_stack": "SQL, Data Modeling, ETL Pipeline",
+      "link": "https://github.com/aksamakbar/sql-data-warehouse",
+      "keywords": ["SQL Server", "T-SQL", "ETL", "Medallion Architecture", "Data Modeling", "Star Schema", "Data Cleansing", "Data Warehousing", "ERP", "CRM"],
+      "bullets": [
+        "Architected and deployed a multi-layer modern data warehouse using Medallion Architecture (Bronze, Silver, Gold) within SQL Server to handle end-to-end data pipelines.",
+        "Developed T-SQL ETL processes using automated stored procedures to manage batch processing and ingest raw ERP and CRM data.",
+        "Engineered data cleansing, normalization, and enrichment workflows, designing business-ready Star Schema data models optimized for BI reporting."
+      ]
+    },
+    {
+      "id": "proj_marketing",
+      "title": "Marketing Analytics - Portfolio Project",
+      "tech_stack": "SQL, Python, Power BI",
+      "link": "https://github.com/aksamakbar/marketing-analytics",
+      "keywords": ["Marketing Analytics", "Power BI", "Python", "SQL Server", "Sentiment Analysis", "NLP", "VADER", "KPI Tracking", "Conversion Rate", "Average Order Value"],
+      "bullets": [
+        "Engineered end-to-end data pipelines by transforming messy e-commerce datasets using SQL Server into optimized relational reporting views.",
+        "Modeled complex text-based review sentiment using a Python VADER NLP model to convert unstructured customer feedback into measurable data metrics.",
+        "Built interactive Power BI dashboards tracking critical business KPIs, including Conversion Rate, Engagement, and Average Order Value."
+      ]
+    },
+    {
+      "id": "proj_sales_forecast",
+      "title": "Sales Forecasting & Predictive Analytics",
+      "tech_stack": "Python, Pandas, Seaborn",
+      "link": "https://github.com/aksamakbar/sales-forecasting",
+      "keywords": ["Python", "Pandas", "Scikit-Learn", "Machine Learning", "Regression", "Predictive Analytics", "EDA", "Matplotlib", "Seaborn", "Sales Forecasting"],
+      "bullets": [
+        "Cleaned and preprocessed a retail dataset of 8,500+ records by handling missing values, standardizing inconsistent categories, and deriving new metrics like store age.",
+        "Conducted Exploratory Data Analysis (EDA) using Matplotlib and Seaborn, identifying sales distributions, pricing patterns (MRP), and key drivers across store types.",
+        "Built predictive regression models using Scikit-Learn to estimate product sales and uncover trends across outlet locations and item categories."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Business Administration (Data Analytics)",
+      "institution": "Pondicherry University",
+      "location": "Puducherry",
+      "period": "2022 – 2024"
+    },
+    {
+      "degree": "Bachelor of Commerce",
+      "institution": "Pondicherry University",
+      "location": "Mahe, Puducherry",
+      "period": "2019 – 2022"
+    }
+  ],
+  "skills": {
+    "core_analytics": [
+      "MIS Reporting", "Data Cleaning", "Data Transformation", "Data Visualization",
+      "Trend Analysis", "Pricing Analysis", "Risk Assessment", "Data Validation and Preprocessing"
+    ],
+    "technical_stack": [
+      "SQL", "Data warehousing", "Advanced Excel (Pivot Tables, XLOOKUP, VBA, Power Query, Conditional Formatting)",
+      "Power BI (Dashboard, DAX, Data Modeling)", "Tableau", "Python (Pandas, NumPy)", "R Programming"
+    ],
+    "business_tools": [
+      "Jira", "Salesforce", "Microsoft Office (PowerPoint, Word, Outlook)", "Gmail",
+      "Agile Methodologies", "Process Optimization", "ERP & CRM Management",
+      "Cross-functional Collaboration", "Vendor Management", "SLA Tracking", "Risk Mitigation"
+    ],
+    "ai_automation": [
+      "Generative AI Productivity Tools", "Workflow Automation",
+      "AI-Assisted Data Analysis", "Process Automation", "Automated Reporting frameworks"
+    ]
+  }
+}

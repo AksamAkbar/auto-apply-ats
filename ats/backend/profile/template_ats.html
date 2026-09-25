@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ profile.name }} - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #111827;
+      line-height: 1.35;
+      font-size: 10pt;
+      background: #fff;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #1f2937;
+      padding-bottom: 8px;
+    }
+    .header h1 {
+      font-size: 20pt;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .header .subtitle {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .header .contact-info {
+      font-size: 9pt;
+      color: #475569;
+    }
+    .header .contact-info a {
+      color: #0f172a;
+      text-decoration: underline;
+    }
+    .section {
+      margin-bottom: 11px;
+    }
+    .section-title {
+      font-size: 11pt;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 1px solid #94a3b8;
+      padding-bottom: 2px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 700;
+      font-size: 10pt;
+      color: #0f172a;
+    }
+    .item-subheader {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9pt;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+    .bullets {
+      margin-left: 18px;
+      margin-bottom: 6px;
+    }
+    .bullets li {
+      margin-bottom: 2.5px;
+      font-size: 9.5pt;
+      color: #1e293b;
+      line-height: 1.32;
+    }
+    .skills-block {
+      font-size: 9.5pt;
+      line-height: 1.45;
+    }
+    .skills-category {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .summary-text {
+      font-size: 9.5pt;
+      line-height: 1.38;
+      color: #1e293b;
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>{{ profile.name }}</h1>
+    <div class="subtitle">{{ profile.title }}</div>
+    <div class="contact-info">
+      {{ profile.contact.location }} &bull; {{ profile.contact.phone }} &bull; 
+      <a href="mailto:{{ profile.contact.email }}">{{ profile.contact.email }}</a> &bull; 
+      <a href="{{ profile.contact.linkedin }}">LinkedIn</a> &bull; 
+      <a href="{{ profile.contact.github }}">GitHub</a>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section">
+    <div class="section-title">Professional Summary</div>
+    <p class="summary-text">{{ profile.summary }}</p>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+    {% for exp in profile.work_experience %}
+    <div style="margin-bottom: 7px;">
+      <div class="item-header">
+        <span>{{ exp.title }} | {{ exp.company }}</span>
+        <span>{{ exp.period }}</span>
+      </div>
+      <div class="item-subheader">
+        <span>{{ exp.location }}</span>
+      </div>
+      <ul class="bullets">
+        {% for b in exp.bullets %}
+        <li>{{ b }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+    {% for proj in profile.projects %}
+    <div style="margin-bottom: 6px;">
+      <div class="item-header">
+        <span>{{ proj.title }} | {{ proj.tech_stack }}</span>
+        <span><a href="{{ proj.link }}" style="color: #0f172a; text-decoration: underline;">GitHub</a></span>
+      </div>
+      <ul class="bullets">
+        {% for b in proj.bullets %}
+        <li>{{ b }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    {% for edu in profile.education %}
+    <div style="margin-bottom: 4px;">
+      <div class="item-header">
+        <span>{{ edu.degree }}</span>
+        <span>{{ edu.period }}</span>
+      </div>
+      <div class="item-subheader">
+        <span>{{ edu.institution }} | {{ edu.location }}</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- SKILLS & EXPERTISE -->
+  <div class="section">
+    <div class="section-title">Skills and Expertise</div>
+    <div class="skills-block">
+      <p><span class="skills-category">&bull; Core Analytics:</span> {{ profile.skills.core_analytics | join(', ') }}</p>
+      <p><span class="skills-category">&bull; Technical Stack:</span> {{ profile.skills.technical_stack | join(', ') }}</p>
+      <p><span class="skills-category">&bull; Business Tools:</span> {{ profile.skills.business_tools | join(', ') }}</p>
+      <p><span class="skills-category">&bull; AI & Automation:</span> {{ profile.skills.ai_automation | join(', ') }}</p>
+    </div>
+  </div>
+
+</body>
+</html>

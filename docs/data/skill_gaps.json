@@ -1,0 +1,78 @@
+{
+  "skill_gaps": [
+    {
+      "skill_name": "Snowflake",
+      "frequency": 3,
+      "category": "Cloud Data Warehousing",
+      "demand": "Very High",
+      "why_it_matters": "Builds directly on your SQL Server & Star Schema expertise. Top enterprise requirement for cloud analytics in Bengaluru, Mumbai, and GCC.",
+      "estimated_hours": "15-20 Hours",
+      "recommended_project": "Replicate your Medallion SQL Data Warehouse into a free Snowflake 30-day trial instance using SnowSQL.",
+      "learning_resources": [
+        "Snowflake Hands-on Essentials Badge (Free)",
+        "Coursera Snowflake for Data Engineers"
+      ]
+    },
+    {
+      "skill_name": "Dbt",
+      "frequency": 3,
+      "category": "Data Transformation & Engineering",
+      "demand": "Rapidly Growing",
+      "why_it_matters": "Allows analysts to write modular SQL transformations with built-in version control and testing.",
+      "estimated_hours": "12 Hours",
+      "recommended_project": "Build dbt models on top of PostgreSQL/SQL Server with schema tests.",
+      "learning_resources": [
+        "dbt Fundamentals Free Certification (getdbt.com)"
+      ]
+    },
+    {
+      "skill_name": "Alteryx",
+      "frequency": 3,
+      "category": "Automated ETL & Prep",
+      "demand": "High in MNCs & GCC",
+      "why_it_matters": "Heavily utilized by Big 4 (EY, Deloitte) and GCC conglomerates for automated finance and pricing data prep without coding.",
+      "estimated_hours": "15 Hours",
+      "recommended_project": "Automate daily supplier pricing reconciliation and variance checking.",
+      "learning_resources": [
+        "Alteryx Designer Core Certification Prep"
+      ]
+    },
+    {
+      "skill_name": "Google Analytics",
+      "frequency": 3,
+      "category": "Digital & Product Analytics",
+      "demand": "High for E-commerce & Startups",
+      "why_it_matters": "Complements your Marketing Analytics NLP project by connecting front-end user engagement metrics with sales numbers.",
+      "estimated_hours": "8 Hours",
+      "recommended_project": "Set up GA4 event tracking and build a Power BI connector dashboard.",
+      "learning_resources": [
+        "Google Skillshop GA4 Certification (Free)"
+      ]
+    },
+    {
+      "skill_name": "Power Automate",
+      "frequency": 3,
+      "category": "Workflow Automation",
+      "demand": "High in Enterprise Operations",
+      "why_it_matters": "Pairs seamlessly with Excel and Power BI to automate scheduled refresh alerts, approval emails, and data extraction.",
+      "estimated_hours": "10 Hours",
+      "recommended_project": "Build an automated flow that extracts attachments from email and appends rows to an Excel/SQL table.",
+      "learning_resources": [
+        "Microsoft Learn Power Automate Fundamentals"
+      ]
+    },
+    {
+      "skill_name": "Bigquery",
+      "frequency": 3,
+      "category": "Cloud Analytics",
+      "demand": "High",
+      "why_it_matters": "Google Cloud's serverless data warehouse; standard for marketing and ecommerce analytics (Swiggy, Noon, Zomato).",
+      "estimated_hours": "10-15 Hours",
+      "recommended_project": "Query Google Analytics 4 public e-commerce datasets using BigQuery SQL.",
+      "learning_resources": [
+        "Google Cloud Skills Boost BigQuery Quest"
+      ]
+    }
+  ],
+  "total": 6
+}

@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+*.log
+.DS_Store
+Thumbs.db
+
+# Other subprojects in desktop directory
+aksamakbar-main/
+cashbook-app/
+personal app/
+node_modules/
+

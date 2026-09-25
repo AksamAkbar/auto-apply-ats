@@ -1,0 +1,15 @@
+{
+  "status": "healthy",
+  "quota": {
+    "allowed": true,
+    "current_count": 0,
+    "daily_cap": 25,
+    "remaining": 25
+  },
+  "metrics": {
+    "ready_for_review": 32,
+    "applied_total": 0,
+    "interviews": 0,
+    "offers": 0
+  }
+}
