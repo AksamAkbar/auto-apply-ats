@@ -285,34 +285,26 @@ async function openReviewModal(jobId) {
   const locVal = document.getElementById('modal-location-val');
   if (locVal) locVal.textContent = job.location || 'India';
 
-  document.getElementById('modal-job-desc').textContent = job.description;
+  // 2. Populate Quick Copy Job Location
+  const quickLocElem = document.getElementById('quick-copy-job-loc');
+  if (quickLocElem) {
+    const shortLoc = (job.location || 'Job Location').split(',')[0].trim();
+    quickLocElem.textContent = `${shortLoc} 📋`;
+  }
 
-  document.getElementById('modal-baseline-score').textContent = `${job.baseline_score}%`;
-  document.getElementById('modal-tailored-score').textContent = `${job.tailored_score}%`;
+  // 3. Populate Master Resume Path for 1-Click Upload
+  const resumePathInput = document.getElementById('copilot-resume-path');
+  if (resumePathInput) {
+    resumePathInput.value = `C:\\Users\\aksam\\Desktop\\aksamakbar-main\\ats\\storage\\resumes\\Aksam_Akbar_Resume.pdf`;
+  }
 
-  // 2. Populate Tailored Past Job Responsibilities for Application Forms
+  // 4. Populate Summarized Tailor-Made Past Job Responsibilities
   const respPricing = document.getElementById('tailored-resp-pricing');
   if (respPricing) respPricing.value = getTailoredPricingAnalystDuties(job);
   const respPm = document.getElementById('tailored-resp-pm');
   if (respPm) respPm.value = getTailoredProjectManagementDuties(job);
 
-  const kwContainer = document.getElementById('modal-keywords-box');
-  kwContainer.innerHTML = `
-    <div style="margin-bottom: 8px;">
-      <strong style="font-size: 12px; color: #166534;">Matched Skills in Aksam's Profile:</strong>
-      <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">
-        ${(job.matched_keywords || []).map(m => `<span class="keyword-badge keyword-matched">✓ ${m}</span>`).join('')}
-      </div>
-    </div>
-    <div>
-      <strong style="font-size: 12px; color: #92400e;">Keywords Addressed in Tailoring:</strong>
-      <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;">
-        ${(job.missing_keywords || []).map(m => `<span class="keyword-badge keyword-missing">${m}</span>`).join('')}
-      </div>
-    </div>
-  `;
-
-  // Fetch cover message
+  // 5. Fetch or generate Cover Message
   try {
     const res = await fetch(`/api/jobs/${job.id}`);
     if (res.ok) {
@@ -325,36 +317,71 @@ async function openReviewModal(jobId) {
     document.getElementById('modal-cover-letter').value = generateClientCoverLetter(job);
   }
 
-  // Setup Tailored Changes Banner & View Mode
-  currentResumeViewMode = 'highlight'; // Default to highlight mode so user sees tailored changes immediately
-  updateTailoredChangesBanner(job);
+  // 6. POPULATE RIGHT PANE: ATS KEYWORD GAP ANALYZER & MATCH BOOSTER
+  const matched = job.matched_keywords || [];
+  const missing = job.missing_keywords || [];
 
-  // Load tailored resume preview iframe with timestamp cache buster
-  const resumeFilename = job.tailored_pdf_path ? job.tailored_pdf_path.replace('.pdf', '.html') : '';
-  const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
-  const cacheBuster = `t=${Date.now()}`;
-  const resumeUrl = isStatic ? `./resumes/${resumeFilename}?${cacheBuster}` : `/api/resumes/${resumeFilename}?${cacheBuster}`;
-  const pdfDownloadUrl = isStatic ? `./resumes/${job.tailored_pdf_path}` : `/api/resumes/${job.tailored_pdf_path}?download=true`;
+  const rightAtsScore = document.getElementById('right-pane-ats-score');
+  if (rightAtsScore) rightAtsScore.textContent = `${job.tailored_score || 92}%`;
 
-  const iframe = document.getElementById('resume-preview-frame');
-  iframe.onload = () => {
-    if (currentResumeViewMode === 'highlight') {
-      applyHighlightsToIframe(iframe, currentModalJob);
-    }
-  };
-  iframe.src = resumeUrl;
-
-  // Set initial button active state
-  const btnClean = document.getElementById('btn-cv-clean');
-  const btnHighlight = document.getElementById('btn-cv-highlight');
-  if (btnClean) btnClean.classList.remove('active');
-  if (btnHighlight) btnHighlight.classList.add('active');
-
-  // Populate absolute resume path for upload
-  const resumePathInput = document.getElementById('copilot-resume-path');
-  if (resumePathInput) {
-    resumePathInput.value = `C:\\Users\\aksam\\Desktop\\aksamakbar-main\\ats\\storage\\resumes\\${job.tailored_pdf_path}`;
+  const rightMatchLabel = document.getElementById('right-pane-match-label');
+  if (rightMatchLabel) {
+    rightMatchLabel.textContent = (job.tailored_score || 90) >= 90 ? '✓ High Recruiter Visibility' : '✓ Good Alignment';
   }
+
+  const rightGapCount = document.getElementById('right-pane-gap-count');
+  if (rightGapCount) {
+    rightGapCount.textContent = `${missing.length} ${missing.length === 1 ? 'Gap' : 'Gaps'}`;
+  }
+
+  // Section 1: Whichever is Good (Matched Profile Strengths)
+  const goodCount = document.getElementById('good-skills-count');
+  if (goodCount) goodCount.textContent = `${matched.length} Matched`;
+
+  const goodContainer = document.getElementById('good-keywords-list');
+  if (goodContainer) {
+    goodContainer.innerHTML = matched.length > 0
+      ? matched.map(m => `<span class="keyword-badge keyword-matched" style="font-size: 11px; padding: 3px 8px; font-weight: 700; border: 1px solid #86efac;">✓ ${escapeHTML(m)}</span>`).join('')
+      : '<span style="font-size: 11.5px; color: #64748b;">No direct taxonomy keywords detected.</span>';
+  }
+
+  // Section 2: Whichever Need to Improve or Add (Keyword Gaps)
+  const gapCount = document.getElementById('gap-skills-count');
+  if (gapCount) gapCount.textContent = `${missing.length} ${missing.length === 1 ? 'Gap' : 'Gaps'}`;
+
+  const gapContainer = document.getElementById('gap-keywords-list');
+  if (gapContainer) {
+    gapContainer.innerHTML = missing.length > 0
+      ? missing.map(m => `<span class="keyword-badge keyword-missing" style="font-size: 11px; padding: 3px 8px; font-weight: 700; border: 1px solid #fcd34d;">⚠️ ${escapeHTML(m)}</span>`).join('')
+      : '<span style="font-size: 11.5px; color: #166534; font-weight: 700;">🎉 100% Keyword Coverage! No critical gaps identified.</span>';
+  }
+
+  // Section 3: Full Employer Job Description with contextual highlights
+  const jdContainer = document.getElementById('right-pane-jd-text');
+  if (jdContainer) {
+    let rawJD = escapeHTML(job.description || 'No description provided.');
+    // Highlight matched keywords in soft green
+    matched.forEach(m => {
+      if (m && m.length > 2) {
+        const re = new RegExp(`\\b(${m.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})\\b`, 'gi');
+        rawJD = rawJD.replace(re, '<mark style="background: #dcfce7; color: #166534; font-weight: 700; padding: 1px 3px; border-radius: 3px;">$1</mark>');
+      }
+    });
+    // Highlight missing keywords in soft amber
+    missing.forEach(m => {
+      if (m && m.length > 2) {
+        const re = new RegExp(`\\b(${m.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')})\\b`, 'gi');
+        rawJD = rawJD.replace(re, '<mark style="background: #fef3c7; color: #92400e; font-weight: 700; padding: 1px 3px; border-radius: 3px;">$1</mark>');
+      }
+    });
+    jdContainer.innerHTML = rawJD;
+  }
+
+  // Master PDF Download Link
+  const isStatic = window.location.hostname.includes('github.io') || window.location.protocol === 'file:' || !window.location.port;
+  const masterPdfUrl = isStatic ? './resumes/Aksam_Akbar_Resume.pdf' : '/api/resumes/Aksam_Akbar_Resume.pdf?download=true';
+  const dlBtn = document.getElementById('modal-download-cv');
+  if (dlBtn) dlBtn.href = masterPdfUrl;
 
   // Reset custom question box
   const qBox = document.getElementById('copilot-custom-question');
@@ -364,81 +391,22 @@ async function openReviewModal(jobId) {
   const cBtn = document.getElementById('copilot-copy-answer-btn');
   if (cBtn) cBtn.style.display = 'none';
 
-  // Download PDF Link
-  const dlBtn = document.getElementById('modal-download-cv');
-  if (dlBtn) {
-    dlBtn.href = pdfDownloadUrl;
-  }
-
-  // Open CV in New Tab Link
-  const viewBtn = document.getElementById('modal-view-cv');
-  if (viewBtn) {
-    viewBtn.href = resumeUrl;
-  }
-
   // Set direct portal link on Step 1 button
   const portalBtn = document.getElementById('modal-launch-portal-btn');
   if (portalBtn) {
     portalBtn.href = job.url || '#';
   }
 
-  // Reset subview to Copilot
-  switchModalPane('copilot');
-
   document.getElementById('review-modal').classList.add('open');
 }
 
-let currentResumeViewMode = 'highlight';
-
-function updateTailoredChangesBanner(job) {
-  const banner = document.getElementById('tailored-changes-banner');
-  const pill = document.getElementById('tailored-score-pill');
-  const list = document.getElementById('tailored-changes-list');
-  if (!banner || !list) return;
-
-  const matched = job.matched_keywords || [];
-  const boost = Math.max(12, Math.round(job.tailored_score - (job.baseline_score || 72)));
-  if (pill) pill.textContent = `ATS Match: ${job.tailored_score}% (+${boost}% Tailored Boost)`;
-
-  list.innerHTML = `
-    <div style="display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; font-size: 11.5px;">
-      <strong>🎯 Role Headline:</strong> <span>Target headline customized for <strong>${escapeHTML(job.title)}</strong></span>
-      <strong>🏢 Company Summary:</strong> <span>Tailored professional summary synthesizing experience for <strong>${escapeHTML(job.company)}</strong></span>
-      <strong>🔑 Injected Keywords:</strong> <span>${matched.slice(0, 7).map(m => `<span class="keyword-badge keyword-matched" style="font-size:10.5px; padding:1px 5px;">✓ ${escapeHTML(m)}</span>`).join(' ')}</span>
-      <strong>🔥 Prioritized Bullets:</strong> <span>Re-ordered and scored project achievements matching recruiter requirements</span>
-    </div>
-  `;
-  banner.style.display = currentResumeViewMode === 'highlight' ? 'block' : 'none';
-}
-
-function setResumeViewMode(mode) {
-  currentResumeViewMode = mode;
-  const btnClean = document.getElementById('btn-cv-clean');
-  const btnHighlight = document.getElementById('btn-cv-highlight');
-  const banner = document.getElementById('tailored-changes-banner');
-  const iframe = document.getElementById('resume-preview-frame');
-
-  if (btnClean) btnClean.classList.toggle('active', mode === 'clean');
-  if (btnHighlight) btnHighlight.classList.toggle('active', mode === 'highlight');
-  if (banner) banner.style.display = mode === 'highlight' ? 'block' : 'none';
-
-  if (!iframe || !currentModalJob) return;
-
-  try {
-    const doc = iframe.contentDocument || iframe.contentWindow.document;
-    if (doc && doc.body) {
-      if (mode === 'clean') {
-        doc.body.classList.add('clean-mode');
-        doc.querySelectorAll('.tailored-badge').forEach(b => b.style.display = 'none');
-      } else {
-        doc.body.classList.remove('clean-mode');
-        doc.querySelectorAll('.tailored-badge').forEach(b => b.style.display = 'inline-block');
-        applyHighlightsToIframe(iframe, currentModalJob);
-      }
-    }
-  } catch (err) {
-    console.log('Error toggling resume view mode:', err);
+function copyJobLocation() {
+  if (!currentModalJob || !currentModalJob.location) {
+    showToast('⚠️ No location available for this opening.');
+    return;
   }
+  navigator.clipboard.writeText(currentModalJob.location);
+  showToast(`📍 Copied Job Location "${currentModalJob.location}" to clipboard!`);
 }
 
 function applyHighlightsToIframe(iframe, job) {
@@ -530,28 +498,24 @@ function getTailoredPricingAnalystDuties(job) {
   const company = job ? job.company : 'the hiring organization';
   const title = job ? job.title : 'Target Role';
   const skills = (job && job.matched_keywords && job.matched_keywords.length > 0)
-    ? job.matched_keywords.slice(0, 5).join(', ')
+    ? job.matched_keywords.slice(0, 4).join(', ')
     : 'SQL, Advanced Excel, Power BI, and Margin Analytics';
 
-  return `• Developed pricing analyses and elasticity models using SQL and Advanced Excel to evaluate transaction patterns, pricing realization, and margin opportunities.
-• Built and maintained executive Power BI dashboards and variance reports to monitor pricing KPIs, discount compliance, and profitability for commercial operations.
-• Conducted competitor benchmarking and cost-structure analysis to support pricing decisions, quote approvals, and contract negotiations.
-• Managed daily pricing approval workflows and custom deal requests through Jira while coordinating with cross-functional sales, finance, and operations teams.
-• Prepared revenue forecasts, scenario models, and sensitivity analyses to deliver data-backed commercial recommendations aligned with business goals.`;
+  return `• Led data-driven pricing and revenue analyses using ${skills} to evaluate transaction patterns, pricing realization, and margin opportunities.
+• Built and automated executive Power BI dashboards to track pricing KPIs, discount governance, and gross margins for leadership reviews.
+• Prepared revenue forecasts and scenario sensitivity models to support commercial pricing decisions aligned with ${company}'s targets.`;
 }
 
 function getTailoredProjectManagementDuties(job) {
   const company = job ? job.company : 'the hiring organization';
   const title = job ? job.title : 'Target Role';
   const skills = (job && job.matched_keywords && job.matched_keywords.length > 0)
-    ? job.matched_keywords.slice(0, 5).join(', ')
-    : 'Power BI, KPI Tracking, Process Optimization, and Data Cleansing';
+    ? job.matched_keywords.slice(0, 4).join(', ')
+    : 'Power BI, KPI Tracking, Data Validation, and Process Optimization';
 
-  return `• Directed end-to-end data-centric project lifecycles from initiation through delivery, coordinating project timelines, deliverables, and cross-functional stakeholders.
-• Built interactive Power BI dashboards to track operational KPIs, project milestone completion, and productivity metrics for executive reporting.
-• Performed comprehensive data validation, quality audits, and data cleansing across operational datasets to ensure 100% reporting integrity and data accuracy.
-• Identified workflow bottlenecks through root cause analysis and drove process optimization initiatives to enhance turnaround efficiency.
-• Coordinated closely between technical analysts and business teams to resolve operational blockers and ensure timely, high-quality deliverables.`;
+  return `• Managed end-to-end data project lifecycles from scoping to delivery, coordinating timelines, deliverables, and cross-functional stakeholders.
+• Developed operational Power BI dashboards to monitor project KPIs, team productivity, and milestone completion for management reporting.
+• Performed comprehensive data validation and root-cause analysis on operational workflows, driving process improvements to boost turnaround time.`;
 }
 
 function copyTailoredResponsibilities(roleKey) {

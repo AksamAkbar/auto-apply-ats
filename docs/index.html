@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>AutoApply ATS | Automated Job Search & 90%+ Resume Tailoring</title>
-  <link rel="stylesheet" href="static/css/style.css?v=2.4">
+  <link rel="stylesheet" href="static/css/style.css?v=2.5">
 </head>
 <body>
 
@@ -218,211 +218,239 @@
       </div>
 
       <div class="modal-body">
-        <!-- LEFT PANE: JOB DESCRIPTION & COPILOT ASSISTANT -->
+        <!-- LEFT PANE: APPLICATION FORM ASSISTANT -->
         <div class="pane pane-left">
           
-          <!-- SUB-TABS FOR LEFT PANE -->
-          <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">
-            <button class="pane-tab-btn active" id="pane-tab-copilot" onclick="switchModalPane('copilot')">
-              ⚡ Copilot & Form Assistant
-            </button>
-            <button class="pane-tab-btn" id="pane-tab-jd" onclick="switchModalPane('jd')">
-              📄 Job Description & ATS
-            </button>
+          <div style="font-size: 13px; font-weight: 800; color: #0f172a; margin-bottom: 14px; display: flex; align-items: center; gap: 6px;">
+            <span>⚡</span> Application Form Assistant &amp; Fast-Fill
           </div>
 
-          <!-- PANE SUB-VIEW 1: COPILOT ASSISTANT -->
-          <div id="modal-subview-copilot" style="display: block;">
-            
-            <!-- RESUME PATH CLIPBOARD -->
-            <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-              <div style="font-size: 11px; font-weight: 700; color: #1e40af; text-transform: uppercase; margin-bottom: 4px;">
-                📄 Tailored Resume File (For Portal Upload)
-              </div>
-              <div style="display: flex; gap: 8px; align-items: center;">
-                <input type="text" id="copilot-resume-path" readonly style="flex: 1; font-size: 11px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 4px; background: white; color: #334155; font-family: monospace;">
-                <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; white-space: nowrap;" onclick="copyResumePath()">
-                  📋 Copy Path (Ctrl+V)
-                </button>
-              </div>
-              <p style="font-size: 11px; color: #64748b; margin-top: 4px;">
-                💡 <em>When the job portal asks to upload your resume, click Browse, then press <strong>Ctrl+V</strong> in the file name box and hit Enter!</em>
-              </p>
+          <!-- RESUME PATH CLIPBOARD -->
+          <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="font-size: 11px; font-weight: 700; color: #1e40af; text-transform: uppercase; margin-bottom: 4px;">
+              📄 Master Resume File (For Portal Upload)
             </div>
-
-            <!-- CANDIDATE INFO 1-CLICK CLIPBOARD -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-              <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px;">
-                👤 Quick Copy Profile Details
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('Aksam Akbar', 'Name')">
-                  <span>Full Name</span> <strong>Aksam Akbar 📋</strong>
-                </button>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('aksamakbar@gmail.com', 'Email')">
-                  <span>Email</span> <strong>aksamakbar@... 📋</strong>
-                </button>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('+91 9539060872', 'Phone')">
-                  <span>Phone</span> <strong>+91 9539060872 📋</strong>
-                </button>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('https://linkedin.com/in/aksamakbar', 'LinkedIn')">
-                  <span>LinkedIn</span> <strong>LinkedIn URL 📋</strong>
-                </button>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('https://github.com/aksamakbar', 'GitHub')">
-                  <span>GitHub</span> <strong>GitHub URL 📋</strong>
-                </button>
-              </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <input type="text" id="copilot-resume-path" readonly style="flex: 1; font-size: 11px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 4px; background: white; color: #334155; font-family: monospace;">
+              <button class="btn btn-primary" style="padding: 6px 12px; font-size: 11px; white-space: nowrap;" onclick="copyResumePath()">
+                📋 Copy Path (Ctrl+V)
+              </button>
             </div>
+            <p style="font-size: 11px; color: #64748b; margin-top: 4px;">
+              💡 <em>When the job portal asks to upload your resume, click Browse, then press <strong>Ctrl+V</strong> in the file name box and hit Enter!</em>
+            </p>
+          </div>
 
-            <!-- STANDARD SCREENING QUESTIONS -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-              <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px;">
-                💬 Standard Screening Questions
-              </div>
-              <div style="display: flex; flex-direction: column; gap: 6px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
-                  <span><strong>Notice Period:</strong> 30 Days (Negotiable for early release)</span>
-                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('30 Days (negotiable for earlier release/buyout)', 'Notice Period')">Copy</button>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
-                  <span><strong>Expected CTC:</strong> 6,00,000 INR (6 LPA)</span>
-                  <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('6,00,000 INR (6 LPA)', 'Expected CTC')">Copy</button>
-                </div>
-              </div>
+          <!-- CANDIDATE INFO 1-CLICK CLIPBOARD -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px;">
+              👤 Quick Copy Profile Details
             </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('Aksam Akbar', 'Name')">
+                <span>Full Name</span> <strong>Aksam Akbar 📋</strong>
+              </button>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('aksamakbar@gmail.com', 'Email')">
+                <span>Email</span> <strong>aksamakbar@... 📋</strong>
+              </button>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('+91 9539060872', 'Phone')">
+                <span>Phone</span> <strong>+91 9539060872 📋</strong>
+              </button>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('https://linkedin.com/in/aksamakbar', 'LinkedIn')">
+                <span>LinkedIn</span> <strong>LinkedIn URL 📋</strong>
+              </button>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between;" onclick="copyField('https://github.com/aksamakbar', 'GitHub')">
+                <span>GitHub</span> <strong>GitHub URL 📋</strong>
+              </button>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 5px 8px; justify-content: space-between; border-color: #93c5fd; background: #eff6ff;" onclick="copyJobLocation()">
+                <span style="color: #1e40af; font-weight: 600;">Job Location</span> <strong id="quick-copy-job-loc" style="color: #1e40af;">Bengaluru 📋</strong>
+              </button>
+            </div>
+          </div>
 
-            <!-- TAILORED JOB RESPONSIBILITIES FOR APPLICATION FORMS -->
-            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <div style="font-size: 11px; font-weight: 700; color: #166534; text-transform: uppercase;">
-                  💼 Tailored Past Job Responsibilities (For Application Forms)
-                </div>
-                <span style="font-size: 10px; color: #15803d; font-weight: 700; background: #dcfce7; padding: 1px 6px; border-radius: 3px;">JD-Aligned</span>
+          <!-- STANDARD SCREENING QUESTIONS -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; margin-bottom: 8px;">
+              💬 Standard Screening Questions
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
+                <span><strong>Notice Period:</strong> 30 Days (Negotiable for early release)</span>
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('30 Days (negotiable for earlier release/buyout)', 'Notice Period')">Copy</button>
               </div>
-              <p style="font-size: 11px; color: #166534; margin-bottom: 8px;">
-                When the application portal asks <em>"Describe your duties and responsibilities in your previous / current position"</em>, copy these tailored responsibilities aligned to this opening:
-              </p>
-
-              <!-- RESPONSIBILITY 1: JUNIOR PRICING ANALYST -->
-              <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; margin-bottom: 10px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                  <strong style="font-size: 11.5px; color: #0f172a;">📌 Junior Pricing Analyst Role (Allianze Infosoft)</strong>
-                  <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pricing')">
-                    📋 Copy Duties
-                  </button>
-                </div>
-                <textarea id="tailored-resp-pricing" readonly style="width: 100%; height: 95px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
-              </div>
-
-              <!-- RESPONSIBILITY 2: PROJECT MANAGEMENT ASSOCIATE -->
-              <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                  <strong style="font-size: 11.5px; color: #0f172a;">📌 Project Management Associate Role (Global Survey)</strong>
-                  <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pm')">
-                    📋 Copy Duties
-                  </button>
-                </div>
-                <textarea id="tailored-resp-pm" readonly style="width: 100%; height: 95px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
+              <div style="display: flex; justify-content: space-between; align-items: center; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0; font-size: 12px;">
+                <span><strong>Expected CTC:</strong> 6,00,000 INR (6 LPA)</span>
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 10px;" onclick="copyField('6,00,000 INR (6 LPA)', 'Expected CTC')">Copy</button>
               </div>
             </div>
+          </div>
 
-            <!-- ASK COPILOT CUSTOM QUESTION -->
-            <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <div style="font-size: 11px; font-weight: 700; color: #92400e; text-transform: uppercase;">
-                  🤖 AI Portal Question Solver
-                </div>
-                <span style="font-size: 10.5px; color: #b45309; font-weight: 600;">Tailored to Aksam's Profile &amp; Role</span>
+          <!-- SUMMARIZED TAILOR-MADE JOB RESPONSIBILITIES -->
+          <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="font-size: 11px; font-weight: 700; color: #166534; text-transform: uppercase;">
+                💼 Summarized Past Responsibilities (Tailor-Made for this JD)
               </div>
-              <p style="font-size: 11.5px; color: #78350f; margin-bottom: 8px;">
-                Paste any screening/interview question asked by the employer portal to generate a tailored answer:
-              </p>
+              <span style="font-size: 10px; color: #15803d; font-weight: 700; background: #dcfce7; padding: 1px 6px; border-radius: 3px;">Concise &amp; JD-Aligned</span>
+            </div>
+            <p style="font-size: 11px; color: #166534; margin-bottom: 8px;">
+              Concise summaries synthesized to highlight this opening's key requirements. Paste directly into portal work history fields:
+            </p>
 
-              <div style="display: flex; gap: 6px; margin-bottom: 8px;">
-                <input type="text" id="copilot-custom-question" placeholder="e.g. Describe your experience with SQL and Power BI dashboards..." style="flex: 1; font-size: 12px; padding: 7px 10px; border: 1px solid #d97706; border-radius: 4px; outline: none;">
-                <button class="btn btn-primary" style="background: #d97706; border-color: #d97706; padding: 6px 12px; font-size: 11px; white-space: nowrap;" onclick="askCopilotQuestion()">
-                  ⚡ Solve
-                </button>
-                <button class="btn btn-outline" style="background: #f0fdf4; border-color: #86efac; color: #166534; padding: 6px 10px; font-size: 11px; white-space: nowrap; font-weight: 700;" onclick="solveQuestionInChatGPT()" title="Open ChatGPT with this exact question + candidate profile pre-filled">
-                  🤖 In ChatGPT
+            <!-- RESPONSIBILITY 1: JUNIOR PRICING ANALYST -->
+            <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px; margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong style="font-size: 11.5px; color: #0f172a;">📌 Junior Pricing Analyst Role (Allianze Infosoft)</strong>
+                <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pricing')">
+                  📋 Copy Summary
                 </button>
               </div>
+              <textarea id="tailored-resp-pricing" readonly style="width: 100%; height: 75px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
+            </div>
 
-              <textarea id="copilot-answer-output" readonly placeholder="Tailored answer will appear here..." style="width: 100%; height: 85px; font-size: 11.5px; padding: 8px 10px; border: 1px solid #fde68a; border-radius: 4px; background: white; resize: vertical; display: none; margin-bottom: 6px; line-height: 1.4; color: #1e293b;"></textarea>
-              <button id="copilot-copy-answer-btn" class="btn btn-outline" style="display: none; font-size: 11px; padding: 4px 10px; font-weight: 700; color: #166534;" onclick="copyCopilotAnswer()">
-                📋 Copy Generated Answer
+            <!-- RESPONSIBILITY 2: PROJECT MANAGEMENT ASSOCIATE -->
+            <div style="background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px 10px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong style="font-size: 11.5px; color: #0f172a;">📌 Project Management Associate Role (Global Survey)</strong>
+                <button class="btn btn-outline" style="font-size: 10.5px; padding: 3px 8px; font-weight: 700; color: #166534;" onclick="copyTailoredResponsibilities('pm')">
+                  📋 Copy Summary
+                </button>
+              </div>
+              <textarea id="tailored-resp-pm" readonly style="width: 100%; height: 75px; font-size: 11px; padding: 6px 8px; border: 1px solid #e2e8f0; border-radius: 4px; background: #f8fafc; font-family: inherit; resize: vertical; line-height: 1.45; color: #334155;"></textarea>
+            </div>
+          </div>
+
+          <!-- ASK COPILOT CUSTOM QUESTION -->
+          <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="font-size: 11px; font-weight: 700; color: #92400e; text-transform: uppercase;">
+                🤖 AI Portal Question Solver
+              </div>
+              <span style="font-size: 10.5px; color: #b45309; font-weight: 600;">Tailored to Aksam's Profile &amp; Role</span>
+            </div>
+            <p style="font-size: 11.5px; color: #78350f; margin-bottom: 8px;">
+              Paste any screening/interview question asked by the employer portal to generate a tailored answer:
+            </p>
+
+            <div style="display: flex; gap: 6px; margin-bottom: 8px;">
+              <input type="text" id="copilot-custom-question" placeholder="e.g. Describe your experience with SQL and Power BI dashboards..." style="flex: 1; font-size: 12px; padding: 7px 10px; border: 1px solid #d97706; border-radius: 4px; outline: none;">
+              <button class="btn btn-primary" style="background: #d97706; border-color: #d97706; padding: 6px 12px; font-size: 11px; white-space: nowrap;" onclick="askCopilotQuestion()">
+                ⚡ Solve
+              </button>
+              <button class="btn btn-outline" style="background: #f0fdf4; border-color: #86efac; color: #166534; padding: 6px 10px; font-size: 11px; white-space: nowrap; font-weight: 700;" onclick="solveQuestionInChatGPT()" title="Open ChatGPT with this exact question + candidate profile pre-filled">
+                🤖 In ChatGPT
               </button>
             </div>
 
-            <!-- TAILORED COVER LETTER / EMAIL -->
-            <div>
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <h4 style="font-size: 12px; font-weight: 700; color: #0f172a;">Tailored Cover Letter / Cold Email:</h4>
-                <button class="btn btn-outline" style="font-size: 11px; padding: 4px 8px;" onclick="copyCoverLetter()">📋 Copy Letter</button>
-              </div>
-              <textarea id="modal-cover-letter" style="width: 100%; height: 120px; font-size: 11.5px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; resize: vertical; margin-bottom: 8px;"></textarea>
-            </div>
-
+            <textarea id="copilot-answer-output" readonly placeholder="Tailored answer will appear here..." style="width: 100%; height: 85px; font-size: 11.5px; padding: 8px 10px; border: 1px solid #fde68a; border-radius: 4px; background: white; resize: vertical; display: none; margin-bottom: 6px; line-height: 1.4; color: #1e293b;"></textarea>
+            <button id="copilot-copy-answer-btn" class="btn btn-outline" style="display: none; font-size: 11px; padding: 4px 10px; font-weight: 700; color: #166534;" onclick="copyCopilotAnswer()">
+              📋 Copy Generated Answer
+            </button>
           </div>
 
-          <!-- PANE SUB-VIEW 2: JOB DESCRIPTION & ATS METRICS -->
-          <div id="modal-subview-jd" style="display: none;">
-            <div style="display: flex; gap: 12px; margin-bottom: 18px;">
-              <div style="flex: 1; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; font-weight: 600; color: #64748b;">BASELINE ATS SCORE</div>
-                <div id="modal-baseline-score" style="font-size: 18px; font-weight: 800; color: #f59e0b;">--</div>
-              </div>
-              <div style="flex: 1; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 12px; text-align: center;">
-                <div style="font-size: 11px; font-weight: 600; color: #065f46;">TAILORED ATS SCORE</div>
-                <div id="modal-tailored-score" style="font-size: 20px; font-weight: 800; color: #10b981;">--</div>
-              </div>
+          <!-- TAILORED COVER LETTER / EMAIL -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <h4 style="font-size: 12px; font-weight: 700; color: #0f172a;">Tailored Cover Letter / Cold Email:</h4>
+              <button class="btn btn-outline" style="font-size: 11px; padding: 4px 8px;" onclick="copyCoverLetter()">📋 Copy Letter</button>
             </div>
-
-            <div id="modal-keywords-box" style="margin-bottom: 20px; background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;"></div>
-
-            <h4 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 8px;">Job Description:</h4>
-            <div id="modal-job-desc" style="font-size: 13px; color: #334155; line-height: 1.5; white-space: pre-line;"></div>
+            <textarea id="modal-cover-letter" style="width: 100%; height: 120px; font-size: 11.5px; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit; resize: vertical; margin-bottom: 8px;"></textarea>
           </div>
 
         </div>
 
-        <!-- RIGHT PANE: LIVE RESUME PREVIEW -->
+        <!-- RIGHT PANE: ATS KEYWORD GAP ANALYZER & JOB DESCRIPTION -->
         <div class="pane pane-right">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-              <strong style="font-size: 13px; color: #0f172a;">Tailored ATS Resume (90%+ Match)</strong>
-              <!-- CV VIEW TOGGLE: CLEAN vs HIGHLIGHT CHANGES -->
-              <div class="cv-view-toggle">
-                <button class="cv-mode-btn" id="btn-cv-clean" onclick="setResumeViewMode('clean')" title="Clean ATS layout as submitted to recruiters">
-                  📄 Standard View
-                </button>
-                <button class="cv-mode-btn active" id="btn-cv-highlight" onclick="setResumeViewMode('highlight')" title="Visually highlight tailored keywords, headline, and company summary">
-                  ✨ Highlight Changes
-                </button>
-              </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h3 style="font-size: 14.5px; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 6px;">
+                <span>🎯</span> ATS Keyword Gap &amp; Match Booster
+              </h3>
+              <p style="font-size: 11px; color: #64748b; margin: 2px 0 0 0;">
+                Profile alignment analysis to maximize your recruiter search rank.
+              </p>
             </div>
             <div style="display: flex; gap: 8px;">
-              <a id="modal-view-cv" href="#" target="_blank" class="btn btn-outline" style="font-size: 12px; padding: 5px 12px;">
-                🔗 Open in New Tab
-              </a>
-              <a id="modal-download-cv" href="#" target="_blank" class="btn btn-primary" style="font-size: 12px; padding: 5px 12px; background: #2563eb;">
-                📥 Download PDF
+              <a id="modal-download-cv" href="resumes/Aksam_Akbar_Resume.pdf" target="_blank" class="btn btn-primary" style="font-size: 11.5px; padding: 6px 12px; background: #2563eb;">
+                📥 Download Master CV
               </a>
             </div>
           </div>
 
-          <!-- TAILORING SUMMARY BANNER -->
-          <div id="tailored-changes-banner" class="tailored-changes-banner">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-              <strong style="color: #166534; font-size: 12px;">✨ Live Tailored Adaptations for this Opening:</strong>
-              <span id="tailored-score-pill" style="font-size: 11px; font-weight: 800; background: #dcfce7; color: #166534; padding: 2px 6px; border-radius: 4px;">ATS Match: 95%</span>
+          <!-- SCORE BREAKDOWN CARDS -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+            <div style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 10px; text-align: center;">
+              <div style="font-size: 10.5px; font-weight: 700; color: #166534; text-transform: uppercase;">
+                Profile ATS Match
+              </div>
+              <div id="right-pane-ats-score" style="font-size: 24px; font-weight: 900; color: #15803d; margin: 2px 0;">
+                92%
+              </div>
+              <div id="right-pane-match-label" style="font-size: 10.5px; color: #166534; font-weight: 600;">
+                ✓ Strong Alignment
+              </div>
             </div>
-            <div id="tailored-changes-list" style="font-size: 11.5px; color: #334155; line-height: 1.45;">
-              <!-- Dynamically populated -->
+            <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 10px; text-align: center;">
+              <div style="font-size: 10.5px; font-weight: 700; color: #92400e; text-transform: uppercase;">
+                Missing Keyword Gaps
+              </div>
+              <div id="right-pane-gap-count" style="font-size: 24px; font-weight: 900; color: #b45309; margin: 2px 0;">
+                2 Gaps
+              </div>
+              <div style="font-size: 10.5px; color: #92400e; font-weight: 600;">
+                Add in portal answers for 98%+
+              </div>
             </div>
           </div>
 
-          <iframe id="resume-preview-frame" class="resume-iframe"></iframe>
+          <!-- SECTION 1: WHICHEVER IS GOOD (MATCHED SKILLS) -->
+          <div style="background: white; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="background: #dcfce7; color: #166534; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">✓</span>
+                <strong style="font-size: 12.5px; color: #166534;">Whichever is Good (Matched Profile Strengths)</strong>
+              </div>
+              <span id="good-skills-count" style="font-size: 10.5px; font-weight: 800; background: #dcfce7; color: #166534; padding: 1px 6px; border-radius: 4px;">5 Matched</span>
+            </div>
+            <p style="font-size: 11px; color: #475569; margin-bottom: 8px; line-height: 1.4;">
+              These keywords from the job description are already present in your resume, past experience, and projects:
+            </p>
+            <div id="good-keywords-list" style="display: flex; flex-wrap: wrap; gap: 5px;">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- SECTION 2: WHICHEVER NEED TO IMPROVE OR ADD (KEYWORD GAPS) -->
+          <div style="background: white; border: 1px solid #fed7aa; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <span style="background: #ffedd5; color: #c2410c; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold;">!</span>
+                <strong style="font-size: 12.5px; color: #9a3412;">Whichever Need to Improve or Add (Keyword Gaps)</strong>
+              </div>
+              <span id="gap-skills-count" style="font-size: 10.5px; font-weight: 800; background: #ffedd5; color: #c2410c; padding: 1px 6px; border-radius: 4px;">2 Gaps</span>
+            </div>
+            <p style="font-size: 11px; color: #475569; margin-bottom: 8px; line-height: 1.4;">
+              These keywords are requested in the job description. <strong>Incorporate them into your portal answers, screening inputs, or interview notes to maximize your match score:</strong>
+            </p>
+            <div id="gap-keywords-list" style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px;">
+              <!-- Populated dynamically -->
+            </div>
+            <div style="background: #fff7ed; border-left: 3px solid #f97316; padding: 6px 10px; border-radius: 4px; font-size: 11px; color: #7c2d12; line-height: 1.4;">
+              💡 <strong>Action Tip:</strong> When submitting on the employer portal, weave these missing terms into the custom question solver on the left to pass all ATS keyword filters.
+            </div>
+          </div>
+
+          <!-- SECTION 3: FULL EMPLOYER JOB DESCRIPTION -->
+          <div style="background: white; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 12.5px; color: #0f172a;">📋 Employer Job Description &amp; Requirements:</strong>
+              <span style="font-size: 10.5px; color: #64748b;">Keywords highlighted below</span>
+            </div>
+            <div id="right-pane-jd-text" style="font-size: 12px; color: #334155; line-height: 1.55; white-space: pre-line; max-height: 320px; overflow-y: auto; padding: 10px; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0;">
+              <!-- JD populated dynamically with highlighted keywords -->
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -443,6 +471,6 @@
   <!-- FLOATING TOAST NOTIFICATION -->
   <div id="app-toast" class="app-toast"></div>
 
-  <script src="static/js/app.js?v=2.4"></script>
+  <script src="static/js/app.js?v=2.5"></script>
 </body>
 </html>
