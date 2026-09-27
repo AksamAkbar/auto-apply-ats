@@ -7,7 +7,7 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>AutoApply ATS | Automated Job Search & 90%+ Resume Tailoring</title>
-  <link rel="stylesheet" href="static/css/style.css?v=3.3">
+  <link rel="stylesheet" href="static/css/style.css?v=3.4">
 </head>
 <body>
 
@@ -37,7 +37,7 @@
       <!-- DAILY QUOTA METER -->
       <div class="quota-meter-wrapper">
         <div>
-          <div class="quota-label">Daily Limit (Max 25)</div>
+          <div class="quota-label">Daily Limit (Max 15)</div>
           <div class="quota-count" id="quota-text">0 / 15 Applied Today</div>
         </div>
         <div class="quota-progress">
@@ -120,11 +120,11 @@
         </div>
 
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <a class="btn btn-outline" id="preview-digest-btn" href="/api/digests/preview" target="_blank" title="Preview the 24-job daily email digest in your browser">
+          <a class="btn btn-outline" id="preview-digest-btn" href="/api/digests/preview" target="_blank" title="Preview the 15-job daily email digest in your browser">
             📄 Preview 9 AM Digest
           </a>
           <button class="btn btn-outline" id="send-digest-btn" onclick="sendDailyDigestEmail()" title="Send email digest to aksamakbar@gmail.com">
-            📧 Send Daily 24 Digest
+            📧 Send Daily 15 Digest
           </button>
           <button class="btn btn-primary" id="scan-jobs-btn">
             🔍 Scan & Auto-Tailor Openings (&le;7d, 0-2 Yrs)
@@ -483,6 +483,6 @@
   <!-- FLOATING TOAST NOTIFICATION -->
   <div id="app-toast" class="app-toast"></div>
 
-  <script src="static/js/app.js?v=3.3"></script>
+  <script src="static/js/app.js?v=3.4"></script>
 </body>
 </html>

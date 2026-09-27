@@ -3,8 +3,8 @@
   "quota": {
     "allowed": true,
     "current_count": 0,
-    "daily_cap": 25,
-    "remaining": 25
+    "daily_cap": 15,
+    "remaining": 15
   },
   "metrics": {
     "ready_for_review": 42,

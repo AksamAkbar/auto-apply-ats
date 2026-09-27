@@ -37,8 +37,8 @@ def run_daily_cycle(recipient: Optional[str] = None):
     new_jobs = search_and_process_jobs(max_results=50)
     print(f"      Scanned, dynamically rotated, and evaluated {len(new_jobs)} openings (Fresher-2 YOE, 90%+ ATS).")
 
-    # 3. Compile top 24 daily openings and generate digest
-    print("[3/4] Compiling top 24 openings sorted by priority (Bengaluru -> Kerala -> Metros -> GCC)...")
+    # 3. Compile top 15 daily openings and generate digest
+    print("[3/4] Compiling top 15 openings sorted by priority (Bengaluru -> Kerala -> Metros -> GCC)...")
     top_jobs = get_top_24_daily_jobs()
     print(f"      Selected top {len(top_jobs)} prioritized openings.")
     
@@ -54,7 +54,7 @@ def run_daily_cycle(recipient: Optional[str] = None):
     export_static_site()
 
     print("=" * 65)
-    print("[SUCCESS] Daily cycle complete! All 24 curated openings are refreshed.")
+    print("[SUCCESS] Daily cycle complete! All 15 curated openings are refreshed.")
     print("=" * 65)
     return digest_result
 

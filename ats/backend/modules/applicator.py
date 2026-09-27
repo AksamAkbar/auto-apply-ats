@@ -126,7 +126,7 @@ def launch_copilot_application(job_id: str) -> Dict[str, Any]:
     if not quota["allowed"]:
         return {
             "success": False,
-            "message": f"Daily application quota reached ({DAILY_APPLICATION_CAP}/15 applied today). Please review your current applications and continue tomorrow!",
+            "message": f"Daily application quota reached ({DAILY_APPLICATION_CAP}/{DAILY_APPLICATION_CAP} applied today). Please review your current applications and continue tomorrow!",
             "quota": quota
         }
         
@@ -178,7 +178,7 @@ def confirm_application_submission(job_id: str, notes: str = "Confirmed submitte
     if not quota["allowed"]:
         return {
             "success": False,
-            "message": f"Daily application quota reached ({DAILY_APPLICATION_CAP}/15 applied today).",
+            "message": f"Daily application quota reached ({DAILY_APPLICATION_CAP}/{DAILY_APPLICATION_CAP} applied today).",
             "quota": quota
         }
         

@@ -12,19 +12,19 @@ from ..config import (
 )
 from ..database import get_all_jobs
 
-def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
+def get_top_daily_jobs(limit: int = 15) -> List[Dict[str, Any]]:
     """
-    Retrieve exactly 24 top-priority relevant jobs for the daily cycle.
+    Retrieve top-priority relevant jobs for the daily cycle (default 15 roles).
     Guarantees balanced representation across all 4 target priorities:
-      - Priority 1: Bengaluru (7 roles)
-      - Priority 2: Kochi & Kerala (6 roles)
-      - Priority 3: Metro Hubs (6 roles)
-      - Priority 4: GCC Countries (5 roles)
-      Total = 24 roles.
+      - Priority 1: Bengaluru (5 roles)
+      - Priority 2: Kochi & Kerala (4 roles)
+      - Priority 3: Metro Hubs (3 roles)
+      - Priority 4: GCC Countries (3 roles)
+      Total = 15 roles.
     Within each priority, jobs are ordered by freshness (days_ago: 0 first) and tailored ATS score.
     """
     all_jobs = get_all_jobs(status_filter="ready_for_review")
-    if not all_jobs or len(all_jobs) < 24:
+    if not all_jobs or len(all_jobs) < limit:
         all_jobs = [j for j in get_all_jobs() if j.get("status") != "applied"]
     if not all_jobs:
         all_jobs = get_all_jobs()
@@ -42,8 +42,18 @@ def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
     for prio in tiers:
         tiers[prio].sort(key=lambda x: (int(x.get("days_ago", 99)), -float(x.get("tailored_score", 0.0))))
 
-    # Balanced allocation targets: 7 + 6 + 6 + 5 = 24
-    targets = {1: 7, 2: 6, 3: 6, 4: 5}
+    # Balanced allocation targets:
+    if limit == 15:
+        targets = {1: 5, 2: 4, 3: 3, 4: 3}
+    elif limit == 24:
+        targets = {1: 7, 2: 6, 3: 6, 4: 5}
+    else:
+        p1 = max(1, int(limit * 0.35))
+        p2 = max(1, int(limit * 0.25))
+        p3 = max(1, int(limit * 0.20))
+        p4 = max(1, limit - (p1 + p2 + p3))
+        targets = {1: p1, 2: p2, 3: p3, 4: p4}
+
     selected_jobs: List[Dict[str, Any]] = []
     pool_left: List[Dict[str, Any]] = []
 
@@ -53,14 +63,14 @@ def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
         selected_jobs.extend(tier_list[:take_count])
         pool_left.extend(tier_list[take_count:])
 
-    # If we still have fewer than 24, fill from leftover pool
-    if len(selected_jobs) < 24 and pool_left:
+    # If we still have fewer than limit, fill from leftover pool
+    if len(selected_jobs) < limit and pool_left:
         pool_left.sort(key=lambda x: (
             x.get("location_priority", 5),
             int(x.get("days_ago", 99)),
             -float(x.get("tailored_score", 0.0))
         ))
-        needed = 24 - len(selected_jobs)
+        needed = limit - len(selected_jobs)
         selected_jobs.extend(pool_left[:needed])
 
     # Final sort preserving location priority order for the digest
@@ -69,7 +79,10 @@ def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
         int(x.get("days_ago", 99)),
         -float(x.get("tailored_score", 0.0))
     ))
-    return selected_jobs[:24]
+    return selected_jobs[:limit]
+
+def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
+    return get_top_daily_jobs(limit=15)
 
 def generate_daily_digest_html(jobs: List[Dict[str, Any]], recipient: str = DEFAULT_NOTIFICATION_EMAIL) -> str:
     today_str = datetime.now().strftime("%A, %d %B %Y")
@@ -153,7 +166,7 @@ def generate_daily_digest_html(jobs: List[Dict[str, Any]], recipient: str = DEFA
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily 24 Job Digest — Aksam Akbar</title>
+        <title>Daily Job Digest ({len(jobs)} Openings) — Aksam Akbar</title>
     </head>
     <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f1f5f9; margin: 0; padding: 24px; color: #1e293b;">
         <div style="max-width: 680px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
@@ -164,7 +177,7 @@ def generate_daily_digest_html(jobs: List[Dict[str, Any]], recipient: str = DEFA
                     Daily Job Digest & Reminder (9:00 AM)
                 </div>
                 <h1 style="margin: 0 0 8px 0; font-size: 22px; font-weight: 800;">
-                    🎯 24 Curated Openings for Aksam Akbar
+                    🎯 {len(jobs)} Curated Openings for Aksam Akbar
                 </h1>
                 <div style="font-size: 13px; color: #bfdbfe;">
                     📅 {today_str} &nbsp;|&nbsp; 90%+ ATS Score &nbsp;|&nbsp; Fresher to 2 YOE
@@ -181,7 +194,7 @@ def generate_daily_digest_html(jobs: List[Dict[str, Any]], recipient: str = DEFA
             <!-- CONTENT -->
             <div style="padding: 24px;">
                 <p style="font-size: 14px; line-height: 1.5; color: #334155; margin-top: 0; margin-bottom: 20px;">
-                    Good morning Aksam! Below are your <strong>24 verified openings</strong> curated across all platforms (Indeed, LinkedIn, Greenhouse, and Company Career Portals). Each role matches your 0-2 year experience level, MBA/B.Com background, and is organized by your location priorities.
+                    Good morning Aksam! Below are your <strong>{len(jobs)} verified openings</strong> curated across all platforms (Indeed, LinkedIn, Greenhouse, and Company Career Portals). Each role matches your 0-2 year experience level, MBA/B.Com background, and is organized by your location priorities.
                 </p>
 
                 {''.join(html_sections)}
@@ -212,7 +225,7 @@ def generate_daily_digest_text(jobs: List[Dict[str, Any]], recipient: str = DEFA
     today_str = datetime.now().strftime("%A, %d %B %Y")
     lines = [
         f"===========================================================",
-        f"🎯 DAILY 24 JOB DIGEST — AKSAM AKBAR ({today_str})",
+        f"🎯 DAILY {len(jobs)} JOB DIGEST — AKSAM AKBAR ({today_str})",
         f"===========================================================",
         f"Recipient: {recipient}",
         f"Expected CTC: 6,00,000 INR (6 LPA) | Notice Period: 30 Days",

@@ -77,9 +77,9 @@ async function loadStatus() {
     
     // Merge with localStorage for applied counts
     const localApplied = JSON.parse(localStorage.getItem('aksam_applied_jobs') || '[]');
-    const quota = data.quota || { current_count: localApplied.length, daily_cap: 25 };
+    const quota = data.quota || { current_count: localApplied.length, daily_cap: 15 };
     const count = Math.max(quota.current_count, localApplied.length);
-    const cap = quota.daily_cap || 25;
+    const cap = quota.daily_cap || 15;
     const pct = Math.min(100, Math.round((count / cap) * 100));
 
     document.getElementById('quota-text').textContent = `${count} / ${cap} Applied Today`;
