@@ -7,7 +7,14 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>AutoApply ATS | Automated Job Search & 90%+ Resume Tailoring</title>
-  <link rel="stylesheet" href="static/css/style.css?v=3.4">
+  <link rel="stylesheet" href="static/css/style.css?v=3.5">
+  <!-- PDF.js CDN for In-Browser Resume Parsing (Works 100% on GitHub Pages & Local) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
 </head>
 <body>
 
@@ -18,7 +25,7 @@
         <div class="brand-badge">ATS 90+</div>
         <div>
           <div class="brand-title">AutoApply Intelligence Platform</div>
-          <div class="brand-candidate">Candidate: <strong>Aksam Akbar</strong> (Business & Data Analyst)</div>
+          <div class="brand-candidate" id="candidate-display">Candidate: <strong>Aksam Akbar</strong> (Business &amp; Data Analyst)</div>
         </div>
       </div>
 
@@ -32,6 +39,17 @@
           </div>
           <div class="cycle-sub">Auto-Refreshed &amp; Rotated Daily</div>
         </div>
+      </div>
+
+      <!-- RESUME UPLOAD & PROFILE SWITCH -->
+      <div class="nav-actions">
+        <button class="btn btn-upload-nav" id="upload-resume-nav-btn" onclick="openResumeUploadModal()" title="Upload your updated CV or test with a friend's resume">
+          <span class="upload-icon">📤</span>
+          <span class="upload-text">Upload Resume</span>
+        </button>
+        <button class="btn btn-reset-nav" id="reset-profile-nav-btn" onclick="resetToDefaultProfile()" title="Reset to Aksam Akbar's default profile" style="display: none;">
+          ↺ Reset Profile
+        </button>
       </div>
 
       <!-- DAILY QUOTA METER -->
@@ -480,9 +498,108 @@
     </div>
   </div>
 
+  <!-- RESUME UPLOAD & PROFILE SWITCH MODAL -->
+  <div class="modal-overlay" id="resume-upload-modal">
+    <div class="modal-dialog upload-modal-container">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">📤 Upload Resume &amp; Switch Profile</div>
+          <div class="modal-subtitle">Upload your updated CV or test with a friend's resume to calculate personalized ATS matches</div>
+        </div>
+        <button class="modal-close" onclick="closeResumeUploadModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" style="padding: 24px;">
+        
+        <!-- DUAL PURPOSE CALLOUT BANNER -->
+        <div class="upload-purpose-banner">
+          <div class="purpose-card">
+            <span class="purpose-icon">🔄</span>
+            <div>
+              <strong>1. Updated CV Mode</strong>
+              <p>Re-evaluate openings and refresh your scores with your latest experience and projects.</p>
+            </div>
+          </div>
+          <div class="purpose-card">
+            <span class="purpose-icon">👥</span>
+            <div>
+              <strong>2. Friend's CV Matcher</strong>
+              <p>Let a friend check how their specific skills match today's curated roles without any setup.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRAG AND DROP ZONE -->
+        <div class="resume-dropzone" id="resume-dropzone" onclick="document.getElementById('resume-file-input').click()">
+          <input type="file" id="resume-file-input" accept=".pdf,.txt,.docx,.json" style="display: none;" onchange="handleResumeFileSelect(event)">
+          <div class="dropzone-icon">📄</div>
+          <div class="dropzone-text"><strong>Click to browse</strong> or drag &amp; drop your resume here</div>
+          <div class="dropzone-sub">Supported formats: <strong>PDF (Auto-Parsed in Browser), TXT, JSON, DOCX</strong></div>
+          <div class="dropzone-hint">🔒 Runs 100% privately in your browser &bull; Works seamlessly on GitHub Pages</div>
+        </div>
+
+        <!-- OR PASTE TEXT TOGGLE -->
+        <div style="margin-top: 14px; text-align: center;">
+          <button type="button" class="btn-text-link" id="toggle-paste-btn" onclick="togglePasteArea()">
+            ✍️ Or paste resume text directly
+          </button>
+        </div>
+
+        <div id="paste-resume-area" style="display: none; margin-top: 12px;">
+          <textarea id="paste-resume-text" placeholder="Paste your resume / CV text here (Summary, Skills, Work Experience)..." rows="6" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 12px; font-size: 13px; font-family: inherit; resize: vertical; box-sizing: border-box;"></textarea>
+          <div style="margin-top: 8px; text-align: right;">
+            <button class="btn btn-outline" style="padding: 6px 14px; font-size: 12px;" onclick="parsePastedText()">Parse Pasted Text</button>
+          </div>
+        </div>
+
+        <!-- PARSING STATUS / SPINNER -->
+        <div id="upload-parsing-status" style="display: none; text-align: center; padding: 20px 0;">
+          <div class="spinner-blue"></div>
+          <div style="margin-top: 10px; font-weight: 600; color: #1e40af; font-size: 14px;" id="parsing-status-text">
+            Reading and extracting skills from resume...
+          </div>
+        </div>
+
+        <!-- PARSED PROFILE PREVIEW -->
+        <div id="parsed-profile-preview" style="display: none; margin-top: 18px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <div>
+              <div style="font-size: 11px; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.5px;">✓ Resume Parsed Successfully</div>
+              <h3 id="preview-candidate-name" style="margin: 4px 0 2px 0; font-size: 18px; font-weight: 800; color: #0f172a;">CANDIDATE NAME</h3>
+              <div id="preview-candidate-headline" style="font-size: 13px; color: #2563eb; font-weight: 600;">Data &amp; Business Analyst</div>
+            </div>
+            <span class="badge-pill-green">Ready to Match</span>
+          </div>
+
+          <div style="display: flex; gap: 16px; font-size: 12px; color: #475569; margin-bottom: 14px; flex-wrap: wrap;">
+            <div>📧 <span id="preview-candidate-email">email@example.com</span></div>
+            <div>📱 <span id="preview-candidate-phone">+91 0000000000</span></div>
+          </div>
+
+          <div style="margin-bottom: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 6px;">
+              Detected Skills (<span id="preview-skills-count">0</span>):
+            </div>
+            <div id="preview-skills-tags" style="display: flex; flex-wrap: wrap; gap: 6px; max-height: 120px; overflow-y: auto;">
+              <!-- Populated with skill pills -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeResumeUploadModal()">Cancel</button>
+        <button class="btn btn-primary" id="apply-parsed-profile-btn" style="display: none; padding: 10px 22px; font-size: 13px;" onclick="activateUploadedProfile()">
+          ✨ Apply Profile &amp; Re-Score All Openings
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- FLOATING TOAST NOTIFICATION -->
   <div id="app-toast" class="app-toast"></div>
 
-  <script src="static/js/app.js?v=3.4"></script>
+  <script src="static/js/app.js?v=3.5"></script>
 </body>
 </html>

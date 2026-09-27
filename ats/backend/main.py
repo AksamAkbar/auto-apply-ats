@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, UploadFile, File
+import json
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
@@ -181,6 +182,35 @@ def preview_latest_digest(recipient: Optional[str] = "aksamakbar@gmail.com"):
     jobs = get_top_24_daily_jobs()
     html_content = generate_daily_digest_html(jobs, recipient=recipient)
     return HTMLResponse(content=html_content, status_code=200)
+
+@app.post("/api/profile/upload")
+async def upload_candidate_resume(file: UploadFile = File(...)):
+    filename = file.filename or "uploaded_resume.pdf"
+    content = await file.read()
+    
+    extracted_text = ""
+    if filename.lower().endswith(".txt"):
+        extracted_text = content.decode("utf-8", errors="ignore")
+    elif filename.lower().endswith(".json"):
+        try:
+            profile_json = json.loads(content.decode("utf-8"))
+            return {"success": True, "profile": profile_json}
+        except Exception:
+            extracted_text = content.decode("utf-8", errors="ignore")
+    else:
+        try:
+            import pypdf, io
+            reader = pypdf.PdfReader(io.BytesIO(content))
+            extracted_text = "\n".join([page.extract_text() or "" for page in reader.pages])
+        except Exception:
+            extracted_text = content.decode("latin1", errors="ignore")
+
+    return {
+        "success": True,
+        "filename": filename,
+        "text_preview": extracted_text[:1000],
+        "message": "Resume uploaded successfully"
+    }
 
 # --- Static Frontend Serving ---
 if FRONTEND_DIR.exists():

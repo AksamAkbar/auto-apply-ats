@@ -1,12 +1,15 @@
 let currentJobs = [];
 let activeTab = 'review';
 let currentModalJob = null;
+let activeProfile = null;
+let parsedStagingProfile = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initApp();
 });
 
 async function initApp() {
+  loadActiveProfile();
   updateCycleDate();
   await loadStatus();
   await loadJobs();
@@ -47,6 +50,32 @@ function setupEventListeners() {
   if (roleFilter) roleFilter.addEventListener('change', renderFilteredJobs);
   if (locFilter) locFilter.addEventListener('change', renderFilteredJobs);
   if (freshFilter) freshFilter.addEventListener('change', renderFilteredJobs);
+
+  // Resume Upload Dropzone Drag-and-Drop
+  const dropzone = document.getElementById('resume-dropzone');
+  if (dropzone) {
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('dragover');
+      });
+    });
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const file = dt.files?.[0];
+      if (file) {
+        processResumeFile(file);
+      }
+    });
+  }
 }
 
 function switchTab(tabName) {
@@ -113,6 +142,10 @@ async function loadJobs() {
         j.status = 'applied';
       }
     });
+
+    if (activeProfile) {
+      reScoreJobsForProfile(activeProfile);
+    }
 
     renderFilteredJobs();
   } catch (err) {
@@ -184,6 +217,16 @@ function renderFilteredJobs() {
     return true;
   });
 
+  // Sort by priority and tailored/custom score
+  filtered.sort((a, b) => {
+    const prioA = a.location_priority || 5;
+    const prioB = b.location_priority || 5;
+    if (prioA !== prioB) return prioA - prioB;
+    const scoreA = a.custom_score !== undefined ? a.custom_score : (a.tailored_score || 0);
+    const scoreB = b.custom_score !== undefined ? b.custom_score : (b.tailored_score || 0);
+    return scoreB - scoreA;
+  });
+
   const container = document.getElementById(activeTab === 'review' ? 'jobs-grid' : 'tracker-grid');
   if (!container) return;
 
@@ -204,10 +247,11 @@ function renderFilteredJobs() {
 function createJobCardHTML(job) {
   const isApplied = job.status === 'applied';
   const baseline = job.baseline_score || 72;
-  const tailored = job.tailored_score || 93.5;
-  const matched = job.matched_keywords || [];
-  const missing = job.missing_keywords || [];
+  const tailored = job.custom_score !== undefined ? job.custom_score : (job.tailored_score || 93.5);
+  const matched = job.custom_matched !== undefined ? job.custom_matched : (job.matched_keywords || []);
+  const missing = job.custom_missing !== undefined ? job.custom_missing : (job.missing_keywords || []);
   const isHot = job.is_hot === 1 || (job.days_ago !== undefined && job.days_ago <= 1);
+  const scoreTag = activeProfile ? `Matched to ${escapeHTML(activeProfile.name.split(' ')[0])}` : 'ATS Match';
 
   const locLower = (job.location || '').toLowerCase();
   let prioTag = '';
@@ -228,6 +272,7 @@ function createJobCardHTML(job) {
   }
 
   const hotBadge = isHot ? '<span class="badge-hot">🔥 Hot Opening (&lt;24h)</span>' : '';
+  const profileEvalTag = activeProfile ? `<span class="meta-item" style="color: #2563eb; font-weight: 600;">👤 Evaluated for ${escapeHTML(activeProfile.name)}</span>` : '';
 
   return `
     <div class="job-card" id="card-${job.id}">
@@ -241,9 +286,9 @@ function createJobCardHTML(job) {
             <div class="job-title">${escapeHTML(job.title)}</div>
             <div class="job-company">${escapeHTML(job.company)}</div>
           </div>
-          <div class="ats-score-pill">
-            <span class="ats-score-val">${tailored}%</span>
-            <span class="ats-score-tag">ATS Match</span>
+          <div class="ats-score-pill" ${activeProfile ? 'style="background: #eef2ff; border-color: #c7d2fe;"' : ''}>
+            <span class="ats-score-val" ${activeProfile ? 'style="color: #3730a3;"' : ''}>${tailored}%</span>
+            <span class="ats-score-tag" ${activeProfile ? 'style="color: #4338ca;"' : ''}>${scoreTag}</span>
           </div>
         </div>
 
@@ -252,6 +297,7 @@ function createJobCardHTML(job) {
           <span class="meta-item">📅 ${escapeHTML(job.posted_date || 'Recent')}</span>
           <span class="meta-item">💼 ${escapeHTML(job.experience_req || '0-2 Yrs')}</span>
           <span class="meta-item">🔗 ${escapeHTML(job.source)}</span>
+          ${profileEvalTag}
         </div>
 
         <p class="job-desc-snippet">${escapeHTML(job.description)}</p>
@@ -568,7 +614,26 @@ function solveQuestionInChatGPT() {
 function generateClientCoverLetter(job) {
   const title = job.title || 'Analyst';
   const comp = job.company || 'Hiring Team';
-  const skills = (job.matched_keywords || ['SQL', 'Advanced Excel', 'Power BI']).slice(0, 4).join(', ');
+  const candidateName = activeProfile ? activeProfile.name : 'Aksam Akbar';
+  const candidateEmail = activeProfile ? activeProfile.email : 'aksamakbar@gmail.com';
+  const candidatePhone = activeProfile ? activeProfile.phone : '+91 9539060872';
+  const candidateHeadline = activeProfile ? activeProfile.title : 'Data & Business Analyst';
+  const skills = ((job.custom_matched || job.matched_keywords || ['SQL', 'Advanced Excel', 'Power BI'])).slice(0, 4).join(', ');
+
+  if (activeProfile) {
+    return `Dear Hiring Team at ${comp},
+
+I am writing to express my strong enthusiasm for the ${title} opening at ${comp}.
+
+As a ${candidateHeadline} with a strong foundation in ${skills}, I bring direct experience translating data requirements into impactful business solutions and automated reporting workflows.
+
+With proven proficiency in ${skills} and a commitment to data-driven decision making, I am eager to contribute to your team's success. I look forward to the opportunity to discuss how my skill set aligns with your objectives.
+
+Sincerely,
+${candidateName}
+${candidatePhone} | ${candidateEmail}`;
+  }
+
   return `Dear Hiring Team at ${comp},
 
 I am writing to express my strong enthusiasm for the ${title} opening at ${comp}.
@@ -1072,5 +1137,346 @@ async function sendDailyDigestEmail() {
     btn.innerHTML = originalText;
     btn.disabled = false;
   }
+}
+
+// ============================================================
+// RESUME UPLOAD & CUSTOM PROFILE INTELLIGENCE
+// ============================================================
+
+function loadActiveProfile() {
+  try {
+    const saved = localStorage.getItem('active_candidate_profile');
+    if (saved) {
+      activeProfile = JSON.parse(saved);
+      updateNavbarProfileDisplay();
+    }
+  } catch (e) {
+    console.error('Error loading saved profile:', e);
+  }
+}
+
+function updateNavbarProfileDisplay() {
+  const displayEl = document.getElementById('candidate-display');
+  const resetBtn = document.getElementById('reset-profile-nav-btn');
+  if (!displayEl) return;
+
+  if (activeProfile && activeProfile.name) {
+    displayEl.innerHTML = `Candidate: <strong>${escapeHTML(activeProfile.name)}</strong> <span class="custom-cv-badge">Custom CV</span>`;
+    if (resetBtn) resetBtn.style.display = 'inline-flex';
+  } else {
+    displayEl.innerHTML = `Candidate: <strong>Aksam Akbar</strong> (Business &amp; Data Analyst)`;
+    if (resetBtn) resetBtn.style.display = 'none';
+  }
+}
+
+function openResumeUploadModal() {
+  const modal = document.getElementById('resume-upload-modal');
+  if (modal) modal.classList.add('open');
+  
+  // Reset dropzone state
+  const statusDiv = document.getElementById('upload-parsing-status');
+  if (statusDiv) statusDiv.style.display = 'none';
+  const previewDiv = document.getElementById('parsed-profile-preview');
+  if (previewDiv) previewDiv.style.display = 'none';
+  const applyBtn = document.getElementById('apply-parsed-profile-btn');
+  if (applyBtn) applyBtn.style.display = 'none';
+  const pasteArea = document.getElementById('paste-resume-area');
+  if (pasteArea) pasteArea.style.display = 'none';
+  parsedStagingProfile = null;
+}
+
+function closeResumeUploadModal() {
+  const modal = document.getElementById('resume-upload-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function togglePasteArea() {
+  const pasteArea = document.getElementById('paste-resume-area');
+  if (!pasteArea) return;
+  const isHidden = pasteArea.style.display === 'none';
+  pasteArea.style.display = isHidden ? 'block' : 'none';
+  const toggleBtn = document.getElementById('toggle-paste-btn');
+  if (toggleBtn) {
+    toggleBtn.textContent = isHidden ? '⬆️ Hide paste box' : '✍️ Or paste resume text directly';
+  }
+}
+
+async function handleResumeFileSelect(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+  await processResumeFile(file);
+}
+
+async function processResumeFile(file) {
+  const statusDiv = document.getElementById('upload-parsing-status');
+  const statusText = document.getElementById('parsing-status-text');
+  const previewDiv = document.getElementById('parsed-profile-preview');
+  const applyBtn = document.getElementById('apply-parsed-profile-btn');
+
+  if (statusDiv) statusDiv.style.display = 'block';
+  if (statusText) statusText.textContent = `Reading ${file.name}...`;
+  if (previewDiv) previewDiv.style.display = 'none';
+  if (applyBtn) applyBtn.style.display = 'none';
+
+  try {
+    let rawText = '';
+    const nameLower = file.name.toLowerCase();
+
+    if (nameLower.endsWith('.pdf')) {
+      if (statusText) statusText.textContent = 'Parsing PDF text in browser...';
+      rawText = await extractTextFromPDF(file);
+    } else if (nameLower.endsWith('.json')) {
+      const jsonText = await file.text();
+      try {
+        const jsonData = JSON.parse(jsonText);
+        parsedStagingProfile = {
+          name: jsonData.name || file.name.replace(/\.[^/.]+$/, '').toUpperCase(),
+          email: jsonData.contact?.email || jsonData.email || '',
+          phone: jsonData.contact?.phone || jsonData.phone || '',
+          title: jsonData.title || 'Data & Business Analyst',
+          skills: jsonData.skills || ['SQL', 'Excel', 'Power BI'],
+          raw_text: jsonText.slice(0, 1000)
+        };
+        renderParsedProfilePreview(parsedStagingProfile);
+        if (statusDiv) statusDiv.style.display = 'none';
+        return;
+      } catch {
+        rawText = jsonText;
+      }
+    } else {
+      rawText = await file.text();
+    }
+
+    if (!rawText || rawText.trim().length < 30) {
+      throw new Error('Could not extract readable text from this file. Please paste your resume text directly.');
+    }
+
+    if (statusText) statusText.textContent = 'Extracting skills, contact info, and experience...';
+    parsedStagingProfile = parseResumeText(rawText, file.name);
+    renderParsedProfilePreview(parsedStagingProfile);
+
+  } catch (err) {
+    console.error('Error processing resume file:', err);
+    alert('Notice: ' + err.message + '\n\nYou can also paste your resume text directly into the box below.');
+    const pasteArea = document.getElementById('paste-resume-area');
+    if (pasteArea) pasteArea.style.display = 'block';
+  } finally {
+    if (statusDiv) statusDiv.style.display = 'none';
+  }
+}
+
+async function extractTextFromPDF(file) {
+  if (!window.pdfjsLib) {
+    throw new Error('PDF parsing library is still initializing. Please wait a moment or paste text.');
+  }
+  const arrayBuffer = await file.arrayBuffer();
+  const loadingTask = window.pdfjsLib.getDocument({ data: arrayBuffer });
+  const pdf = await loadingTask.promise;
+  let fullText = '';
+
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const textContent = await page.getTextContent();
+    const pageStrings = textContent.items.map(item => item.str);
+    fullText += pageStrings.join(' ') + '\n';
+  }
+  return fullText;
+}
+
+function parsePastedText() {
+  const textarea = document.getElementById('paste-resume-text');
+  const text = textarea?.value?.trim();
+  if (!text || text.length < 30) {
+    alert('Please paste at least a few lines of resume text containing skills and experience.');
+    return;
+  }
+  parsedStagingProfile = parseResumeText(text, 'Pasted_Resume');
+  renderParsedProfilePreview(parsedStagingProfile);
+}
+
+function parseResumeText(text, filename = '') {
+  // 1. Email extraction
+  const emailMatch = text.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
+  const email = emailMatch ? emailMatch[0] : '';
+
+  // 2. Phone extraction
+  const phoneMatch = text.match(/(?:\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}|\+?91[\s-]?\d{10}|\b\d{10}\b/);
+  const phone = phoneMatch ? phoneMatch[0] : '';
+
+  // 3. Name extraction: take first clean line or filename
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+  let name = '';
+  for (const line of lines.slice(0, 6)) {
+    const lower = line.toLowerCase();
+    if (lower.includes('resume') || lower.includes('curriculum') || lower.includes('cv') || lower.includes('@') || lower.includes('http') || /\d{5,}/.test(line)) {
+      continue;
+    }
+    const cleaned = line.replace(/[^a-zA-Z\s]/g, '').trim();
+    const words = cleaned.split(/\s+/).filter(Boolean);
+    if (words.length >= 2 && words.length <= 4 && cleaned.length >= 4 && cleaned.length <= 35) {
+      name = cleaned;
+      break;
+    }
+  }
+
+  if (!name) {
+    if (filename && filename !== 'Pasted_Resume') {
+      name = filename.replace(/\.[^/.]+$/, '').replace(/[_-]/g, ' ').replace(/resume|cv/gi, '').trim().toUpperCase();
+    }
+    if (!name && email) {
+      name = email.split('@')[0].replace(/[._]/g, ' ').toUpperCase();
+    }
+    if (!name) name = 'CANDIDATE';
+  }
+
+  // 4. Skills extraction against comprehensive dictionary
+  const skillKeywords = [
+    // Core Tech & Databases
+    "SQL", "MySQL", "PostgreSQL", "MS SQL Server", "Oracle", "MongoDB", "NoSQL", "Snowflake", "BigQuery", "Redshift",
+    // Analytics & BI
+    "Power BI", "Tableau", "Looker", "Qlik", "Excel", "Advanced Excel", "VLOOKUP", "Pivot Tables", "Macros", "VBA",
+    // Programming & Science
+    "Python", "R", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit-learn", "Machine Learning", "Statistics", "A/B Testing",
+    // Business & Process
+    "Business Analysis", "Requirements Gathering", "Agile", "Scrum", "Jira", "Confluence", "SDLC", "User Stories",
+    // Pricing & Finance
+    "Pricing", "Pricing Strategy", "Revenue Management", "Margin Optimization", "Financial Modeling", "Variance Analysis", "Forecasting",
+    // Operations & Reporting
+    "MIS Reporting", "KPI Tracking", "Process Optimization", "Operations", "Root Cause Analysis", "ETL", "Data Warehousing", "Data Modeling",
+    // General & Soft
+    "Communication", "Stakeholder Management", "Problem Solving", "Data Visualization", "Data Cleansing", "Git"
+  ];
+
+  const matchedSkills = [];
+  const lowerText = text.toLowerCase();
+  for (const skill of skillKeywords) {
+    const escaped = skill.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b${escaped}\\b`, 'i');
+    if (regex.test(text) || lowerText.includes(skill.toLowerCase())) {
+      if (!matchedSkills.includes(skill)) {
+        matchedSkills.push(skill);
+      }
+    }
+  }
+
+  // 5. Detect headline
+  let title = "Data & Business Analyst";
+  if (lowerText.includes("pricing") || lowerText.includes("revenue")) {
+    title = "Pricing & Revenue Analyst";
+  } else if (lowerText.includes("business analyst") || lowerText.includes("requirements")) {
+    title = "Business Analyst";
+  } else if (lowerText.includes("operations") || lowerText.includes("mis")) {
+    title = "Operations & Reporting Analyst";
+  } else if (lowerText.includes("machine learning") || lowerText.includes("scikit")) {
+    title = "Data Scientist / ML Analyst";
+  }
+
+  return {
+    name: name.toUpperCase(),
+    email: email || "candidate@example.com",
+    phone: phone || "+91 0000000000",
+    title: title,
+    skills: matchedSkills.length > 0 ? matchedSkills : ["SQL", "Excel", "Data Analysis", "Reporting", "Communication"],
+    raw_text: text.slice(0, 1000)
+  };
+}
+
+function renderParsedProfilePreview(profile) {
+  const nameEl = document.getElementById('preview-candidate-name');
+  if (nameEl) nameEl.textContent = profile.name;
+  const headEl = document.getElementById('preview-candidate-headline');
+  if (headEl) headEl.textContent = profile.title;
+  const emailEl = document.getElementById('preview-candidate-email');
+  if (emailEl) emailEl.textContent = profile.email || 'N/A';
+  const phoneEl = document.getElementById('preview-candidate-phone');
+  if (phoneEl) phoneEl.textContent = profile.phone || 'N/A';
+  const countEl = document.getElementById('preview-skills-count');
+  if (countEl) countEl.textContent = profile.skills.length;
+
+  const tagsContainer = document.getElementById('preview-skills-tags');
+  if (tagsContainer) {
+    tagsContainer.innerHTML = profile.skills.map(s => `<span class="skill-pill-tag">✓ ${escapeHTML(s)}</span>`).join('');
+  }
+
+  const previewDiv = document.getElementById('parsed-profile-preview');
+  if (previewDiv) previewDiv.style.display = 'block';
+  const applyBtn = document.getElementById('apply-parsed-profile-btn');
+  if (applyBtn) applyBtn.style.display = 'inline-block';
+}
+
+function activateUploadedProfile() {
+  if (!parsedStagingProfile) return;
+
+  activeProfile = parsedStagingProfile;
+  try {
+    localStorage.setItem('active_candidate_profile', JSON.stringify(activeProfile));
+  } catch (e) {
+    console.error('Error saving profile to localStorage:', e);
+  }
+
+  updateNavbarProfileDisplay();
+  reScoreJobsForProfile(activeProfile);
+  renderFilteredJobs();
+  closeResumeUploadModal();
+
+  showToast(`✨ Profile applied for ${activeProfile.name}! All 42 openings re-scored for their skills.`);
+}
+
+function resetToDefaultProfile() {
+  try {
+    localStorage.removeItem('active_candidate_profile');
+  } catch (e) {}
+
+  activeProfile = null;
+  parsedStagingProfile = null;
+
+  // Clear custom scores on currentJobs
+  currentJobs.forEach(j => {
+    delete j.custom_score;
+    delete j.custom_matched;
+    delete j.custom_missing;
+  });
+
+  updateNavbarProfileDisplay();
+  renderFilteredJobs();
+  showToast(`↺ Restored default profile (Aksam Akbar).`);
+}
+
+function reScoreJobsForProfile(profile) {
+  if (!profile || !profile.skills) return;
+
+  const profileSkillsLower = profile.skills.map(s => s.toLowerCase());
+
+  currentJobs.forEach(job => {
+    const jobText = (
+      (job.title || '') + ' ' +
+      (job.description || '') + ' ' +
+      (job.matched_keywords || []).join(' ') + ' ' +
+      (job.missing_keywords || []).join(' ')
+    ).toLowerCase();
+
+    // Match profile skills that are relevant to this job
+    const matched = profile.skills.filter(s => {
+      const sLower = s.toLowerCase();
+      return jobText.includes(sLower);
+    });
+
+    // Check which required keywords are missing from profile
+    const allJobKeywords = (job.matched_keywords || []).concat(job.missing_keywords || []);
+    const missing = allJobKeywords.filter(k => {
+      const kLower = k.toLowerCase();
+      return !profileSkillsLower.some(ps => ps.includes(kLower) || kLower.includes(ps));
+    });
+
+    // Compute tailored ATS score: base 60 + matched proportion up to 98
+    const matchRatio = allJobKeywords.length > 0
+      ? Math.min(1.0, matched.length / Math.max(2, allJobKeywords.length * 0.6))
+      : 0.7;
+    const computedScore = Math.min(98, Math.max(65, Math.round(60 + (matchRatio * 38))));
+
+    job.custom_score = computedScore;
+    job.custom_matched = matched.length > 0 ? matched : profile.skills.slice(0, 3);
+    job.custom_missing = missing.slice(0, 4);
+  });
 }
 
