@@ -4,11 +4,16 @@ from pathlib import Path
 from jinja2 import Template
 from ..config import TEMPLATE_PATH, RESUMES_DIR
 
+import shutil
+
 EDGE_PATH = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 def get_browser_exe() -> str:
-    # Prefer Chrome if available, otherwise Edge
+    for cmd in ["google-chrome", "chromium-browser", "chromium", "chrome", "msedge"]:
+        path = shutil.which(cmd)
+        if path:
+            return path
     if os.path.exists(CHROME_PATH):
         return CHROME_PATH
     if os.path.exists(EDGE_PATH):

@@ -13,15 +13,63 @@ from ..config import (
 from ..database import get_all_jobs
 
 def get_top_24_daily_jobs() -> List[Dict[str, Any]]:
-    """Retrieve exactly 24 top-priority relevant jobs for the daily cycle."""
+    """
+    Retrieve exactly 24 top-priority relevant jobs for the daily cycle.
+    Guarantees balanced representation across all 4 target priorities:
+      - Priority 1: Bengaluru (7 roles)
+      - Priority 2: Kochi & Kerala (6 roles)
+      - Priority 3: Metro Hubs (6 roles)
+      - Priority 4: GCC Countries (5 roles)
+      Total = 24 roles.
+    Within each priority, jobs are ordered by freshness (days_ago: 0 first) and tailored ATS score.
+    """
     all_jobs = get_all_jobs(status_filter="ready_for_review")
     if not all_jobs or len(all_jobs) < 24:
-        # Fall back to all active non-applied jobs or full list
         all_jobs = [j for j in get_all_jobs() if j.get("status") != "applied"]
-    
-    # Sort strictly by priority (1: Bengaluru -> 2: Kerala -> 3: Metros -> 4: GCC), then tailored score
-    all_jobs.sort(key=lambda x: (x.get("location_priority", 5), -float(x.get("tailored_score", 0.0))))
-    return all_jobs[:24]
+    if not all_jobs:
+        all_jobs = get_all_jobs()
+
+    # Group by location priority
+    tiers: Dict[int, List[Dict[str, Any]]] = {1: [], 2: [], 3: [], 4: []}
+    for job in all_jobs:
+        prio = job.get("location_priority", 3)
+        if prio in tiers:
+            tiers[prio].append(job)
+        else:
+            tiers[3].append(job)
+
+    # Sort each tier by days_ago (0 first) then -tailored_score
+    for prio in tiers:
+        tiers[prio].sort(key=lambda x: (int(x.get("days_ago", 99)), -float(x.get("tailored_score", 0.0))))
+
+    # Balanced allocation targets: 7 + 6 + 6 + 5 = 24
+    targets = {1: 7, 2: 6, 3: 6, 4: 5}
+    selected_jobs: List[Dict[str, Any]] = []
+    pool_left: List[Dict[str, Any]] = []
+
+    for prio in [1, 2, 3, 4]:
+        tier_list = tiers[prio]
+        take_count = min(targets[prio], len(tier_list))
+        selected_jobs.extend(tier_list[:take_count])
+        pool_left.extend(tier_list[take_count:])
+
+    # If we still have fewer than 24, fill from leftover pool
+    if len(selected_jobs) < 24 and pool_left:
+        pool_left.sort(key=lambda x: (
+            x.get("location_priority", 5),
+            int(x.get("days_ago", 99)),
+            -float(x.get("tailored_score", 0.0))
+        ))
+        needed = 24 - len(selected_jobs)
+        selected_jobs.extend(pool_left[:needed])
+
+    # Final sort preserving location priority order for the digest
+    selected_jobs.sort(key=lambda x: (
+        x.get("location_priority", 5),
+        int(x.get("days_ago", 99)),
+        -float(x.get("tailored_score", 0.0))
+    ))
+    return selected_jobs[:24]
 
 def generate_daily_digest_html(jobs: List[Dict[str, Any]], recipient: str = DEFAULT_NOTIFICATION_EMAIL) -> str:
     today_str = datetime.now().strftime("%A, %d %B %Y")

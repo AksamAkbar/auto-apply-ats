@@ -75,6 +75,21 @@ def save_job(job_data: Dict[str, Any]) -> bool:
     conn = get_connection()
     cursor = conn.cursor()
     try:
+        # Check if job already exists to preserve user applied state & notes
+        cursor.execute("SELECT status, applied_at, notes FROM jobs WHERE id = ?", (job_data["id"],))
+        existing_row = cursor.fetchone()
+        
+        status = job_data.get("status", "discovered")
+        applied_at = job_data.get("applied_at")
+        notes = job_data.get("notes", "")
+        
+        if existing_row:
+            existing_status = existing_row[0]
+            if existing_status in ["applied", "interview", "offer", "rejected"]:
+                status = existing_status
+                applied_at = existing_row[1]
+                notes = existing_row[2] or notes
+
         cursor.execute('''
         INSERT OR REPLACE INTO jobs (
             id, title, company, location, description, url, source,
@@ -96,13 +111,13 @@ def save_job(job_data: Dict[str, Any]) -> bool:
             job_data.get("experience_req", "0-2 Years"),
             float(job_data.get("baseline_score", 0.0)),
             float(job_data.get("tailored_score", 0.0)),
-            job_data.get("status", "discovered"),
-            job_data.get("applied_at"),
+            status,
+            applied_at,
             job_data.get("tailored_pdf_path"),
             json.dumps(job_data.get("tailored_resume_json", {})),
             json.dumps(job_data.get("matched_keywords", [])),
             json.dumps(job_data.get("missing_keywords", [])),
-            job_data.get("notes", ""),
+            notes,
             job_data.get("created_at", datetime.now().isoformat())
         ))
         conn.commit()
@@ -162,8 +177,12 @@ def get_all_jobs(status_filter: Optional[str] = None) -> List[Dict[str, Any]]:
         data["location_priority"] = calculate_location_priority(data.get("location", ""))
         results.append(data)
         
-    # Sort strictly by Location Priority (1st Bengaluru -> 2nd Kerala -> 3rd Metro Hubs -> 4th GCC), then highest ATS score
-    results.sort(key=lambda x: (x["location_priority"], -float(x.get("tailored_score", 0.0))))
+    # Sort strictly by Location Priority (1st Bengaluru -> 2nd Kerala -> 3rd Metro Hubs -> 4th GCC), then freshness (days_ago), then highest ATS score
+    results.sort(key=lambda x: (
+        x.get("location_priority", 5),
+        int(x.get("days_ago", 99)),
+        -float(x.get("tailored_score", 0.0))
+    ))
     return results
 
 def update_job_status(job_id: str, status: str, notes: Optional[str] = None) -> bool:

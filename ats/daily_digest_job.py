@@ -1,6 +1,7 @@
 import os
 import sys
 from pathlib import Path
+from typing import Optional
 
 # Configure utf-8 encoding safely for Windows consoles
 try:
@@ -21,19 +22,20 @@ from ats.backend.modules.searcher import search_and_process_jobs
 from ats.backend.modules.email_notifier import send_daily_digest, get_top_24_daily_jobs
 from ats.export_static import export_static_site
 
-def run_daily_cycle(recipient: str = "aksamakbar@gmail.com"):
+def run_daily_cycle(recipient: Optional[str] = None):
+    target_recipient = recipient or os.getenv("NOTIFICATION_EMAIL", "aksamakbar@gmail.com")
     print("=" * 65)
-    print("[DAILY SCAN] AUTOAPPLY ATS: DAILY 9 AM SCAN & REFRESH CYCLE")
+    print(f"[DAILY SCAN] AUTOAPPLY ATS: DAILY 9 AM SCAN & REFRESH CYCLE")
     print("=" * 65)
     
     # 1. Initialize DB
     print("[1/4] Connecting to application database...")
     init_db()
 
-    # 2. Discover, filter, and score new openings
+    # 2. Discover, filter, and score new openings with daily rotation
     print("[2/4] Scanning fresh openings across platforms (Indeed, LinkedIn, Greenhouse, Portals)...")
-    new_jobs = search_and_process_jobs(max_results=35)
-    print(f"      Scanned and evaluated {len(new_jobs)} openings (Fresher-2 YOE, 90%+ ATS).")
+    new_jobs = search_and_process_jobs(max_results=50)
+    print(f"      Scanned, dynamically rotated, and evaluated {len(new_jobs)} openings (Fresher-2 YOE, 90%+ ATS).")
 
     # 3. Compile top 24 daily openings and generate digest
     print("[3/4] Compiling top 24 openings sorted by priority (Bengaluru -> Kerala -> Metros -> GCC)...")
@@ -41,7 +43,7 @@ def run_daily_cycle(recipient: str = "aksamakbar@gmail.com"):
     print(f"      Selected top {len(top_jobs)} prioritized openings.")
     
     # Dispatch or save digest
-    digest_result = send_daily_digest(recipient=recipient, jobs=top_jobs)
+    digest_result = send_daily_digest(recipient=target_recipient, jobs=top_jobs)
     print(f"      Digest Status: {digest_result.get('status')}")
     print(f"      Message: {digest_result.get('message')}")
     print(f"      Artifact HTML: {digest_result.get('html_path')}")

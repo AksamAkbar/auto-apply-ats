@@ -33,8 +33,7 @@ def tailor_resume_for_job(job_title: str, company: str, job_description: str) ->
         tailored["title"] = f"DATA & BUSINESS ANALYST | SQL | ADVANCED EXCEL | POWER BI | PYTHON"
         role_type = "data_analyst"
 
-    # 2. Tailor Professional Summary with embedded visual highlighting
-    comp_highlight = f"<mark class='tailored-highlight'>{company}</mark>"
+    # 2. Tailor Professional Summary with embedded visual highlighting (No direct company/role mentions)
     skills_highlighted = ", ".join([f"<mark class='tailored-highlight'>{m}</mark>" for m in matched[:5]]) if matched else "<mark class='tailored-highlight'>SQL</mark>, <mark class='tailored-highlight'>Advanced Excel</mark>, <mark class='tailored-highlight'>Power BI</mark>"
     
     if role_type == "pricing":
@@ -42,26 +41,26 @@ def tailor_resume_for_job(job_title: str, company: str, job_description: str) ->
             f"Results-oriented Pricing & Data Analyst with an MBA in Data Analytics and hands-on experience in "
             f"revenue forecasting, price performance benchmarking, and margin optimization. Proven proficiency in "
             f"{skills_highlighted} for developing variance reports, sensitivity analyses, and executive KPI dashboards. "
-            f"Adept at cross-functional collaboration and driving high-margin commercial outcomes for {comp_highlight}."
+            f"Adept at cross-functional collaboration, data-driven forecasting, and driving high-margin commercial growth."
         )
     elif role_type == "business_analyst":
         tailored["summary"] = (
             f"Business Analyst with an MBA in Data Analytics, specializing in translating complex business requirements into "
-            f"actionable data models and automated reports for {comp_highlight}. Strong technical command over {skills_highlighted} for end-to-end "
+            f"actionable data models and automated reports. Strong technical command over {skills_highlighted} for end-to-end "
             f"data validation, process optimization, and KPI tracking. Experienced in cross-functional coordination, Jira workflows, "
             f"and delivering data-backed strategic recommendations."
         )
     elif role_type == "operations":
         tailored["summary"] = (
-            f"Operations & Reporting Analyst equipped with strong background in MIS reporting, operational metrics tracking, "
-            f"and business intelligence to drive analytical excellence at {comp_highlight}. Proficient in {skills_highlighted} to streamline reporting turnaround, "
+            f"Operations & Reporting Analyst equipped with a strong background in MIS reporting, operational metrics tracking, "
+            f"and business intelligence to drive analytical excellence. Proficient in {skills_highlighted} to streamline reporting turnaround, "
             f"automate recurring data workflows, and execute root cause analysis on operational bottlenecks."
         )
     else:
         tailored["summary"] = (
             f"Data & Business Analyst holding an MBA in Data Analytics with expertise in data extraction, predictive modeling, "
             f"and interactive BI dashboards. Demonstrated success leveraging {skills_highlighted} across ETL data warehousing, "
-            f"KPI reporting, and variance analysis to drive measurable business decisions for {comp_highlight}."
+            f"KPI reporting, and variance analysis to drive measurable business decisions and organizational impact."
         )
 
     # 3. Prioritize & Highlight Experience Bullets based on JD relevance

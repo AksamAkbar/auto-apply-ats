@@ -7,9 +7,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function initApp() {
+  updateCycleDate();
   await loadStatus();
   await loadJobs();
   setupEventListeners();
+}
+
+function updateCycleDate() {
+  const cycleDateEl = document.getElementById('cycle-date-text');
+  if (cycleDateEl) {
+    const now = new Date();
+    const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+    cycleDateEl.textContent = now.toLocaleDateString('en-US', options);
+  }
 }
 
 function setupEventListeners() {

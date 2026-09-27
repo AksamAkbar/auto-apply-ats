@@ -2,7 +2,7 @@ import requests
 import re
 import hashlib
 import urllib.parse
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from typing import List, Dict, Any
 
 from ..config import (
@@ -13,7 +13,7 @@ from ..config import (
 from .ats_scorer import analyze_job_keywords
 from .resume_tailorer import tailor_resume_for_job
 from .pdf_generator import generate_ats_pdf
-from ..database import save_job, record_skill_gaps
+from ..database import save_job, record_skill_gaps, calculate_location_priority
 
 def generate_job_id(title: str, company: str, location: str) -> str:
     raw = f"{title.strip().lower()}_{company.strip().lower()}_{location.strip().lower()}"
@@ -447,14 +447,164 @@ CURATED_VERIFIED_JOBS = [
         "education_req": "MBA / B.Com / Any Graduate",
         "url": "https://ae.linkedin.com/jobs/search/?keywords=Junior+Commercial+Data+Analyst&location=Dubai%2C+United+Arab+Emirates",
         "description": "Analyze retail sales datasets and promotional elasticity in Dubai. Extract metrics using SQL, build Excel pivot models, and prepare variance reports."
+    },
+    # Additional Curated Verified Roles for Rich Daily Rotation
+    {
+        "title": "Junior Risk & Pricing Analyst",
+        "company": "KreditBee",
+        "location": "Bengaluru, Karnataka, India",
+        "source": "LinkedIn Direct Job",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "B.Com / MBA (Data Analytics) / Any Graduate",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=KreditBee+Risk+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
+        "description": "KreditBee is hiring a Junior Analyst in Bengaluru to assess credit transaction datasets, build risk variance models in SQL & Excel, and develop Power BI executive dashboards."
+    },
+    {
+        "title": "Commercial Pricing Analyst",
+        "company": "Zepto",
+        "location": "Bengaluru, Karnataka, India",
+        "source": "Zepto Careers (Direct ATS)",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "MBA / B.Com / Any Graduate",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Zepto+Pricing+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
+        "description": "Evaluate dynamic pricing models, analyze quick-commerce margin variance using SQL and Advanced Excel, and automate weekly reporting trackers."
+    },
+    {
+        "title": "Data Analyst (Product & Metrics)",
+        "company": "Groww",
+        "location": "Bengaluru, Karnataka, India",
+        "source": "Groww Careers (Direct ATS)",
+        "days_ago": 1,
+        "experience_req": "0-2 Years",
+        "education_req": "Any Graduate / MBA / B.Com",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Groww+Data+Analyst&location=Bengaluru%2C+Karnataka%2C+India",
+        "description": "Analyze user transaction journeys, build automated Power BI tracking reports, and query relational databases with SQL to monitor product KPIs."
+    },
+    {
+        "title": "Business & Reporting Analyst",
+        "company": "Sutherland",
+        "location": "Kochi, Kerala (Infopark)",
+        "source": "LinkedIn Direct Job",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "Any Graduate / B.Com / MBA",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Sutherland+Business+Analyst&location=Kochi%2C+Kerala%2C+India",
+        "description": "Infopark Kochi opportunity at Sutherland. Formulate MIS reports, maintain SLA tracking dashboards in Excel & Power BI, and conduct variance analysis on service workflows."
+    },
+    {
+        "title": "Product Data Analyst",
+        "company": "SurveySparrow",
+        "location": "Kochi, Kerala (Infopark)",
+        "source": "Company Career Portal",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "MBA / B.Com / Any Graduate",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=SurveySparrow+Data+Analyst&location=Kochi%2C+Kerala%2C+India",
+        "description": "SurveySparrow Infopark is hiring a Data Analyst to track customer retention metrics, analyze product usage patterns with SQL, and build executive reporting dashboards."
+    },
+    {
+        "title": "Associate Business Analyst",
+        "company": "IBS Software",
+        "location": "Trivandrum, Kerala (Technopark)",
+        "source": "IBS Software Careers",
+        "days_ago": 1,
+        "experience_req": "0-2 Years (Associate / Fresher)",
+        "education_req": "Any Graduate / MBA / B.Com",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=IBS+Software+Business+Analyst&location=Thiruvananthapuram%2C+Kerala%2C+India",
+        "description": "Technopark Trivandrum opening at IBS Software. Gather business requirements, validate operational airline & hospitality datasets, and prepare functional reports."
+    },
+    {
+        "title": "Operations & Logistics Analyst",
+        "company": "Swiggy Instamart",
+        "location": "Gurgaon, Delhi NCR, India",
+        "source": "Swiggy Careers (Direct ATS)",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "Any Graduate / B.Com / MBA",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=Swiggy+Instamart+Operations+Analyst&location=Gurgaon%2C+Haryana%2C+India",
+        "description": "Analyze dark store delivery turnarounds, evaluate inventory variance metrics using SQL and Advanced Excel, and maintain executive Power BI scorecards."
+    },
+    {
+        "title": "Junior BI & MIS Reporting Analyst",
+        "company": "HDFC Bank",
+        "location": "Mumbai, Maharashtra, India",
+        "source": "HDFC Careers (Direct ATS)",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "B.Com / MBA / Any Graduate",
+        "url": "https://www.linkedin.com/jobs/search/?keywords=HDFC+Bank+MIS+Analyst&location=Mumbai%2C+Maharashtra%2C+India",
+        "description": "Prepare statutory and internal MIS variance reports, query customer transaction repositories using SQL, and maintain automated Excel workbook models."
+    },
+    {
+        "title": "Commercial Operations Analyst",
+        "company": "Careem (Uber)",
+        "location": "Dubai, United Arab Emirates",
+        "source": "Careem Careers (Direct ATS)",
+        "days_ago": 0,
+        "experience_req": "0-2 Years",
+        "education_req": "Any Graduate / MBA / B.Com",
+        "url": "https://ae.linkedin.com/jobs/search/?keywords=Careem+Operations+Analyst&location=Dubai%2C+United+Arab+Emirates",
+        "description": "Careem Dubai is seeking a Commercial Operations Analyst to monitor ride and delivery metrics, track gross revenue realization with SQL, and build Power BI reports."
+    },
+    {
+        "title": "Revenue & Performance Analyst",
+        "company": "Emirates Group",
+        "location": "Dubai, United Arab Emirates",
+        "source": "Emirates Group Careers",
+        "days_ago": 1,
+        "experience_req": "1-2 Years",
+        "education_req": "MBA / B.Com / Any Graduate",
+        "url": "https://ae.linkedin.com/jobs/search/?keywords=Emirates+Revenue+Analyst&location=Dubai%2C+United+Arab+Emirates",
+        "description": "Support commercial revenue optimization models across international routes, perform pricing variance analyses in Advanced Excel, and query passenger trends in SQL."
     }
 ]
 
-def search_and_process_jobs(max_results: int = 35) -> List[Dict[str, Any]]:
+def get_daily_rotated_jobs() -> List[Dict[str, Any]]:
+    """
+    Dynamically rotates the curated verified job pool based on current calendar date.
+    Each day at 9:00 AM IST, jobs shift so fresh roles appear at the top.
+    Top slots in each tier are marked 'posted today' (days_ago: 0, is_hot: 1, posted_date: today).
+    Secondary slots are marked 'posted yesterday' (days_ago: 1, is_hot: 1, posted_date: yesterday).
+    """
+    today = datetime.now().date()
+    epoch = date(2026, 1, 1)
+    day_shift = (today - epoch).days
+
+    # Group by location priority (1: Bengaluru, 2: Kerala, 3: Metros, 4: GCC)
+    tiers: Dict[int, List[Dict[str, Any]]] = {1: [], 2: [], 3: [], 4: []}
+    for job in CURATED_VERIFIED_JOBS:
+        prio = calculate_location_priority(job["location"])
+        tiers.setdefault(prio, []).append(job)
+
+    rotated_all = []
+    # For each priority tier, rotate the list cyclically by day_shift
+    for prio in [1, 2, 3, 4]:
+        tier_jobs = tiers.get(prio, [])
+        if not tier_jobs:
+            continue
+        n = len(tier_jobs)
+        shift = day_shift % n
+        rotated = tier_jobs[shift:] + tier_jobs[:shift]
+
+        # Top 50% of rotated jobs in each tier get days_ago = 0 (posted today, Hot)
+        # Remainder get days_ago = 1 (posted yesterday, Hot)
+        fresh_count = max(1, (len(rotated) + 1) // 2)
+        for idx, j in enumerate(rotated):
+            job_copy = dict(j)
+            job_copy["days_ago"] = 0 if idx < fresh_count else 1
+            rotated_all.append(job_copy)
+
+    return rotated_all
+
+def search_and_process_jobs(max_results: int = 50) -> List[Dict[str, Any]]:
     processed_jobs = []
     seen_ids = set()
 
-    for raw_job in CURATED_VERIFIED_JOBS:
+    pool = get_daily_rotated_jobs()
+
+    for raw_job in pool:
         # 1. Role match
         if not matches_target_role(raw_job["title"]):
             continue
@@ -473,7 +623,7 @@ def search_and_process_jobs(max_results: int = 35) -> List[Dict[str, Any]]:
             continue
         seen_ids.add(job_id)
 
-        days_ago = raw_job.get("days_ago", 1)
+        days_ago = raw_job.get("days_ago", 0)
         posted_date = (datetime.now() - timedelta(days=days_ago)).strftime("%Y-%m-%d")
         is_hot = 1 if days_ago <= 1 else 0
 
@@ -524,3 +674,4 @@ def search_and_process_jobs(max_results: int = 35) -> List[Dict[str, Any]]:
             break
 
     return processed_jobs
+

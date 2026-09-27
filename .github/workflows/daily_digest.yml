@@ -1,10 +1,13 @@
-name: Daily 9:00 AM Job Digest (Aksam Akbar)
+name: Daily 9:00 AM Job Digest & Pages Refresh (Aksam Akbar)
 
 on:
   schedule:
     # 03:30 UTC = 09:00 AM IST (Indian Standard Time)
     - cron: '30 3 * * *'
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
 
 jobs:
   send-daily-digest:
@@ -13,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Job Discovery & Email Digest
+      - name: Run Job Discovery, Digest & Static Export
         env:
           SMTP_HOST: smtp.gmail.com
           SMTP_PORT: 587
@@ -34,7 +39,14 @@ jobs:
           NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL || 'aksamakbar@gmail.com' }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python ats/backend/scripts/run_daily_digest.py
+          python ats/daily_digest_job.py
+
+      - name: Commit and Push Refreshed Openings & Static Site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/ ats/storage/
+          git diff --staged --quiet || (git commit -m "Auto-refresh 9:00 AM daily job openings & digest for $(date +'%Y-%m-%d') [skip ci]" && git push origin main)
 
       - name: Upload Daily Digest Artifacts
         uses: actions/upload-artifact@v4
